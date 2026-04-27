@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1162feff1d1144a685c1f9cad0105a72" Name="Diagram1">
+        <EntityTypeShape EntityType="AlibaRamyModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_action" Width="1.5" PointX="3.75" PointY="23.75" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_actions" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_amov" Width="1.5" PointX="3.75" PointY="27.25" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_branchs" Width="1.5" PointX="3.75" PointY="29.75" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_cars" Width="1.5" PointX="6.75" PointY="8.75" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_city" Width="1.5" PointX="1.5" PointY="8" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_cridet" Width="1.5" PointX="3" PointY="15.5" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_cust" Width="1.5" PointX="0.75" PointY="11.375" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_det" Width="1.5" PointX="13.5" PointY="16.375" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_det1" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_details" Width="1.5" PointX="13.5" PointY="4.25" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_details1" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_emplo" Width="1.5" PointX="3.75" PointY="9.25" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_emr" Width="1.5" PointX="6" PointY="12.125" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_emst" Width="1.5" PointX="3.75" PointY="21.375" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_groups" Width="1.5" PointX="9" PointY="8.25" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_items" Width="1.5" PointX="11.25" PointY="6.375" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_list" Width="1.5" PointX="11.25" PointY="15" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_list1" Width="1.5" PointX="5" PointY="0.875" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_mov" Width="1.5" PointX="6" PointY="16.75" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_Note" Width="1.5" PointX="7" PointY="1" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_order" Width="1.5" PointX="6" PointY="20.625" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_order1" Width="1.5" PointX="9.125" PointY="1.125" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_stock" Width="1.5" PointX="3" PointY="45.625" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_str" Width="1.5" PointX="13.5" PointY="7.75" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_str1" Width="1.5" PointX="11.25" PointY="1.25" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_temp" Width="1.5" PointX="13.5" PointY="11" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_travel" Width="1.5" PointX="9" PointY="13.25" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_travel1" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_type" Width="1.5" PointX="6.75" PointY="5.75" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_users" Width="1.5" PointX="0.75" PointY="15.875" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_cridet_TB_action" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_emr_TB_action" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_order_TB_action" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_mov_TB_amov" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_order_TB_branchs" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_travel_TB_cars1" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_cust_TB_city" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_travel_TB_city1" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_cridet_TB_cust" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_cridet_TB_emplo" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_cridet_TB_users" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_det_TB_items" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_det_TB_list" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_details_TB_items" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_emr_TB_emplo" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_list_TB_emplo" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_travel_TB_emplo1" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_emr_TB_emst" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_emr_TB_users" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_items_TB_groups" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_str_TB_items" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_temp_TB_items" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_list_TB_travel" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_mov_TB_users" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_order_TB_users" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_stock_TB_users2" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_travel_TB_users2" />
+        <AssociationConnector Association="AlibaRamyModel.FK_TB_travel_TB_users3" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_ads" Width="1.5" PointX="16.375" PointY="10.75" />
+        <AssociationConnector Association="AlibaRamyModel.FK_Ads_Users" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

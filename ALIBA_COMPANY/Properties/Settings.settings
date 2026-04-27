@@ -1,0 +1,33 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ALIBA_COMPANY.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="a" Type="DevExpress.Utils.DefaultBoolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="UserID" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="FullName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">xrControlStyle2</Value>
+    </Setting>
+    <Setting Name="UserName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">xrControlStyle2</Value>
+    </Setting>
+    <Setting Name="UserRole" Type="System.String" Scope="User">
+      <Value Profile="(Default)">xrControlStyle2</Value>
+    </Setting>
+    <Setting Name="State" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CompanyName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">شركة اللبة</Value>
+    </Setting>
+    <Setting Name="CompanyDes" Type="System.String" Scope="User">
+      <Value Profile="(Default)">للتجارة العامة</Value>
+    </Setting>
+    <Setting Name="CompanyLogo" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

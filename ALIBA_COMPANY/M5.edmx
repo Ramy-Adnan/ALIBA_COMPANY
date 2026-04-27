@@ -1,0 +1,3028 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AlibaRamyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TB_action">
+          <Key>
+            <PropertyRef Name="action_id" />
+          </Key>
+          <Property Name="action_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="action_name" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="TB_actions">
+          <Key>
+            <PropertyRef Name="action_id" />
+          </Key>
+          <Property Name="action_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="action_name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TB_ads">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="ad_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="image_url" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="150" />
+          <Property Name="subtitle" Type="nvarchar" MaxLength="255" />
+          <Property Name="is_active" Type="bit" Nullable="false" />
+          <Property Name="sort_order" Type="int" Nullable="false" />
+          <Property Name="created_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="TB_amov">
+          <Key>
+            <PropertyRef Name="amov_id" />
+          </Key>
+          <Property Name="amov_id" Type="int" Nullable="false" />
+          <Property Name="amov_name" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TB_branchs">
+          <Key>
+            <PropertyRef Name="br_id" />
+          </Key>
+          <Property Name="br_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="br_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="br_code" Type="nvarchar" MaxLength="3" />
+          <Property Name="br_activity" Type="bit" />
+          <Property Name="br_phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="br_address" Type="nvarchar" MaxLength="100" />
+          <Property Name="br_nots" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TB_cars">
+          <Key>
+            <PropertyRef Name="car_id" />
+          </Key>
+          <Property Name="car_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="car_name" Type="nvarchar" MaxLength="30" />
+          <Property Name="car_type" Type="nvarchar" MaxLength="30" />
+          <Property Name="car_activity" Type="bit" />
+          <Property Name="car_inf" Type="nvarchar" MaxLength="100" />
+          <Property Name="car_num" Type="nvarchar" MaxLength="50" />
+          <Property Name="car_traval_active" Type="bit" />
+        </EntityType>
+        <EntityType Name="TB_city">
+          <Key>
+            <PropertyRef Name="city_id" />
+          </Key>
+          <Property Name="city_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="city_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="city_enname" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TB_cridet">
+          <Key>
+            <PropertyRef Name="cridet_id" />
+          </Key>
+          <Property Name="cridet_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cridet_date" Type="datetime" />
+          <Property Name="cridet_amount" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="cridet_s" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="cridet_d" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="cridet_ex" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="tr_id" Type="int" />
+          <Property Name="emplo_id" Type="int" />
+          <Property Name="action_id" Type="int" />
+          <Property Name="cridet_nots" Type="nvarchar" MaxLength="200" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="cust_id" Type="int" />
+          <Property Name="list_name" Type="nvarchar" MaxLength="75" />
+          <Property Name="cridet_code" Type="int" />
+          <Property Name="pr_id" Type="int" />
+          <Property Name="sending" Type="bit" />
+        </EntityType>
+        <EntityType Name="TB_cust">
+          <Key>
+            <PropertyRef Name="cust_id" />
+          </Key>
+          <Property Name="cust_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cust_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="cust_activity" Type="bit" />
+          <Property Name="cust_address" Type="nvarchar" MaxLength="100" />
+          <Property Name="cust_phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="cust_min" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="cust_max" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="cus_nots" Type="nvarchar" MaxLength="100" />
+          <Property Name="city_id" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_det">
+          <Key>
+            <PropertyRef Name="de_id" />
+          </Key>
+          <Property Name="de_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="list_id" Type="int" />
+          <Property Name="items_id" Type="int" />
+          <Property Name="de_costUsd" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="de_totalUsd" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="de_num" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="de_costIQ" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="de_totalIQ" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="sending" Type="bit" />
+        </EntityType>
+        <EntityType Name="TB_det1">
+          <Key>
+            <PropertyRef Name="de_id" />
+          </Key>
+          <Property Name="de_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="list_id" Type="int" />
+          <Property Name="items_id" Type="int" />
+          <Property Name="de_costUsd" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="de_totalUsd" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="de_num" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="de_costIQ" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="de_totalIQ" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="sending" Type="bit" />
+        </EntityType>
+        <EntityType Name="TB_details">
+          <Key>
+            <PropertyRef Name="details_id" />
+          </Key>
+          <Property Name="details_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="int" />
+          <Property Name="items_id" Type="int" />
+          <Property Name="action_id" Type="int" />
+          <Property Name="details_num" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="details_renum" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="sell_num" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="sending" Type="bit" />
+        </EntityType>
+        <EntityType Name="TB_details1">
+          <Key>
+            <PropertyRef Name="details_id" />
+          </Key>
+          <Property Name="details_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="int" Nullable="false" />
+          <Property Name="items_id" Type="int" />
+          <Property Name="action_id" Type="int" />
+          <Property Name="details_num" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="details_renum" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="sell_num" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="sending" Type="bit" />
+        </EntityType>
+        <EntityType Name="TB_emplo">
+          <Key>
+            <PropertyRef Name="emplo_id" />
+          </Key>
+          <Property Name="emplo_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emplo_job" Type="nvarchar" MaxLength="50" />
+          <Property Name="emplo_pirth" Type="nvarchar" MaxLength="10" />
+          <Property Name="emplo_phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="emplo_sel" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="emplo_wek" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="emplo_inf" Type="nvarchar" MaxLength="100" />
+          <Property Name="emplo_activity" Type="bit" />
+          <Property Name="emplo_name" Type="nvarchar" MaxLength="70" />
+          <Property Name="emplo_address" Type="nvarchar" MaxLength="100" />
+          <Property Name="emplo_dis" Type="bit" />
+          <Property Name="emplo_eng" Type="nvarchar" MaxLength="50" />
+          <Property Name="emplo_traval_active" Type="bit" />
+        </EntityType>
+        <EntityType Name="TB_emr">
+          <Key>
+            <PropertyRef Name="emr_id" />
+          </Key>
+          <Property Name="emr_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emr_date" Type="datetime" />
+          <Property Name="emr__dateFrom" Type="date" />
+          <Property Name="emr__dateTo" Type="date" />
+          <Property Name="emst_id" Type="int" />
+          <Property Name="emr_num" Type="int" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="emplo_id" Type="int" />
+          <Property Name="emr_note" Type="nvarchar" MaxLength="255" />
+          <Property Name="action_id" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_emst">
+          <Key>
+            <PropertyRef Name="emst_id" />
+          </Key>
+          <Property Name="emst_id" Type="int" Nullable="false" />
+          <Property Name="emst_name" Type="nvarchar" MaxLength="16" />
+        </EntityType>
+        <EntityType Name="TB_groups">
+          <Key>
+            <PropertyRef Name="groups_id" />
+          </Key>
+          <Property Name="groups_id" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="groups_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TB_items">
+          <Key>
+            <PropertyRef Name="items_id" />
+          </Key>
+          <Property Name="items_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="items_name" Type="nvarchar" MaxLength="75" />
+          <Property Name="items_activity" Type="bit" />
+          <Property Name="Usd_upper" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Usd_lower" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="exchang" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="IQD_upper" Type="decimal" Precision="15" Scale="0" />
+          <Property Name="IQD_lower" Type="decimal" Precision="15" Scale="0" />
+          <Property Name="items_form" Type="nvarchar" MaxLength="50" />
+          <Property Name="items_quart" Type="tinyint" />
+          <Property Name="items_nots" Type="nvarchar" MaxLength="100" />
+          <Property Name="items_code" Type="nvarchar" MaxLength="50" />
+          <Property Name="items_enname" Type="nvarchar" MaxLength="75" />
+          <Property Name="groups_id" Type="tinyint" />
+          <Property Name="items_pic" Type="nvarchar" MaxLength="255" />
+          <Property Name="items_l" Type="int" />
+          <Property Name="pr_id" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_list">
+          <Key>
+            <PropertyRef Name="list_id" />
+          </Key>
+          <Property Name="list_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="list_date" Type="datetime" />
+          <Property Name="tr_id" Type="int" />
+          <Property Name="cust_idd" Type="int" />
+          <Property Name="list_name" Type="nvarchar" MaxLength="75" />
+          <Property Name="list_amountUsd" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="list_amountIQ" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="list_cridetUsd" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="list_cridetIQ" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="list_scashUsd" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="list_dcash" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="list_exch" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="list_items" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="list_unit" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="action_id" Type="int" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="type_id" Type="int" />
+          <Property Name="list_nots" Type="nvarchar" MaxLength="150" />
+          <Property Name="list_code" Type="int" />
+          <Property Name="pr_id" Type="int" />
+          <Property Name="sending" Type="bit" />
+          <Property Name="emplo_id" Type="int" />
+          <Property Name="cust_id" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_list1">
+          <Key>
+            <PropertyRef Name="list_id" />
+          </Key>
+          <Property Name="list_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="list_date" Type="datetime" />
+          <Property Name="tr_id" Type="int" />
+          <Property Name="cust_idd" Type="int" />
+          <Property Name="list_name" Type="nvarchar" MaxLength="75" />
+          <Property Name="list_amountUsd" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="list_amountIQ" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="list_cridetUsd" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="list_cridetIQ" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="list_scashUsd" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="list_dcash" Type="decimal" Precision="16" Scale="2" />
+          <Property Name="list_exch" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="list_items" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="list_unit" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="action_id" Type="int" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="type_id" Type="int" />
+          <Property Name="list_nots" Type="nvarchar" MaxLength="150" />
+          <Property Name="list_code" Type="int" />
+          <Property Name="pr_id" Type="int" />
+          <Property Name="sending" Type="bit" />
+          <Property Name="emplo_id" Type="int" />
+          <Property Name="cust_id" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_mov">
+          <Key>
+            <PropertyRef Name="mov_id" />
+          </Key>
+          <Property Name="mov_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mov_date" Type="datetime" />
+          <Property Name="mov_dis" Type="nvarchar" MaxLength="75" />
+          <Property Name="amov_id" Type="int" />
+          <Property Name="user_id" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_Note">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoteDes" Type="nvarchar" MaxLength="300" />
+          <Property Name="NoteDate" Type="datetime" />
+          <Property Name="NoteManger" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoteUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="NoteType" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TB_order">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_date" Type="datetime" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="order_items" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="order_unit" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="emplo_id" Type="int" />
+          <Property Name="car_id" Type="int" />
+          <Property Name="driver_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="car_name" Type="nvarchar" MaxLength="30" />
+          <Property Name="order_nots" Type="nvarchar" MaxLength="100" />
+          <Property Name="order_code" Type="int" />
+          <Property Name="br_id" Type="int" />
+          <Property Name="action_id" Type="int" />
+          <Property Name="order_status" Type="nvarchar" MaxLength="20" />
+          <Property Name="order_ncode" Type="nvarchar" MaxLength="50" />
+          <Property Name="order_ndate" Type="date" />
+        </EntityType>
+        <EntityType Name="TB_order1">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_date" Type="datetime" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="order_items" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="order_unit" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="emplo_id" Type="int" />
+          <Property Name="car_id" Type="int" />
+          <Property Name="driver_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="car_name" Type="nvarchar" MaxLength="30" />
+          <Property Name="order_nots" Type="nvarchar" MaxLength="100" />
+          <Property Name="order_code" Type="int" />
+          <Property Name="br_id" Type="int" />
+          <Property Name="action_id" Type="int" />
+          <Property Name="order_status" Type="nvarchar" MaxLength="20" />
+          <Property Name="order_ncode" Type="nvarchar" MaxLength="50" />
+          <Property Name="order_ndate" Type="date" />
+        </EntityType>
+        <EntityType Name="TB_stock">
+          <Key>
+            <PropertyRef Name="sto_id" />
+          </Key>
+          <Property Name="sto_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="sto_date" Type="datetime" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="sto_items" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="sto_unit" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="sto_nots" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="TB_str">
+          <Key>
+            <PropertyRef Name="str_id" />
+          </Key>
+          <Property Name="str_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="int" Nullable="false" />
+          <Property Name="items_id" Type="int" Nullable="false" />
+          <Property Name="str_date" Type="date" Nullable="false" />
+          <Property Name="action_id" Type="int" Nullable="false" />
+          <Property Name="str_num" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="str_renum" Type="decimal" Precision="10" Scale="3" />
+        </EntityType>
+        <EntityType Name="TB_str1">
+          <Key>
+            <PropertyRef Name="str_id" />
+          </Key>
+          <Property Name="str_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="int" Nullable="false" />
+          <Property Name="items_id" Type="int" Nullable="false" />
+          <Property Name="str_date" Type="date" Nullable="false" />
+          <Property Name="action_id" Type="int" Nullable="false" />
+          <Property Name="str_num" Type="decimal" Precision="10" Scale="3" />
+          <Property Name="str_renum" Type="decimal" Precision="10" Scale="3" />
+        </EntityType>
+        <EntityType Name="TB_temp">
+          <Key>
+            <PropertyRef Name="temp_id" />
+          </Key>
+          <Property Name="temp_id" Type="int" Nullable="false" />
+          <Property Name="order_id" Type="int" />
+          <Property Name="items_id" Type="int" />
+          <Property Name="action_id" Type="int" />
+          <Property Name="temp_num" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="temp_renum" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="temp_date" Type="date" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_travel">
+          <Key>
+            <PropertyRef Name="tr_id" />
+          </Key>
+          <Property Name="city_id" Type="int" />
+          <Property Name="emplo_id" Type="int" />
+          <Property Name="tr_date" Type="date" />
+          <Property Name="car_id" Type="int" />
+          <Property Name="tr_st_id" Type="int" />
+          <Property Name="tr_st_staus" Type="nvarchar" MaxLength="15" />
+          <Property Name="tr_nots" Type="nvarchar" MaxLength="150" />
+          <Property Name="tr_items" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="tr_unit" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="action_id" Type="int" />
+          <Property Name="tr_reitems" Type="decimal" Precision="5" Scale="0" />
+          <Property Name="tr_reunit" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="tr_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tr_amount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_amount_d" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_cash" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_cash_d" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_cridet" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_cridet_d" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_Scash" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_dcash" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_recridetu" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_recridetu_d" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_recrideth" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_recrideth_d" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_p_it" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="tr_p_un" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="tr_luck" Type="nvarchar" MaxLength="3" />
+          <Property Name="tr_dcashh" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_scashh" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_sfinal" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_dfinal" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_lists" Type="int" />
+          <Property Name="user_id2" Type="int" />
+          <Property Name="tr_rate" Type="int" />
+          <Property Name="tr_loading" Type="tinyint" />
+          <Property Name="tr_sending" Type="bit" />
+        </EntityType>
+        <EntityType Name="TB_travel1">
+          <Key>
+            <PropertyRef Name="tr_id" />
+          </Key>
+          <Property Name="city_id" Type="int" />
+          <Property Name="emplo_id" Type="int" />
+          <Property Name="tr_date" Type="date" />
+          <Property Name="car_id" Type="int" />
+          <Property Name="tr_st_id" Type="int" />
+          <Property Name="tr_st_staus" Type="nvarchar" MaxLength="15" />
+          <Property Name="tr_nots" Type="nvarchar" MaxLength="150" />
+          <Property Name="tr_items" Type="decimal" Precision="4" Scale="0" />
+          <Property Name="tr_unit" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="action_id" Type="int" />
+          <Property Name="tr_reitems" Type="decimal" Precision="4" Scale="0" />
+          <Property Name="tr_reunit" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="tr_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tr_amount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_amount_d" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_cash" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_cash_d" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_cridet" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_cridet_d" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_Scash" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_dcash" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_recridetu" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_recridetu_d" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_recrideth" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_recrideth_d" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_p_it" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="tr_p_un" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="tr_luck" Type="nvarchar" MaxLength="3" />
+          <Property Name="tr_dcashh" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_scashh" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_sfinal" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="tr_dfinal" Type="decimal" Precision="15" Scale="2" />
+          <Property Name="tr_lists" Type="int" />
+          <Property Name="user_id2" Type="int" />
+          <Property Name="tr_rate" Type="int" />
+          <Property Name="tr_loading" Type="tinyint" />
+          <Property Name="tr_sending" Type="bit" />
+        </EntityType>
+        <EntityType Name="TB_type">
+          <Key>
+            <PropertyRef Name="type_id" />
+          </Key>
+          <Property Name="type_id" Type="int" Nullable="false" />
+          <Property Name="type_name" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="TB_users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_name" Type="nvarchar" MaxLength="10" />
+          <Property Name="user_passward" Type="nvarchar" MaxLength="20" />
+          <Property Name="user_role" Type="nvarchar" MaxLength="20" />
+          <Property Name="user_addDate" Type="datetime" />
+          <Property Name="IDDep" Type="int" />
+          <Property Name="DepName" Type="nvarchar" MaxLength="20" />
+          <Property Name="user_state" Type="bit" />
+          <Property Name="user_activity" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Ads_Users">
+          <End Role="TB_users" Type="Self.TB_users" Multiplicity="0..1" />
+          <End Role="TB_ads" Type="Self.TB_ads" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_ads">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_cridet_TB_action">
+          <End Role="TB_action" Type="Self.TB_action" Multiplicity="0..1" />
+          <End Role="TB_cridet" Type="Self.TB_cridet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_action">
+              <PropertyRef Name="action_id" />
+            </Principal>
+            <Dependent Role="TB_cridet">
+              <PropertyRef Name="action_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_cridet_TB_cust">
+          <End Role="TB_cust" Type="Self.TB_cust" Multiplicity="0..1" />
+          <End Role="TB_cridet" Type="Self.TB_cridet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_cust">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="TB_cridet">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_cridet_TB_emplo">
+          <End Role="TB_emplo" Type="Self.TB_emplo" Multiplicity="0..1" />
+          <End Role="TB_cridet" Type="Self.TB_cridet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_emplo">
+              <PropertyRef Name="emplo_id" />
+            </Principal>
+            <Dependent Role="TB_cridet">
+              <PropertyRef Name="emplo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_cridet_TB_users">
+          <End Role="TB_users" Type="Self.TB_users" Multiplicity="0..1" />
+          <End Role="TB_cridet" Type="Self.TB_cridet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_cridet">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_cust_TB_city">
+          <End Role="TB_city" Type="Self.TB_city" Multiplicity="0..1" />
+          <End Role="TB_cust" Type="Self.TB_cust" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_city">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="TB_cust">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_det_TB_items">
+          <End Role="TB_items" Type="Self.TB_items" Multiplicity="0..1" />
+          <End Role="TB_det" Type="Self.TB_det" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_items">
+              <PropertyRef Name="items_id" />
+            </Principal>
+            <Dependent Role="TB_det">
+              <PropertyRef Name="items_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_det_TB_list">
+          <End Role="TB_list" Type="Self.TB_list" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TB_det" Type="Self.TB_det" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_list">
+              <PropertyRef Name="list_id" />
+            </Principal>
+            <Dependent Role="TB_det">
+              <PropertyRef Name="list_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_details_TB_items">
+          <End Role="TB_items" Type="Self.TB_items" Multiplicity="0..1" />
+          <End Role="TB_details" Type="Self.TB_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_items">
+              <PropertyRef Name="items_id" />
+            </Principal>
+            <Dependent Role="TB_details">
+              <PropertyRef Name="items_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_emr_TB_action">
+          <End Role="TB_action" Type="Self.TB_action" Multiplicity="0..1" />
+          <End Role="TB_emr" Type="Self.TB_emr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_action">
+              <PropertyRef Name="action_id" />
+            </Principal>
+            <Dependent Role="TB_emr">
+              <PropertyRef Name="action_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_emr_TB_emplo">
+          <End Role="TB_emplo" Type="Self.TB_emplo" Multiplicity="0..1" />
+          <End Role="TB_emr" Type="Self.TB_emr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_emplo">
+              <PropertyRef Name="emplo_id" />
+            </Principal>
+            <Dependent Role="TB_emr">
+              <PropertyRef Name="emplo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_emr_TB_emst">
+          <End Role="TB_emst" Type="Self.TB_emst" Multiplicity="0..1" />
+          <End Role="TB_emr" Type="Self.TB_emr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_emst">
+              <PropertyRef Name="emst_id" />
+            </Principal>
+            <Dependent Role="TB_emr">
+              <PropertyRef Name="emst_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_emr_TB_users">
+          <End Role="TB_users" Type="Self.TB_users" Multiplicity="0..1" />
+          <End Role="TB_emr" Type="Self.TB_emr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_emr">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_items_TB_groups">
+          <End Role="TB_groups" Type="Self.TB_groups" Multiplicity="0..1" />
+          <End Role="TB_items" Type="Self.TB_items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_groups">
+              <PropertyRef Name="groups_id" />
+            </Principal>
+            <Dependent Role="TB_items">
+              <PropertyRef Name="groups_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_list_TB_emplo">
+          <End Role="TB_emplo" Type="Self.TB_emplo" Multiplicity="0..1" />
+          <End Role="TB_list" Type="Self.TB_list" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_emplo">
+              <PropertyRef Name="emplo_id" />
+            </Principal>
+            <Dependent Role="TB_list">
+              <PropertyRef Name="emplo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_list_TB_travel">
+          <End Role="TB_travel" Type="Self.TB_travel" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TB_list" Type="Self.TB_list" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_travel">
+              <PropertyRef Name="tr_id" />
+            </Principal>
+            <Dependent Role="TB_list">
+              <PropertyRef Name="tr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_mov_TB_amov">
+          <End Role="TB_amov" Type="Self.TB_amov" Multiplicity="0..1" />
+          <End Role="TB_mov" Type="Self.TB_mov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_amov">
+              <PropertyRef Name="amov_id" />
+            </Principal>
+            <Dependent Role="TB_mov">
+              <PropertyRef Name="amov_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_mov_TB_users">
+          <End Role="TB_users" Type="Self.TB_users" Multiplicity="0..1" />
+          <End Role="TB_mov" Type="Self.TB_mov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_mov">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_order_TB_action">
+          <End Role="TB_action" Type="Self.TB_action" Multiplicity="0..1" />
+          <End Role="TB_order" Type="Self.TB_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_action">
+              <PropertyRef Name="action_id" />
+            </Principal>
+            <Dependent Role="TB_order">
+              <PropertyRef Name="action_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_order_TB_branchs">
+          <End Role="TB_branchs" Type="Self.TB_branchs" Multiplicity="0..1" />
+          <End Role="TB_order" Type="Self.TB_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_branchs">
+              <PropertyRef Name="br_id" />
+            </Principal>
+            <Dependent Role="TB_order">
+              <PropertyRef Name="br_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_order_TB_users">
+          <End Role="TB_users" Type="Self.TB_users" Multiplicity="0..1" />
+          <End Role="TB_order" Type="Self.TB_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_order">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_stock_TB_users2">
+          <End Role="TB_users" Type="Self.TB_users" Multiplicity="0..1" />
+          <End Role="TB_stock" Type="Self.TB_stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_stock">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_str_TB_items">
+          <End Role="TB_items" Type="Self.TB_items" Multiplicity="1" />
+          <End Role="TB_str" Type="Self.TB_str" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_items">
+              <PropertyRef Name="items_id" />
+            </Principal>
+            <Dependent Role="TB_str">
+              <PropertyRef Name="items_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_temp_TB_items">
+          <End Role="TB_items" Type="Self.TB_items" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="TB_temp" Type="Self.TB_temp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_items">
+              <PropertyRef Name="items_id" />
+            </Principal>
+            <Dependent Role="TB_temp">
+              <PropertyRef Name="items_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_travel_TB_cars1">
+          <End Role="TB_cars" Type="Self.TB_cars" Multiplicity="0..1" />
+          <End Role="TB_travel" Type="Self.TB_travel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_cars">
+              <PropertyRef Name="car_id" />
+            </Principal>
+            <Dependent Role="TB_travel">
+              <PropertyRef Name="car_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_travel_TB_city1">
+          <End Role="TB_city" Type="Self.TB_city" Multiplicity="0..1" />
+          <End Role="TB_travel" Type="Self.TB_travel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_city">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="TB_travel">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_travel_TB_emplo1">
+          <End Role="TB_emplo" Type="Self.TB_emplo" Multiplicity="0..1" />
+          <End Role="TB_travel" Type="Self.TB_travel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_emplo">
+              <PropertyRef Name="emplo_id" />
+            </Principal>
+            <Dependent Role="TB_travel">
+              <PropertyRef Name="emplo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_travel_TB_users2">
+          <End Role="TB_users" Type="Self.TB_users" Multiplicity="0..1" />
+          <End Role="TB_travel" Type="Self.TB_travel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_travel">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_travel_TB_users3">
+          <End Role="TB_users" Type="Self.TB_users" Multiplicity="0..1" />
+          <End Role="TB_travel" Type="Self.TB_travel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_travel">
+              <PropertyRef Name="user_id2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="close_travel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tid" Type="int" Mode="In" />
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="amount" Type="decimal" Mode="In" />
+          <Parameter Name="amount_d" Type="decimal" Mode="In" />
+          <Parameter Name="cash" Type="decimal" Mode="In" />
+          <Parameter Name="cash_d" Type="decimal" Mode="In" />
+          <Parameter Name="cridet" Type="decimal" Mode="In" />
+          <Parameter Name="cridet_d" Type="decimal" Mode="In" />
+          <Parameter Name="scash" Type="decimal" Mode="In" />
+          <Parameter Name="dcash" Type="decimal" Mode="In" />
+          <Parameter Name="recridetu" Type="decimal" Mode="In" />
+          <Parameter Name="recridetu_d" Type="decimal" Mode="In" />
+          <Parameter Name="recrideth" Type="decimal" Mode="In" />
+          <Parameter Name="recrideth_d" Type="decimal" Mode="In" />
+          <Parameter Name="dcashh" Type="decimal" Mode="In" />
+          <Parameter Name="scashh" Type="decimal" Mode="In" />
+          <Parameter Name="sfinal" Type="decimal" Mode="In" />
+          <Parameter Name="dfinal" Type="decimal" Mode="In" />
+          <Parameter Name="items" Type="decimal" Mode="In" />
+          <Parameter Name="units" Type="decimal" Mode="In" />
+          <Parameter Name="lists" Type="int" Mode="In" />
+        </Function>
+        <Function Name="FilteredTravelRecords" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WaselValue" Type="decimal" Mode="In" />
+          <Parameter Name="ItemsValue" Type="decimal" Mode="In" />
+          <Parameter Name="UnitsValue" Type="decimal" Mode="In" />
+          <Parameter Name="DriverName" Type="nvarchar" Mode="In" />
+          <Parameter Name="CityName" Type="nvarchar" Mode="In" />
+          <Parameter Name="CarName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="nvarchar" Mode="In" />
+          <Parameter Name="FromDate" Type="date" Mode="In" />
+          <Parameter Name="ToDate" Type="date" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="GetItemStored" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ItemId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="getordercode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="import_travel_data" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="travel_id" Type="int" Mode="In" />
+          <Parameter Name="user_id" Type="int" Mode="In" />
+          <Parameter Name="str_date" Type="date" Mode="In" />
+        </Function>
+        <Function Name="SearchInventory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="selectedItemsName" Type="nvarchar" Mode="In" />
+          <Parameter Name="selectedCatg" Type="nvarchar" Mode="In" />
+          <Parameter Name="quantity" Type="decimal" Mode="In" />
+          <Parameter Name="selectedcompare" Type="nvarchar" Mode="In" />
+          <Parameter Name="selectDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_GetCustomerExch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="emplo_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="list_name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="AlibaRamyModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_action" EntityType="Self.TB_action" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_actions" EntityType="Self.TB_actions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_ads" EntityType="Self.TB_ads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_amov" EntityType="Self.TB_amov" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_branchs" EntityType="Self.TB_branchs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_cars" EntityType="Self.TB_cars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_city" EntityType="Self.TB_city" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_cridet" EntityType="Self.TB_cridet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_cust" EntityType="Self.TB_cust" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_det" EntityType="Self.TB_det" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_det1" EntityType="Self.TB_det1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_details" EntityType="Self.TB_details" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_details1" EntityType="Self.TB_details1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_emplo" EntityType="Self.TB_emplo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_emr" EntityType="Self.TB_emr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_emst" EntityType="Self.TB_emst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_groups" EntityType="Self.TB_groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_items" EntityType="Self.TB_items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_list" EntityType="Self.TB_list" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_list1" EntityType="Self.TB_list1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_mov" EntityType="Self.TB_mov" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Note" EntityType="Self.TB_Note" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_order" EntityType="Self.TB_order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_order1" EntityType="Self.TB_order1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_stock" EntityType="Self.TB_stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_str" EntityType="Self.TB_str" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_str1" EntityType="Self.TB_str1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_temp" EntityType="Self.TB_temp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_travel" EntityType="Self.TB_travel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_travel1" EntityType="Self.TB_travel1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_type" EntityType="Self.TB_type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_users" EntityType="Self.TB_users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Ads_Users" Association="Self.FK_Ads_Users">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_ads" EntitySet="TB_ads" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_cridet_TB_action" Association="Self.FK_TB_cridet_TB_action">
+            <End Role="TB_action" EntitySet="TB_action" />
+            <End Role="TB_cridet" EntitySet="TB_cridet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_cridet_TB_cust" Association="Self.FK_TB_cridet_TB_cust">
+            <End Role="TB_cust" EntitySet="TB_cust" />
+            <End Role="TB_cridet" EntitySet="TB_cridet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_cridet_TB_emplo" Association="Self.FK_TB_cridet_TB_emplo">
+            <End Role="TB_emplo" EntitySet="TB_emplo" />
+            <End Role="TB_cridet" EntitySet="TB_cridet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_cridet_TB_users" Association="Self.FK_TB_cridet_TB_users">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_cridet" EntitySet="TB_cridet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_cust_TB_city" Association="Self.FK_TB_cust_TB_city">
+            <End Role="TB_city" EntitySet="TB_city" />
+            <End Role="TB_cust" EntitySet="TB_cust" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_det_TB_items" Association="Self.FK_TB_det_TB_items">
+            <End Role="TB_items" EntitySet="TB_items" />
+            <End Role="TB_det" EntitySet="TB_det" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_det_TB_list" Association="Self.FK_TB_det_TB_list">
+            <End Role="TB_list" EntitySet="TB_list" />
+            <End Role="TB_det" EntitySet="TB_det" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_details_TB_items" Association="Self.FK_TB_details_TB_items">
+            <End Role="TB_items" EntitySet="TB_items" />
+            <End Role="TB_details" EntitySet="TB_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_emr_TB_action" Association="Self.FK_TB_emr_TB_action">
+            <End Role="TB_action" EntitySet="TB_action" />
+            <End Role="TB_emr" EntitySet="TB_emr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_emr_TB_emplo" Association="Self.FK_TB_emr_TB_emplo">
+            <End Role="TB_emplo" EntitySet="TB_emplo" />
+            <End Role="TB_emr" EntitySet="TB_emr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_emr_TB_emst" Association="Self.FK_TB_emr_TB_emst">
+            <End Role="TB_emst" EntitySet="TB_emst" />
+            <End Role="TB_emr" EntitySet="TB_emr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_emr_TB_users" Association="Self.FK_TB_emr_TB_users">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_emr" EntitySet="TB_emr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_items_TB_groups" Association="Self.FK_TB_items_TB_groups">
+            <End Role="TB_groups" EntitySet="TB_groups" />
+            <End Role="TB_items" EntitySet="TB_items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_list_TB_emplo" Association="Self.FK_TB_list_TB_emplo">
+            <End Role="TB_emplo" EntitySet="TB_emplo" />
+            <End Role="TB_list" EntitySet="TB_list" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_list_TB_travel" Association="Self.FK_TB_list_TB_travel">
+            <End Role="TB_travel" EntitySet="TB_travel" />
+            <End Role="TB_list" EntitySet="TB_list" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_mov_TB_amov" Association="Self.FK_TB_mov_TB_amov">
+            <End Role="TB_amov" EntitySet="TB_amov" />
+            <End Role="TB_mov" EntitySet="TB_mov" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_mov_TB_users" Association="Self.FK_TB_mov_TB_users">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_mov" EntitySet="TB_mov" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_order_TB_action" Association="Self.FK_TB_order_TB_action">
+            <End Role="TB_action" EntitySet="TB_action" />
+            <End Role="TB_order" EntitySet="TB_order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_order_TB_branchs" Association="Self.FK_TB_order_TB_branchs">
+            <End Role="TB_branchs" EntitySet="TB_branchs" />
+            <End Role="TB_order" EntitySet="TB_order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_order_TB_users" Association="Self.FK_TB_order_TB_users">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_order" EntitySet="TB_order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_stock_TB_users2" Association="Self.FK_TB_stock_TB_users2">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_stock" EntitySet="TB_stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_str_TB_items" Association="Self.FK_TB_str_TB_items">
+            <End Role="TB_items" EntitySet="TB_items" />
+            <End Role="TB_str" EntitySet="TB_str" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_temp_TB_items" Association="Self.FK_TB_temp_TB_items">
+            <End Role="TB_items" EntitySet="TB_items" />
+            <End Role="TB_temp" EntitySet="TB_temp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_travel_TB_cars1" Association="Self.FK_TB_travel_TB_cars1">
+            <End Role="TB_cars" EntitySet="TB_cars" />
+            <End Role="TB_travel" EntitySet="TB_travel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_travel_TB_city1" Association="Self.FK_TB_travel_TB_city1">
+            <End Role="TB_city" EntitySet="TB_city" />
+            <End Role="TB_travel" EntitySet="TB_travel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_travel_TB_emplo1" Association="Self.FK_TB_travel_TB_emplo1">
+            <End Role="TB_emplo" EntitySet="TB_emplo" />
+            <End Role="TB_travel" EntitySet="TB_travel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_travel_TB_users2" Association="Self.FK_TB_travel_TB_users2">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_travel" EntitySet="TB_travel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_travel_TB_users3" Association="Self.FK_TB_travel_TB_users3">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_travel" EntitySet="TB_travel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AlibaRamyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AlibaRamyEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="GetItemStored" ReturnType="Collection(Decimal)">
+          <Parameter Name="ItemId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SearchInventory" ReturnType="Collection(AlibaRamyModel.SearchInventory_Result)">
+            <Parameter Name="selectedItemsName" Mode="In" Type="String" />
+            <Parameter Name="selectedCatg" Mode="In" Type="String" />
+            <Parameter Name="quantity" Mode="In" Type="Decimal" />
+            <Parameter Name="selectedcompare" Mode="In" Type="String" />
+            <Parameter Name="selectDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(AlibaRamyModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(AlibaRamyModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="FilteredTravelRecords" ReturnType="Collection(AlibaRamyModel.FilteredTravelRecords_Result)">
+            <Parameter Name="WaselValue" Mode="In" Type="Decimal" />
+            <Parameter Name="ItemsValue" Mode="In" Type="Decimal" />
+            <Parameter Name="UnitsValue" Mode="In" Type="Decimal" />
+            <Parameter Name="DriverName" Mode="In" Type="String" />
+            <Parameter Name="CityName" Mode="In" Type="String" />
+            <Parameter Name="CarName" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="String" />
+            <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <EntitySet Name="sysdiagrams" EntityType="AlibaRamyModel.sysdiagrams" />
+          <EntitySet Name="TB_action" EntityType="AlibaRamyModel.TB_action" />
+          <EntitySet Name="TB_actions" EntityType="AlibaRamyModel.TB_actions" />
+          <EntitySet Name="TB_amov" EntityType="AlibaRamyModel.TB_amov" />
+          <EntitySet Name="TB_branchs" EntityType="AlibaRamyModel.TB_branchs" />
+          <EntitySet Name="TB_cars" EntityType="AlibaRamyModel.TB_cars" />
+          <EntitySet Name="TB_city" EntityType="AlibaRamyModel.TB_city" />
+          <EntitySet Name="TB_cridet" EntityType="AlibaRamyModel.TB_cridet" />
+          <EntitySet Name="TB_cust" EntityType="AlibaRamyModel.TB_cust" />
+          <EntitySet Name="TB_det" EntityType="AlibaRamyModel.TB_det" />
+          <EntitySet Name="TB_det1" EntityType="AlibaRamyModel.TB_det1" />
+          <EntitySet Name="TB_details" EntityType="AlibaRamyModel.TB_details" />
+          <EntitySet Name="TB_details1" EntityType="AlibaRamyModel.TB_details1" />
+          <EntitySet Name="TB_emplo" EntityType="AlibaRamyModel.TB_emplo" />
+          <EntitySet Name="TB_emr" EntityType="AlibaRamyModel.TB_emr" />
+          <EntitySet Name="TB_emst" EntityType="AlibaRamyModel.TB_emst" />
+          <EntitySet Name="TB_groups" EntityType="AlibaRamyModel.TB_groups" />
+          <EntitySet Name="TB_items" EntityType="AlibaRamyModel.TB_items" />
+          <EntitySet Name="TB_list" EntityType="AlibaRamyModel.TB_list" />
+          <EntitySet Name="TB_list1" EntityType="AlibaRamyModel.TB_list1" />
+          <EntitySet Name="TB_mov" EntityType="AlibaRamyModel.TB_mov" />
+          <EntitySet Name="TB_Note" EntityType="AlibaRamyModel.TB_Note" />
+          <EntitySet Name="TB_order" EntityType="AlibaRamyModel.TB_order" />
+          <EntitySet Name="TB_order1" EntityType="AlibaRamyModel.TB_order1" />
+          <EntitySet Name="TB_stock" EntityType="AlibaRamyModel.TB_stock" />
+          <EntitySet Name="TB_str" EntityType="AlibaRamyModel.TB_str" />
+          <EntitySet Name="TB_str1" EntityType="AlibaRamyModel.TB_str1" />
+          <EntitySet Name="TB_temp" EntityType="AlibaRamyModel.TB_temp" />
+          <EntitySet Name="TB_travel" EntityType="AlibaRamyModel.TB_travel" />
+          <EntitySet Name="TB_travel1" EntityType="AlibaRamyModel.TB_travel1" />
+          <EntitySet Name="TB_type" EntityType="AlibaRamyModel.TB_type" />
+          <EntitySet Name="TB_users" EntityType="AlibaRamyModel.TB_users" />
+          <AssociationSet Name="FK_TB_cridet_TB_action" Association="AlibaRamyModel.FK_TB_cridet_TB_action">
+            <End Role="TB_action" EntitySet="TB_action" />
+            <End Role="TB_cridet" EntitySet="TB_cridet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_emr_TB_action" Association="AlibaRamyModel.FK_TB_emr_TB_action">
+            <End Role="TB_action" EntitySet="TB_action" />
+            <End Role="TB_emr" EntitySet="TB_emr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_order_TB_action" Association="AlibaRamyModel.FK_TB_order_TB_action">
+            <End Role="TB_action" EntitySet="TB_action" />
+            <End Role="TB_order" EntitySet="TB_order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_mov_TB_amov" Association="AlibaRamyModel.FK_TB_mov_TB_amov">
+            <End Role="TB_amov" EntitySet="TB_amov" />
+            <End Role="TB_mov" EntitySet="TB_mov" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_order_TB_branchs" Association="AlibaRamyModel.FK_TB_order_TB_branchs">
+            <End Role="TB_branchs" EntitySet="TB_branchs" />
+            <End Role="TB_order" EntitySet="TB_order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_travel_TB_cars1" Association="AlibaRamyModel.FK_TB_travel_TB_cars1">
+            <End Role="TB_cars" EntitySet="TB_cars" />
+            <End Role="TB_travel" EntitySet="TB_travel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_cust_TB_city" Association="AlibaRamyModel.FK_TB_cust_TB_city">
+            <End Role="TB_city" EntitySet="TB_city" />
+            <End Role="TB_cust" EntitySet="TB_cust" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_travel_TB_city1" Association="AlibaRamyModel.FK_TB_travel_TB_city1">
+            <End Role="TB_city" EntitySet="TB_city" />
+            <End Role="TB_travel" EntitySet="TB_travel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_cridet_TB_cust" Association="AlibaRamyModel.FK_TB_cridet_TB_cust">
+            <End Role="TB_cust" EntitySet="TB_cust" />
+            <End Role="TB_cridet" EntitySet="TB_cridet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_cridet_TB_emplo" Association="AlibaRamyModel.FK_TB_cridet_TB_emplo">
+            <End Role="TB_emplo" EntitySet="TB_emplo" />
+            <End Role="TB_cridet" EntitySet="TB_cridet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_cridet_TB_users" Association="AlibaRamyModel.FK_TB_cridet_TB_users">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_cridet" EntitySet="TB_cridet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_det_TB_items" Association="AlibaRamyModel.FK_TB_det_TB_items">
+            <End Role="TB_items" EntitySet="TB_items" />
+            <End Role="TB_det" EntitySet="TB_det" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_det_TB_list" Association="AlibaRamyModel.FK_TB_det_TB_list">
+            <End Role="TB_list" EntitySet="TB_list" />
+            <End Role="TB_det" EntitySet="TB_det" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_details_TB_items" Association="AlibaRamyModel.FK_TB_details_TB_items">
+            <End Role="TB_items" EntitySet="TB_items" />
+            <End Role="TB_details" EntitySet="TB_details" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_emr_TB_emplo" Association="AlibaRamyModel.FK_TB_emr_TB_emplo">
+            <End Role="TB_emplo" EntitySet="TB_emplo" />
+            <End Role="TB_emr" EntitySet="TB_emr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_list_TB_emplo" Association="AlibaRamyModel.FK_TB_list_TB_emplo">
+            <End Role="TB_emplo" EntitySet="TB_emplo" />
+            <End Role="TB_list" EntitySet="TB_list" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_travel_TB_emplo1" Association="AlibaRamyModel.FK_TB_travel_TB_emplo1">
+            <End Role="TB_emplo" EntitySet="TB_emplo" />
+            <End Role="TB_travel" EntitySet="TB_travel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_emr_TB_emst" Association="AlibaRamyModel.FK_TB_emr_TB_emst">
+            <End Role="TB_emst" EntitySet="TB_emst" />
+            <End Role="TB_emr" EntitySet="TB_emr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_emr_TB_users" Association="AlibaRamyModel.FK_TB_emr_TB_users">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_emr" EntitySet="TB_emr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_items_TB_groups" Association="AlibaRamyModel.FK_TB_items_TB_groups">
+            <End Role="TB_groups" EntitySet="TB_groups" />
+            <End Role="TB_items" EntitySet="TB_items" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_str_TB_items" Association="AlibaRamyModel.FK_TB_str_TB_items">
+            <End Role="TB_items" EntitySet="TB_items" />
+            <End Role="TB_str" EntitySet="TB_str" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_temp_TB_items" Association="AlibaRamyModel.FK_TB_temp_TB_items">
+            <End Role="TB_items" EntitySet="TB_items" />
+            <End Role="TB_temp" EntitySet="TB_temp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_list_TB_travel" Association="AlibaRamyModel.FK_TB_list_TB_travel">
+            <End Role="TB_travel" EntitySet="TB_travel" />
+            <End Role="TB_list" EntitySet="TB_list" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_mov_TB_users" Association="AlibaRamyModel.FK_TB_mov_TB_users">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_mov" EntitySet="TB_mov" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_order_TB_users" Association="AlibaRamyModel.FK_TB_order_TB_users">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_order" EntitySet="TB_order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_stock_TB_users2" Association="AlibaRamyModel.FK_TB_stock_TB_users2">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_stock" EntitySet="TB_stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_travel_TB_users2" Association="AlibaRamyModel.FK_TB_travel_TB_users2">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_travel" EntitySet="TB_travel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TB_travel_TB_users3" Association="AlibaRamyModel.FK_TB_travel_TB_users3">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_travel" EntitySet="TB_travel" />
+          </AssociationSet>
+          <EntitySet Name="TB_ads" EntityType="AlibaRamyModel.TB_ads" />
+          <AssociationSet Name="FK_Ads_Users" Association="AlibaRamyModel.FK_Ads_Users">
+            <End Role="TB_users" EntitySet="TB_users" />
+            <End Role="TB_ads" EntitySet="TB_ads" />
+          </AssociationSet>
+          <FunctionImport Name="SP_GetCustomerExch" ReturnType="Collection(AlibaRamyModel.SP_GetCustomerExch_Result)">
+            <Parameter Name="emplo_name" Mode="In" Type="String" />
+            <Parameter Name="list_name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="close_travel" ReturnType="Collection(AlibaRamyModel.close_travel_Result)">
+            <Parameter Name="tid" Mode="In" Type="Int32" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="amount" Mode="In" Type="Decimal" />
+            <Parameter Name="amount_d" Mode="In" Type="Decimal" />
+            <Parameter Name="cash" Mode="In" Type="Decimal" />
+            <Parameter Name="cash_d" Mode="In" Type="Decimal" />
+            <Parameter Name="cridet" Mode="In" Type="Decimal" />
+            <Parameter Name="cridet_d" Mode="In" Type="Decimal" />
+            <Parameter Name="scash" Mode="In" Type="Decimal" />
+            <Parameter Name="dcash" Mode="In" Type="Decimal" />
+            <Parameter Name="recridetu" Mode="In" Type="Decimal" />
+            <Parameter Name="recridetu_d" Mode="In" Type="Decimal" />
+            <Parameter Name="recrideth" Mode="In" Type="Decimal" />
+            <Parameter Name="recrideth_d" Mode="In" Type="Decimal" />
+            <Parameter Name="dcashh" Mode="In" Type="Decimal" />
+            <Parameter Name="scashh" Mode="In" Type="Decimal" />
+            <Parameter Name="sfinal" Mode="In" Type="Decimal" />
+            <Parameter Name="dfinal" Mode="In" Type="Decimal" />
+            <Parameter Name="items" Mode="In" Type="Decimal" />
+            <Parameter Name="units" Mode="In" Type="Decimal" />
+            <Parameter Name="lists" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="import_travel_data" ReturnType="Collection(AlibaRamyModel.import_travel_data_Result)">
+            <Parameter Name="travel_id" Mode="In" Type="Int32" />
+            <Parameter Name="user_id" Mode="In" Type="Int32" />
+            <Parameter Name="str_date" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          </EntityContainer>
+        <ComplexType Name="SearchInventory_Result">
+          <Property Type="Int32" Name="itemsId" Nullable="false" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="GroupName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="itemQuart" Nullable="true" MaxLength="15" />
+          <Property Type="Decimal" Name="TotalQuantity" Nullable="true" Precision="38" Scale="3" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="FilteredTravelRecords_Result">
+          <Property Type="Int32" Name="city_id" Nullable="true" />
+          <Property Type="Int32" Name="emplo_id" Nullable="true" />
+          <Property Type="DateTime" Name="tr_date" Nullable="true" />
+          <Property Type="Int32" Name="car_id" Nullable="true" />
+          <Property Type="Int32" Name="tr_st_id" Nullable="true" />
+          <Property Type="String" Name="tr_st_staus" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="tr_nots" Nullable="true" MaxLength="150" />
+          <Property Type="Decimal" Name="tr_items" Nullable="true" Precision="4" Scale="0" />
+          <Property Type="Decimal" Name="tr_unit" Nullable="true" Precision="8" Scale="0" />
+          <Property Type="Int32" Name="user_id" Nullable="true" />
+          <Property Type="Int32" Name="action_id" Nullable="true" />
+          <Property Type="Decimal" Name="tr_reitems" Nullable="true" Precision="4" Scale="0" />
+          <Property Type="Decimal" Name="tr_reunit" Nullable="true" Precision="8" Scale="0" />
+          <Property Type="Int32" Name="tr_id" Nullable="false" />
+          <Property Type="Decimal" Name="tr_amount" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="tr_amount_d" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="tr_cash" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="tr_cash_d" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="tr_cridet" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="tr_cridet_d" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="tr_Scash" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="tr_dcash" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="tr_recridetu" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="tr_recridetu_d" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="tr_recrideth" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="tr_recrideth_d" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="tr_p_it" Nullable="true" Precision="6" Scale="0" />
+          <Property Type="Decimal" Name="tr_p_un" Nullable="true" Precision="8" Scale="0" />
+          <Property Type="String" Name="tr_luck" Nullable="true" MaxLength="3" />
+          <Property Type="Decimal" Name="tr_dcashh" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="tr_scashh" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Decimal" Name="tr_sfinal" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Decimal" Name="tr_dfinal" Nullable="true" Precision="15" Scale="2" />
+          <Property Type="Int32" Name="tr_lists" Nullable="true" />
+          <Property Type="Int32" Name="user_id2" Nullable="true" />
+          <Property Type="Int32" Name="tr_rate" Nullable="true" />
+          <Property Type="Byte" Name="tr_loading" Nullable="true" />
+          <Property Type="Boolean" Name="tr_sending" Nullable="true" />
+          <Property Type="String" Name="emplo_name" Nullable="true" MaxLength="70" />
+          <Property Type="String" Name="city_name" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="car_name" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TB_action">
+          <Key>
+            <PropertyRef Name="action_id" />
+          </Key>
+          <Property Name="action_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="action_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TB_cridet" Relationship="AlibaRamyModel.FK_TB_cridet_TB_action" FromRole="TB_action" ToRole="TB_cridet" />
+          <NavigationProperty Name="TB_emr" Relationship="AlibaRamyModel.FK_TB_emr_TB_action" FromRole="TB_action" ToRole="TB_emr" />
+          <NavigationProperty Name="TB_order" Relationship="AlibaRamyModel.FK_TB_order_TB_action" FromRole="TB_action" ToRole="TB_order" />
+        </EntityType>
+        <EntityType Name="TB_actions">
+          <Key>
+            <PropertyRef Name="action_id" />
+          </Key>
+          <Property Name="action_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="action_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TB_amov">
+          <Key>
+            <PropertyRef Name="amov_id" />
+          </Key>
+          <Property Name="amov_id" Type="Int32" Nullable="false" />
+          <Property Name="amov_name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TB_mov" Relationship="AlibaRamyModel.FK_TB_mov_TB_amov" FromRole="TB_amov" ToRole="TB_mov" />
+        </EntityType>
+        <EntityType Name="TB_branchs">
+          <Key>
+            <PropertyRef Name="br_id" />
+          </Key>
+          <Property Name="br_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="br_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="br_code" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="br_activity" Type="Boolean" />
+          <Property Name="br_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="br_address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="br_nots" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TB_order" Relationship="AlibaRamyModel.FK_TB_order_TB_branchs" FromRole="TB_branchs" ToRole="TB_order" />
+        </EntityType>
+        <EntityType Name="TB_cars">
+          <Key>
+            <PropertyRef Name="car_id" />
+          </Key>
+          <Property Name="car_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="car_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="car_type" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="car_activity" Type="Boolean" />
+          <Property Name="car_inf" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="car_num" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="car_traval_active" Type="Boolean" />
+          <NavigationProperty Name="TB_travel" Relationship="AlibaRamyModel.FK_TB_travel_TB_cars1" FromRole="TB_cars" ToRole="TB_travel" />
+        </EntityType>
+        <EntityType Name="TB_city">
+          <Key>
+            <PropertyRef Name="city_id" />
+          </Key>
+          <Property Name="city_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="city_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="city_enname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TB_cust" Relationship="AlibaRamyModel.FK_TB_cust_TB_city" FromRole="TB_city" ToRole="TB_cust" />
+          <NavigationProperty Name="TB_travel" Relationship="AlibaRamyModel.FK_TB_travel_TB_city1" FromRole="TB_city" ToRole="TB_travel" />
+        </EntityType>
+        <EntityType Name="TB_cridet">
+          <Key>
+            <PropertyRef Name="cridet_id" />
+          </Key>
+          <Property Name="cridet_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cridet_date" Type="DateTime" Precision="3" />
+          <Property Name="cridet_amount" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="cridet_s" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="cridet_d" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="cridet_ex" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="tr_id" Type="Int32" />
+          <Property Name="emplo_id" Type="Int32" />
+          <Property Name="action_id" Type="Int32" />
+          <Property Name="cridet_nots" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="cust_id" Type="Int32" />
+          <Property Name="list_name" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="cridet_code" Type="Int32" />
+          <Property Name="pr_id" Type="Int32" />
+          <Property Name="sending" Type="Boolean" />
+          <NavigationProperty Name="TB_action" Relationship="AlibaRamyModel.FK_TB_cridet_TB_action" FromRole="TB_cridet" ToRole="TB_action" />
+          <NavigationProperty Name="TB_cust" Relationship="AlibaRamyModel.FK_TB_cridet_TB_cust" FromRole="TB_cridet" ToRole="TB_cust" />
+          <NavigationProperty Name="TB_emplo" Relationship="AlibaRamyModel.FK_TB_cridet_TB_emplo" FromRole="TB_cridet" ToRole="TB_emplo" />
+          <NavigationProperty Name="TB_users" Relationship="AlibaRamyModel.FK_TB_cridet_TB_users" FromRole="TB_cridet" ToRole="TB_users" />
+        </EntityType>
+        <EntityType Name="TB_cust">
+          <Key>
+            <PropertyRef Name="cust_id" />
+          </Key>
+          <Property Name="cust_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cust_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cust_activity" Type="Boolean" />
+          <Property Name="cust_address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="cust_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cust_min" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="cust_max" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="cus_nots" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="city_id" Type="Int32" />
+          <NavigationProperty Name="TB_city" Relationship="AlibaRamyModel.FK_TB_cust_TB_city" FromRole="TB_cust" ToRole="TB_city" />
+          <NavigationProperty Name="TB_cridet" Relationship="AlibaRamyModel.FK_TB_cridet_TB_cust" FromRole="TB_cust" ToRole="TB_cridet" />
+        </EntityType>
+        <EntityType Name="TB_det">
+          <Key>
+            <PropertyRef Name="de_id" />
+          </Key>
+          <Property Name="de_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="list_id" Type="Int32" />
+          <Property Name="items_id" Type="Int32" />
+          <Property Name="de_costUsd" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="de_totalUsd" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="de_num" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="de_costIQ" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="de_totalIQ" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="sending" Type="Boolean" />
+          <NavigationProperty Name="TB_items" Relationship="AlibaRamyModel.FK_TB_det_TB_items" FromRole="TB_det" ToRole="TB_items" />
+          <NavigationProperty Name="TB_list" Relationship="AlibaRamyModel.FK_TB_det_TB_list" FromRole="TB_det" ToRole="TB_list" />
+        </EntityType>
+        <EntityType Name="TB_det1">
+          <Key>
+            <PropertyRef Name="de_id" />
+          </Key>
+          <Property Name="de_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="list_id" Type="Int32" />
+          <Property Name="items_id" Type="Int32" />
+          <Property Name="de_costUsd" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="de_totalUsd" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="de_num" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="de_costIQ" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="de_totalIQ" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="sending" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TB_details">
+          <Key>
+            <PropertyRef Name="details_id" />
+          </Key>
+          <Property Name="details_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_id" Type="Int32" />
+          <Property Name="items_id" Type="Int32" />
+          <Property Name="action_id" Type="Int32" />
+          <Property Name="details_num" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="details_renum" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="sell_num" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="sending" Type="Boolean" />
+          <NavigationProperty Name="TB_items" Relationship="AlibaRamyModel.FK_TB_details_TB_items" FromRole="TB_details" ToRole="TB_items" />
+        </EntityType>
+        <EntityType Name="TB_details1">
+          <Key>
+            <PropertyRef Name="details_id" />
+          </Key>
+          <Property Name="details_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <Property Name="items_id" Type="Int32" />
+          <Property Name="action_id" Type="Int32" />
+          <Property Name="details_num" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="details_renum" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="sell_num" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="sending" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TB_emplo">
+          <Key>
+            <PropertyRef Name="emplo_id" />
+          </Key>
+          <Property Name="emplo_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emplo_job" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emplo_pirth" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="emplo_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emplo_sel" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="emplo_wek" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="emplo_inf" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="emplo_activity" Type="Boolean" />
+          <Property Name="emplo_name" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="emplo_address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="emplo_dis" Type="Boolean" />
+          <Property Name="emplo_eng" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="emplo_traval_active" Type="Boolean" />
+          <NavigationProperty Name="TB_cridet" Relationship="AlibaRamyModel.FK_TB_cridet_TB_emplo" FromRole="TB_emplo" ToRole="TB_cridet" />
+          <NavigationProperty Name="TB_emr" Relationship="AlibaRamyModel.FK_TB_emr_TB_emplo" FromRole="TB_emplo" ToRole="TB_emr" />
+          <NavigationProperty Name="TB_list" Relationship="AlibaRamyModel.FK_TB_list_TB_emplo" FromRole="TB_emplo" ToRole="TB_list" />
+          <NavigationProperty Name="TB_travel" Relationship="AlibaRamyModel.FK_TB_travel_TB_emplo1" FromRole="TB_emplo" ToRole="TB_travel" />
+        </EntityType>
+        <EntityType Name="TB_emr">
+          <Key>
+            <PropertyRef Name="emr_id" />
+          </Key>
+          <Property Name="emr_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emr_date" Type="DateTime" Precision="3" />
+          <Property Name="emr__dateFrom" Type="DateTime" Precision="0" />
+          <Property Name="emr__dateTo" Type="DateTime" Precision="0" />
+          <Property Name="emst_id" Type="Int32" />
+          <Property Name="emr_num" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="emplo_id" Type="Int32" />
+          <Property Name="emr_note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="action_id" Type="Int32" />
+          <NavigationProperty Name="TB_action" Relationship="AlibaRamyModel.FK_TB_emr_TB_action" FromRole="TB_emr" ToRole="TB_action" />
+          <NavigationProperty Name="TB_emplo" Relationship="AlibaRamyModel.FK_TB_emr_TB_emplo" FromRole="TB_emr" ToRole="TB_emplo" />
+          <NavigationProperty Name="TB_emst" Relationship="AlibaRamyModel.FK_TB_emr_TB_emst" FromRole="TB_emr" ToRole="TB_emst" />
+          <NavigationProperty Name="TB_users" Relationship="AlibaRamyModel.FK_TB_emr_TB_users" FromRole="TB_emr" ToRole="TB_users" />
+        </EntityType>
+        <EntityType Name="TB_emst">
+          <Key>
+            <PropertyRef Name="emst_id" />
+          </Key>
+          <Property Name="emst_id" Type="Int32" Nullable="false" />
+          <Property Name="emst_name" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TB_emr" Relationship="AlibaRamyModel.FK_TB_emr_TB_emst" FromRole="TB_emst" ToRole="TB_emr" />
+        </EntityType>
+        <EntityType Name="TB_groups">
+          <Key>
+            <PropertyRef Name="groups_id" />
+          </Key>
+          <Property Name="groups_id" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="groups_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TB_items" Relationship="AlibaRamyModel.FK_TB_items_TB_groups" FromRole="TB_groups" ToRole="TB_items" />
+        </EntityType>
+        <EntityType Name="TB_items">
+          <Key>
+            <PropertyRef Name="items_id" />
+          </Key>
+          <Property Name="items_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="items_name" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="items_activity" Type="Boolean" />
+          <Property Name="Usd_upper" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Usd_lower" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="exchang" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="IQD_upper" Type="Decimal" Precision="15" Scale="0" />
+          <Property Name="IQD_lower" Type="Decimal" Precision="15" Scale="0" />
+          <Property Name="items_form" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="items_quart" Type="Byte" />
+          <Property Name="items_nots" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="items_code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="items_enname" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="groups_id" Type="Byte" />
+          <Property Name="items_pic" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="items_l" Type="Int32" />
+          <Property Name="pr_id" Type="Int32" />
+          <NavigationProperty Name="TB_det" Relationship="AlibaRamyModel.FK_TB_det_TB_items" FromRole="TB_items" ToRole="TB_det" />
+          <NavigationProperty Name="TB_details" Relationship="AlibaRamyModel.FK_TB_details_TB_items" FromRole="TB_items" ToRole="TB_details" />
+          <NavigationProperty Name="TB_groups" Relationship="AlibaRamyModel.FK_TB_items_TB_groups" FromRole="TB_items" ToRole="TB_groups" />
+          <NavigationProperty Name="TB_str" Relationship="AlibaRamyModel.FK_TB_str_TB_items" FromRole="TB_items" ToRole="TB_str" />
+          <NavigationProperty Name="TB_temp" Relationship="AlibaRamyModel.FK_TB_temp_TB_items" FromRole="TB_items" ToRole="TB_temp" />
+        </EntityType>
+        <EntityType Name="TB_list">
+          <Key>
+            <PropertyRef Name="list_id" />
+          </Key>
+          <Property Name="list_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="list_date" Type="DateTime" Precision="3" />
+          <Property Name="tr_id" Type="Int32" />
+          <Property Name="cust_idd" Type="Int32" />
+          <Property Name="list_name" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="list_amountUsd" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="list_amountIQ" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="list_cridetUsd" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="list_cridetIQ" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="list_scashUsd" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="list_dcash" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="list_exch" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="list_items" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="list_unit" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="action_id" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="type_id" Type="Int32" />
+          <Property Name="list_nots" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="list_code" Type="Int32" />
+          <Property Name="pr_id" Type="Int32" />
+          <Property Name="sending" Type="Boolean" />
+          <Property Name="emplo_id" Type="Int32" />
+          <Property Name="cust_id" Type="Int32" />
+          <NavigationProperty Name="TB_det" Relationship="AlibaRamyModel.FK_TB_det_TB_list" FromRole="TB_list" ToRole="TB_det" />
+          <NavigationProperty Name="TB_emplo" Relationship="AlibaRamyModel.FK_TB_list_TB_emplo" FromRole="TB_list" ToRole="TB_emplo" />
+          <NavigationProperty Name="TB_travel" Relationship="AlibaRamyModel.FK_TB_list_TB_travel" FromRole="TB_list" ToRole="TB_travel" />
+        </EntityType>
+        <EntityType Name="TB_list1">
+          <Key>
+            <PropertyRef Name="list_id" />
+          </Key>
+          <Property Name="list_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="list_date" Type="DateTime" Precision="3" />
+          <Property Name="tr_id" Type="Int32" />
+          <Property Name="cust_idd" Type="Int32" />
+          <Property Name="list_name" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="list_amountUsd" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="list_amountIQ" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="list_cridetUsd" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="list_cridetIQ" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="list_scashUsd" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="list_dcash" Type="Decimal" Precision="16" Scale="2" />
+          <Property Name="list_exch" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="list_items" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="list_unit" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="action_id" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="type_id" Type="Int32" />
+          <Property Name="list_nots" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="list_code" Type="Int32" />
+          <Property Name="pr_id" Type="Int32" />
+          <Property Name="sending" Type="Boolean" />
+          <Property Name="emplo_id" Type="Int32" />
+          <Property Name="cust_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TB_mov">
+          <Key>
+            <PropertyRef Name="mov_id" />
+          </Key>
+          <Property Name="mov_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mov_date" Type="DateTime" Precision="3" />
+          <Property Name="mov_dis" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="amov_id" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
+          <NavigationProperty Name="TB_amov" Relationship="AlibaRamyModel.FK_TB_mov_TB_amov" FromRole="TB_mov" ToRole="TB_amov" />
+          <NavigationProperty Name="TB_users" Relationship="AlibaRamyModel.FK_TB_mov_TB_users" FromRole="TB_mov" ToRole="TB_users" />
+        </EntityType>
+        <EntityType Name="TB_Note">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoteDes" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="NoteDate" Type="DateTime" Precision="3" />
+          <Property Name="NoteManger" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoteUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NoteType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TB_order">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_date" Type="DateTime" Precision="3" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="order_items" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="order_unit" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="emplo_id" Type="Int32" />
+          <Property Name="car_id" Type="Int32" />
+          <Property Name="driver_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="car_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="order_nots" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="order_code" Type="Int32" />
+          <Property Name="br_id" Type="Int32" />
+          <Property Name="action_id" Type="Int32" />
+          <Property Name="order_status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="order_ncode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="order_ndate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="TB_action" Relationship="AlibaRamyModel.FK_TB_order_TB_action" FromRole="TB_order" ToRole="TB_action" />
+          <NavigationProperty Name="TB_branchs" Relationship="AlibaRamyModel.FK_TB_order_TB_branchs" FromRole="TB_order" ToRole="TB_branchs" />
+          <NavigationProperty Name="TB_users" Relationship="AlibaRamyModel.FK_TB_order_TB_users" FromRole="TB_order" ToRole="TB_users" />
+        </EntityType>
+        <EntityType Name="TB_order1">
+          <Key>
+            <PropertyRef Name="order_id" />
+          </Key>
+          <Property Name="order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_date" Type="DateTime" Precision="3" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="order_items" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="order_unit" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="emplo_id" Type="Int32" />
+          <Property Name="car_id" Type="Int32" />
+          <Property Name="driver_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="car_name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="order_nots" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="order_code" Type="Int32" />
+          <Property Name="br_id" Type="Int32" />
+          <Property Name="action_id" Type="Int32" />
+          <Property Name="order_status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="order_ncode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="order_ndate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="TB_stock">
+          <Key>
+            <PropertyRef Name="sto_id" />
+          </Key>
+          <Property Name="sto_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="sto_date" Type="DateTime" Precision="3" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="sto_items" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="sto_unit" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="sto_nots" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TB_users" Relationship="AlibaRamyModel.FK_TB_stock_TB_users2" FromRole="TB_stock" ToRole="TB_users" />
+        </EntityType>
+        <EntityType Name="TB_str">
+          <Key>
+            <PropertyRef Name="str_id" />
+          </Key>
+          <Property Name="str_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <Property Name="items_id" Type="Int32" Nullable="false" />
+          <Property Name="str_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="action_id" Type="Int32" Nullable="false" />
+          <Property Name="str_num" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="str_renum" Type="Decimal" Precision="10" Scale="3" />
+          <NavigationProperty Name="TB_items" Relationship="AlibaRamyModel.FK_TB_str_TB_items" FromRole="TB_str" ToRole="TB_items" />
+        </EntityType>
+        <EntityType Name="TB_str1">
+          <Key>
+            <PropertyRef Name="str_id" />
+          </Key>
+          <Property Name="str_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="order_id" Type="Int32" Nullable="false" />
+          <Property Name="items_id" Type="Int32" Nullable="false" />
+          <Property Name="str_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="action_id" Type="Int32" Nullable="false" />
+          <Property Name="str_num" Type="Decimal" Precision="10" Scale="3" />
+          <Property Name="str_renum" Type="Decimal" Precision="10" Scale="3" />
+        </EntityType>
+        <EntityType Name="TB_temp">
+          <Key>
+            <PropertyRef Name="temp_id" />
+          </Key>
+          <Property Name="temp_id" Type="Int32" Nullable="false" />
+          <Property Name="order_id" Type="Int32" />
+          <Property Name="items_id" Type="Int32" />
+          <Property Name="action_id" Type="Int32" />
+          <Property Name="temp_num" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="temp_renum" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="temp_date" Type="DateTime" Precision="0" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TB_items" Relationship="AlibaRamyModel.FK_TB_temp_TB_items" FromRole="TB_temp" ToRole="TB_items" />
+        </EntityType>
+        <EntityType Name="TB_travel">
+          <Key>
+            <PropertyRef Name="tr_id" />
+          </Key>
+          <Property Name="city_id" Type="Int32" />
+          <Property Name="emplo_id" Type="Int32" />
+          <Property Name="tr_date" Type="DateTime" Precision="0" />
+          <Property Name="car_id" Type="Int32" />
+          <Property Name="tr_st_id" Type="Int32" />
+          <Property Name="tr_st_staus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="tr_nots" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="tr_items" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="tr_unit" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="action_id" Type="Int32" />
+          <Property Name="tr_reitems" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="tr_reunit" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="tr_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tr_amount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_amount_d" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_cash" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_cash_d" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_cridet" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_cridet_d" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_Scash" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_dcash" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_recridetu" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_recridetu_d" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_recrideth" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_recrideth_d" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_p_it" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="tr_p_un" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="tr_luck" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="tr_dcashh" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_scashh" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_sfinal" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_dfinal" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_lists" Type="Int32" />
+          <Property Name="user_id2" Type="Int32" />
+          <Property Name="tr_rate" Type="Int32" />
+          <Property Name="tr_loading" Type="Byte" />
+          <Property Name="tr_sending" Type="Boolean" />
+          <NavigationProperty Name="TB_cars" Relationship="AlibaRamyModel.FK_TB_travel_TB_cars1" FromRole="TB_travel" ToRole="TB_cars" />
+          <NavigationProperty Name="TB_city" Relationship="AlibaRamyModel.FK_TB_travel_TB_city1" FromRole="TB_travel" ToRole="TB_city" />
+          <NavigationProperty Name="TB_emplo" Relationship="AlibaRamyModel.FK_TB_travel_TB_emplo1" FromRole="TB_travel" ToRole="TB_emplo" />
+          <NavigationProperty Name="TB_list" Relationship="AlibaRamyModel.FK_TB_list_TB_travel" FromRole="TB_travel" ToRole="TB_list" />
+          <NavigationProperty Name="TB_users" Relationship="AlibaRamyModel.FK_TB_travel_TB_users2" FromRole="TB_travel" ToRole="TB_users" />
+          <NavigationProperty Name="TB_users1" Relationship="AlibaRamyModel.FK_TB_travel_TB_users3" FromRole="TB_travel" ToRole="TB_users" />
+        </EntityType>
+        <EntityType Name="TB_travel1">
+          <Key>
+            <PropertyRef Name="tr_id" />
+          </Key>
+          <Property Name="city_id" Type="Int32" />
+          <Property Name="emplo_id" Type="Int32" />
+          <Property Name="tr_date" Type="DateTime" Precision="0" />
+          <Property Name="car_id" Type="Int32" />
+          <Property Name="tr_st_id" Type="Int32" />
+          <Property Name="tr_st_staus" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="tr_nots" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="tr_items" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="tr_unit" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="action_id" Type="Int32" />
+          <Property Name="tr_reitems" Type="Decimal" Precision="4" Scale="0" />
+          <Property Name="tr_reunit" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="tr_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tr_amount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_amount_d" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_cash" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_cash_d" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_cridet" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_cridet_d" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_Scash" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_dcash" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_recridetu" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_recridetu_d" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_recrideth" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_recrideth_d" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_p_it" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="tr_p_un" Type="Decimal" Precision="8" Scale="0" />
+          <Property Name="tr_luck" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="tr_dcashh" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_scashh" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_sfinal" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="tr_dfinal" Type="Decimal" Precision="15" Scale="2" />
+          <Property Name="tr_lists" Type="Int32" />
+          <Property Name="user_id2" Type="Int32" />
+          <Property Name="tr_rate" Type="Int32" />
+          <Property Name="tr_loading" Type="Byte" />
+          <Property Name="tr_sending" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TB_type">
+          <Key>
+            <PropertyRef Name="type_id" />
+          </Key>
+          <Property Name="type_id" Type="Int32" Nullable="false" />
+          <Property Name="type_name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TB_users">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="user_passward" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="user_role" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="user_addDate" Type="DateTime" Precision="3" />
+          <Property Name="IDDep" Type="Int32" />
+          <Property Name="DepName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="user_state" Type="Boolean" />
+          <Property Name="user_activity" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TB_cridet" Relationship="AlibaRamyModel.FK_TB_cridet_TB_users" FromRole="TB_users" ToRole="TB_cridet" />
+          <NavigationProperty Name="TB_emr" Relationship="AlibaRamyModel.FK_TB_emr_TB_users" FromRole="TB_users" ToRole="TB_emr" />
+          <NavigationProperty Name="TB_mov" Relationship="AlibaRamyModel.FK_TB_mov_TB_users" FromRole="TB_users" ToRole="TB_mov" />
+          <NavigationProperty Name="TB_order" Relationship="AlibaRamyModel.FK_TB_order_TB_users" FromRole="TB_users" ToRole="TB_order" />
+          <NavigationProperty Name="TB_stock" Relationship="AlibaRamyModel.FK_TB_stock_TB_users2" FromRole="TB_users" ToRole="TB_stock" />
+          <NavigationProperty Name="TB_travel" Relationship="AlibaRamyModel.FK_TB_travel_TB_users2" FromRole="TB_users" ToRole="TB_travel" />
+          <NavigationProperty Name="TB_travel1" Relationship="AlibaRamyModel.FK_TB_travel_TB_users3" FromRole="TB_users" ToRole="TB_travel" />
+          <NavigationProperty Name="TB_ads" Relationship="AlibaRamyModel.FK_Ads_Users" FromRole="TB_users" ToRole="TB_ads" />
+        </EntityType>
+        <Association Name="FK_TB_cridet_TB_action">
+          <End Type="AlibaRamyModel.TB_action" Role="TB_action" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_cridet" Role="TB_cridet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_action">
+              <PropertyRef Name="action_id" />
+            </Principal>
+            <Dependent Role="TB_cridet">
+              <PropertyRef Name="action_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_emr_TB_action">
+          <End Type="AlibaRamyModel.TB_action" Role="TB_action" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_emr" Role="TB_emr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_action">
+              <PropertyRef Name="action_id" />
+            </Principal>
+            <Dependent Role="TB_emr">
+              <PropertyRef Name="action_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_order_TB_action">
+          <End Type="AlibaRamyModel.TB_action" Role="TB_action" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_order" Role="TB_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_action">
+              <PropertyRef Name="action_id" />
+            </Principal>
+            <Dependent Role="TB_order">
+              <PropertyRef Name="action_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_mov_TB_amov">
+          <End Type="AlibaRamyModel.TB_amov" Role="TB_amov" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_mov" Role="TB_mov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_amov">
+              <PropertyRef Name="amov_id" />
+            </Principal>
+            <Dependent Role="TB_mov">
+              <PropertyRef Name="amov_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_order_TB_branchs">
+          <End Type="AlibaRamyModel.TB_branchs" Role="TB_branchs" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_order" Role="TB_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_branchs">
+              <PropertyRef Name="br_id" />
+            </Principal>
+            <Dependent Role="TB_order">
+              <PropertyRef Name="br_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_travel_TB_cars1">
+          <End Type="AlibaRamyModel.TB_cars" Role="TB_cars" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_travel" Role="TB_travel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_cars">
+              <PropertyRef Name="car_id" />
+            </Principal>
+            <Dependent Role="TB_travel">
+              <PropertyRef Name="car_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_cust_TB_city">
+          <End Type="AlibaRamyModel.TB_city" Role="TB_city" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_cust" Role="TB_cust" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_city">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="TB_cust">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_travel_TB_city1">
+          <End Type="AlibaRamyModel.TB_city" Role="TB_city" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_travel" Role="TB_travel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_city">
+              <PropertyRef Name="city_id" />
+            </Principal>
+            <Dependent Role="TB_travel">
+              <PropertyRef Name="city_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_cridet_TB_cust">
+          <End Type="AlibaRamyModel.TB_cust" Role="TB_cust" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_cridet" Role="TB_cridet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_cust">
+              <PropertyRef Name="cust_id" />
+            </Principal>
+            <Dependent Role="TB_cridet">
+              <PropertyRef Name="cust_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_cridet_TB_emplo">
+          <End Type="AlibaRamyModel.TB_emplo" Role="TB_emplo" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_cridet" Role="TB_cridet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_emplo">
+              <PropertyRef Name="emplo_id" />
+            </Principal>
+            <Dependent Role="TB_cridet">
+              <PropertyRef Name="emplo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_cridet_TB_users">
+          <End Type="AlibaRamyModel.TB_users" Role="TB_users" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_cridet" Role="TB_cridet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_cridet">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_det_TB_items">
+          <End Type="AlibaRamyModel.TB_items" Role="TB_items" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_det" Role="TB_det" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_items">
+              <PropertyRef Name="items_id" />
+            </Principal>
+            <Dependent Role="TB_det">
+              <PropertyRef Name="items_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_det_TB_list">
+          <End Type="AlibaRamyModel.TB_list" Role="TB_list" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="AlibaRamyModel.TB_det" Role="TB_det" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_list">
+              <PropertyRef Name="list_id" />
+            </Principal>
+            <Dependent Role="TB_det">
+              <PropertyRef Name="list_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_details_TB_items">
+          <End Type="AlibaRamyModel.TB_items" Role="TB_items" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_details" Role="TB_details" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_items">
+              <PropertyRef Name="items_id" />
+            </Principal>
+            <Dependent Role="TB_details">
+              <PropertyRef Name="items_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_emr_TB_emplo">
+          <End Type="AlibaRamyModel.TB_emplo" Role="TB_emplo" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_emr" Role="TB_emr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_emplo">
+              <PropertyRef Name="emplo_id" />
+            </Principal>
+            <Dependent Role="TB_emr">
+              <PropertyRef Name="emplo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_list_TB_emplo">
+          <End Type="AlibaRamyModel.TB_emplo" Role="TB_emplo" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_list" Role="TB_list" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_emplo">
+              <PropertyRef Name="emplo_id" />
+            </Principal>
+            <Dependent Role="TB_list">
+              <PropertyRef Name="emplo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_travel_TB_emplo1">
+          <End Type="AlibaRamyModel.TB_emplo" Role="TB_emplo" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_travel" Role="TB_travel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_emplo">
+              <PropertyRef Name="emplo_id" />
+            </Principal>
+            <Dependent Role="TB_travel">
+              <PropertyRef Name="emplo_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_emr_TB_emst">
+          <End Type="AlibaRamyModel.TB_emst" Role="TB_emst" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_emr" Role="TB_emr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_emst">
+              <PropertyRef Name="emst_id" />
+            </Principal>
+            <Dependent Role="TB_emr">
+              <PropertyRef Name="emst_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_emr_TB_users">
+          <End Type="AlibaRamyModel.TB_users" Role="TB_users" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_emr" Role="TB_emr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_emr">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_items_TB_groups">
+          <End Type="AlibaRamyModel.TB_groups" Role="TB_groups" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_items" Role="TB_items" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_groups">
+              <PropertyRef Name="groups_id" />
+            </Principal>
+            <Dependent Role="TB_items">
+              <PropertyRef Name="groups_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_str_TB_items">
+          <End Type="AlibaRamyModel.TB_items" Role="TB_items" Multiplicity="1" />
+          <End Type="AlibaRamyModel.TB_str" Role="TB_str" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_items">
+              <PropertyRef Name="items_id" />
+            </Principal>
+            <Dependent Role="TB_str">
+              <PropertyRef Name="items_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_temp_TB_items">
+          <End Type="AlibaRamyModel.TB_items" Role="TB_items" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="AlibaRamyModel.TB_temp" Role="TB_temp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_items">
+              <PropertyRef Name="items_id" />
+            </Principal>
+            <Dependent Role="TB_temp">
+              <PropertyRef Name="items_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_list_TB_travel">
+          <End Type="AlibaRamyModel.TB_travel" Role="TB_travel" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="AlibaRamyModel.TB_list" Role="TB_list" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_travel">
+              <PropertyRef Name="tr_id" />
+            </Principal>
+            <Dependent Role="TB_list">
+              <PropertyRef Name="tr_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_mov_TB_users">
+          <End Type="AlibaRamyModel.TB_users" Role="TB_users" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_mov" Role="TB_mov" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_mov">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_order_TB_users">
+          <End Type="AlibaRamyModel.TB_users" Role="TB_users" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_order" Role="TB_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_order">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_stock_TB_users2">
+          <End Type="AlibaRamyModel.TB_users" Role="TB_users" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_stock" Role="TB_stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_stock">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_travel_TB_users2">
+          <End Type="AlibaRamyModel.TB_users" Role="TB_users" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_travel" Role="TB_travel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_travel">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TB_travel_TB_users3">
+          <End Type="AlibaRamyModel.TB_users" Role="TB_users" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_travel" Role="TB_travel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_travel">
+              <PropertyRef Name="user_id2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TB_ads">
+          <Key>
+            <PropertyRef Name="ad_id" />
+          </Key>
+          <Property Name="ad_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="Int32" />
+          <Property Name="image_url" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="subtitle" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="is_active" Type="Boolean" Nullable="false" />
+          <Property Name="sort_order" Type="Int32" Nullable="false" />
+          <Property Name="created_at" Type="DateTime" Precision="3" />
+          <Property Name="ad_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TB_users" Relationship="AlibaRamyModel.FK_Ads_Users" FromRole="TB_ads" ToRole="TB_users" />
+        </EntityType>
+        <Association Name="FK_Ads_Users">
+          <End Type="AlibaRamyModel.TB_users" Role="TB_users" Multiplicity="0..1" />
+          <End Type="AlibaRamyModel.TB_ads" Role="TB_ads" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_users">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="TB_ads">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SP_GetCustomerExch_Result">
+          <Property Type="Decimal" Name="TotalUsd" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="TotalIq" Nullable="true" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="Exch" Nullable="true" Precision="38" Scale="6" />
+          <Property Type="Decimal" Name="PaymentsUsd" Nullable="false" Precision="38" Scale="2" />
+          <Property Type="Decimal" Name="NetUsd" Nullable="true" Precision="38" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="close_travel_Result">
+          <Property Type="Int32" Name="success" Nullable="false" />
+          <Property Type="String" Name="message" Nullable="false" MaxLength="21" />
+        </ComplexType>
+        <ComplexType Name="import_travel_data_Result">
+          <Property Type="Int32" Name="success" Nullable="false" />
+          <Property Type="String" Name="message" Nullable="false" MaxLength="36" />
+          <Property Type="Int32" Name="imported_count" Nullable="false" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AlibaRamyModelStoreContainer" CdmEntityContainer="AlibaRamyEntities">
+          <FunctionImportMapping FunctionImportName="GetItemStored" FunctionName="AlibaRamyModel.Store.GetItemStored" />
+          <FunctionImportMapping FunctionImportName="SearchInventory" FunctionName="AlibaRamyModel.Store.SearchInventory">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AlibaRamyModel.SearchInventory_Result">
+                <ScalarProperty Name="itemsId" ColumnName="itemsId" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="itemQuart" ColumnName="itemQuart" />
+                <ScalarProperty Name="TotalQuantity" ColumnName="TotalQuantity" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="AlibaRamyModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="AlibaRamyModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="AlibaRamyModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="AlibaRamyModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AlibaRamyModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="AlibaRamyModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AlibaRamyModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="AlibaRamyModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="AlibaRamyModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="FilteredTravelRecords" FunctionName="AlibaRamyModel.Store.FilteredTravelRecords">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AlibaRamyModel.FilteredTravelRecords_Result">
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+                <ScalarProperty Name="emplo_id" ColumnName="emplo_id" />
+                <ScalarProperty Name="tr_date" ColumnName="tr_date" />
+                <ScalarProperty Name="car_id" ColumnName="car_id" />
+                <ScalarProperty Name="tr_st_id" ColumnName="tr_st_id" />
+                <ScalarProperty Name="tr_st_staus" ColumnName="tr_st_staus" />
+                <ScalarProperty Name="tr_nots" ColumnName="tr_nots" />
+                <ScalarProperty Name="tr_items" ColumnName="tr_items" />
+                <ScalarProperty Name="tr_unit" ColumnName="tr_unit" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="tr_reitems" ColumnName="tr_reitems" />
+                <ScalarProperty Name="tr_reunit" ColumnName="tr_reunit" />
+                <ScalarProperty Name="tr_id" ColumnName="tr_id" />
+                <ScalarProperty Name="tr_amount" ColumnName="tr_amount" />
+                <ScalarProperty Name="tr_amount_d" ColumnName="tr_amount_d" />
+                <ScalarProperty Name="tr_cash" ColumnName="tr_cash" />
+                <ScalarProperty Name="tr_cash_d" ColumnName="tr_cash_d" />
+                <ScalarProperty Name="tr_cridet" ColumnName="tr_cridet" />
+                <ScalarProperty Name="tr_cridet_d" ColumnName="tr_cridet_d" />
+                <ScalarProperty Name="tr_Scash" ColumnName="tr_Scash" />
+                <ScalarProperty Name="tr_dcash" ColumnName="tr_dcash" />
+                <ScalarProperty Name="tr_recridetu" ColumnName="tr_recridetu" />
+                <ScalarProperty Name="tr_recridetu_d" ColumnName="tr_recridetu_d" />
+                <ScalarProperty Name="tr_recrideth" ColumnName="tr_recrideth" />
+                <ScalarProperty Name="tr_recrideth_d" ColumnName="tr_recrideth_d" />
+                <ScalarProperty Name="tr_p_it" ColumnName="tr_p_it" />
+                <ScalarProperty Name="tr_p_un" ColumnName="tr_p_un" />
+                <ScalarProperty Name="tr_luck" ColumnName="tr_luck" />
+                <ScalarProperty Name="tr_dcashh" ColumnName="tr_dcashh" />
+                <ScalarProperty Name="tr_scashh" ColumnName="tr_scashh" />
+                <ScalarProperty Name="tr_sfinal" ColumnName="tr_sfinal" />
+                <ScalarProperty Name="tr_dfinal" ColumnName="tr_dfinal" />
+                <ScalarProperty Name="tr_lists" ColumnName="tr_lists" />
+                <ScalarProperty Name="user_id2" ColumnName="user_id2" />
+                <ScalarProperty Name="tr_rate" ColumnName="tr_rate" />
+                <ScalarProperty Name="tr_loading" ColumnName="tr_loading" />
+                <ScalarProperty Name="tr_sending" ColumnName="tr_sending" />
+                <ScalarProperty Name="emplo_name" ColumnName="emplo_name" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="car_name" ColumnName="car_name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="AlibaRamyModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_action">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_action">
+              <MappingFragment StoreEntitySet="TB_action">
+                <ScalarProperty Name="action_name" ColumnName="action_name" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_actions">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_actions">
+              <MappingFragment StoreEntitySet="TB_actions">
+                <ScalarProperty Name="action_name" ColumnName="action_name" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_amov">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_amov">
+              <MappingFragment StoreEntitySet="TB_amov">
+                <ScalarProperty Name="amov_name" ColumnName="amov_name" />
+                <ScalarProperty Name="amov_id" ColumnName="amov_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_branchs">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_branchs">
+              <MappingFragment StoreEntitySet="TB_branchs">
+                <ScalarProperty Name="br_nots" ColumnName="br_nots" />
+                <ScalarProperty Name="br_address" ColumnName="br_address" />
+                <ScalarProperty Name="br_phone" ColumnName="br_phone" />
+                <ScalarProperty Name="br_activity" ColumnName="br_activity" />
+                <ScalarProperty Name="br_code" ColumnName="br_code" />
+                <ScalarProperty Name="br_name" ColumnName="br_name" />
+                <ScalarProperty Name="br_id" ColumnName="br_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_cars">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_cars">
+              <MappingFragment StoreEntitySet="TB_cars">
+                <ScalarProperty Name="car_traval_active" ColumnName="car_traval_active" />
+                <ScalarProperty Name="car_num" ColumnName="car_num" />
+                <ScalarProperty Name="car_inf" ColumnName="car_inf" />
+                <ScalarProperty Name="car_activity" ColumnName="car_activity" />
+                <ScalarProperty Name="car_type" ColumnName="car_type" />
+                <ScalarProperty Name="car_name" ColumnName="car_name" />
+                <ScalarProperty Name="car_id" ColumnName="car_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_city">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_city">
+              <MappingFragment StoreEntitySet="TB_city">
+                <ScalarProperty Name="city_enname" ColumnName="city_enname" />
+                <ScalarProperty Name="city_name" ColumnName="city_name" />
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_cridet">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_cridet">
+              <MappingFragment StoreEntitySet="TB_cridet">
+                <ScalarProperty Name="sending" ColumnName="sending" />
+                <ScalarProperty Name="pr_id" ColumnName="pr_id" />
+                <ScalarProperty Name="cridet_code" ColumnName="cridet_code" />
+                <ScalarProperty Name="list_name" ColumnName="list_name" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="cridet_nots" ColumnName="cridet_nots" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="emplo_id" ColumnName="emplo_id" />
+                <ScalarProperty Name="tr_id" ColumnName="tr_id" />
+                <ScalarProperty Name="cridet_ex" ColumnName="cridet_ex" />
+                <ScalarProperty Name="cridet_d" ColumnName="cridet_d" />
+                <ScalarProperty Name="cridet_s" ColumnName="cridet_s" />
+                <ScalarProperty Name="cridet_amount" ColumnName="cridet_amount" />
+                <ScalarProperty Name="cridet_date" ColumnName="cridet_date" />
+                <ScalarProperty Name="cridet_id" ColumnName="cridet_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_cust">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_cust">
+              <MappingFragment StoreEntitySet="TB_cust">
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+                <ScalarProperty Name="cus_nots" ColumnName="cus_nots" />
+                <ScalarProperty Name="cust_max" ColumnName="cust_max" />
+                <ScalarProperty Name="cust_min" ColumnName="cust_min" />
+                <ScalarProperty Name="cust_phone" ColumnName="cust_phone" />
+                <ScalarProperty Name="cust_address" ColumnName="cust_address" />
+                <ScalarProperty Name="cust_activity" ColumnName="cust_activity" />
+                <ScalarProperty Name="cust_name" ColumnName="cust_name" />
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_det">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_det">
+              <MappingFragment StoreEntitySet="TB_det">
+                <ScalarProperty Name="sending" ColumnName="sending" />
+                <ScalarProperty Name="de_totalIQ" ColumnName="de_totalIQ" />
+                <ScalarProperty Name="de_costIQ" ColumnName="de_costIQ" />
+                <ScalarProperty Name="de_num" ColumnName="de_num" />
+                <ScalarProperty Name="de_totalUsd" ColumnName="de_totalUsd" />
+                <ScalarProperty Name="de_costUsd" ColumnName="de_costUsd" />
+                <ScalarProperty Name="items_id" ColumnName="items_id" />
+                <ScalarProperty Name="list_id" ColumnName="list_id" />
+                <ScalarProperty Name="de_id" ColumnName="de_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_det1">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_det1">
+              <MappingFragment StoreEntitySet="TB_det1">
+                <ScalarProperty Name="sending" ColumnName="sending" />
+                <ScalarProperty Name="de_totalIQ" ColumnName="de_totalIQ" />
+                <ScalarProperty Name="de_costIQ" ColumnName="de_costIQ" />
+                <ScalarProperty Name="de_num" ColumnName="de_num" />
+                <ScalarProperty Name="de_totalUsd" ColumnName="de_totalUsd" />
+                <ScalarProperty Name="de_costUsd" ColumnName="de_costUsd" />
+                <ScalarProperty Name="items_id" ColumnName="items_id" />
+                <ScalarProperty Name="list_id" ColumnName="list_id" />
+                <ScalarProperty Name="de_id" ColumnName="de_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_details">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_details">
+              <MappingFragment StoreEntitySet="TB_details">
+                <ScalarProperty Name="sending" ColumnName="sending" />
+                <ScalarProperty Name="sell_num" ColumnName="sell_num" />
+                <ScalarProperty Name="details_renum" ColumnName="details_renum" />
+                <ScalarProperty Name="details_num" ColumnName="details_num" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="items_id" ColumnName="items_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="details_id" ColumnName="details_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_details1">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_details1">
+              <MappingFragment StoreEntitySet="TB_details1">
+                <ScalarProperty Name="sending" ColumnName="sending" />
+                <ScalarProperty Name="sell_num" ColumnName="sell_num" />
+                <ScalarProperty Name="details_renum" ColumnName="details_renum" />
+                <ScalarProperty Name="details_num" ColumnName="details_num" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="items_id" ColumnName="items_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="details_id" ColumnName="details_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_emplo">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_emplo">
+              <MappingFragment StoreEntitySet="TB_emplo">
+                <ScalarProperty Name="emplo_traval_active" ColumnName="emplo_traval_active" />
+                <ScalarProperty Name="emplo_eng" ColumnName="emplo_eng" />
+                <ScalarProperty Name="emplo_dis" ColumnName="emplo_dis" />
+                <ScalarProperty Name="emplo_address" ColumnName="emplo_address" />
+                <ScalarProperty Name="emplo_name" ColumnName="emplo_name" />
+                <ScalarProperty Name="emplo_activity" ColumnName="emplo_activity" />
+                <ScalarProperty Name="emplo_inf" ColumnName="emplo_inf" />
+                <ScalarProperty Name="emplo_wek" ColumnName="emplo_wek" />
+                <ScalarProperty Name="emplo_sel" ColumnName="emplo_sel" />
+                <ScalarProperty Name="emplo_phone" ColumnName="emplo_phone" />
+                <ScalarProperty Name="emplo_pirth" ColumnName="emplo_pirth" />
+                <ScalarProperty Name="emplo_job" ColumnName="emplo_job" />
+                <ScalarProperty Name="emplo_id" ColumnName="emplo_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_emr">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_emr">
+              <MappingFragment StoreEntitySet="TB_emr">
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="emr_note" ColumnName="emr_note" />
+                <ScalarProperty Name="emplo_id" ColumnName="emplo_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="emr_num" ColumnName="emr_num" />
+                <ScalarProperty Name="emst_id" ColumnName="emst_id" />
+                <ScalarProperty Name="emr__dateTo" ColumnName="emr__dateTo" />
+                <ScalarProperty Name="emr__dateFrom" ColumnName="emr__dateFrom" />
+                <ScalarProperty Name="emr_date" ColumnName="emr_date" />
+                <ScalarProperty Name="emr_id" ColumnName="emr_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_emst">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_emst">
+              <MappingFragment StoreEntitySet="TB_emst">
+                <ScalarProperty Name="emst_name" ColumnName="emst_name" />
+                <ScalarProperty Name="emst_id" ColumnName="emst_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_groups">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_groups">
+              <MappingFragment StoreEntitySet="TB_groups">
+                <ScalarProperty Name="groups_name" ColumnName="groups_name" />
+                <ScalarProperty Name="groups_id" ColumnName="groups_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_items">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_items">
+              <MappingFragment StoreEntitySet="TB_items">
+                <ScalarProperty Name="pr_id" ColumnName="pr_id" />
+                <ScalarProperty Name="items_l" ColumnName="items_l" />
+                <ScalarProperty Name="items_pic" ColumnName="items_pic" />
+                <ScalarProperty Name="groups_id" ColumnName="groups_id" />
+                <ScalarProperty Name="items_enname" ColumnName="items_enname" />
+                <ScalarProperty Name="items_code" ColumnName="items_code" />
+                <ScalarProperty Name="items_nots" ColumnName="items_nots" />
+                <ScalarProperty Name="items_quart" ColumnName="items_quart" />
+                <ScalarProperty Name="items_form" ColumnName="items_form" />
+                <ScalarProperty Name="IQD_lower" ColumnName="IQD_lower" />
+                <ScalarProperty Name="IQD_upper" ColumnName="IQD_upper" />
+                <ScalarProperty Name="exchang" ColumnName="exchang" />
+                <ScalarProperty Name="Usd_lower" ColumnName="Usd_lower" />
+                <ScalarProperty Name="Usd_upper" ColumnName="Usd_upper" />
+                <ScalarProperty Name="items_activity" ColumnName="items_activity" />
+                <ScalarProperty Name="items_name" ColumnName="items_name" />
+                <ScalarProperty Name="items_id" ColumnName="items_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_list">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_list">
+              <MappingFragment StoreEntitySet="TB_list">
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="emplo_id" ColumnName="emplo_id" />
+                <ScalarProperty Name="sending" ColumnName="sending" />
+                <ScalarProperty Name="pr_id" ColumnName="pr_id" />
+                <ScalarProperty Name="list_code" ColumnName="list_code" />
+                <ScalarProperty Name="list_nots" ColumnName="list_nots" />
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="list_unit" ColumnName="list_unit" />
+                <ScalarProperty Name="list_items" ColumnName="list_items" />
+                <ScalarProperty Name="list_exch" ColumnName="list_exch" />
+                <ScalarProperty Name="list_dcash" ColumnName="list_dcash" />
+                <ScalarProperty Name="list_scashUsd" ColumnName="list_scashUsd" />
+                <ScalarProperty Name="list_cridetIQ" ColumnName="list_cridetIQ" />
+                <ScalarProperty Name="list_cridetUsd" ColumnName="list_cridetUsd" />
+                <ScalarProperty Name="list_amountIQ" ColumnName="list_amountIQ" />
+                <ScalarProperty Name="list_amountUsd" ColumnName="list_amountUsd" />
+                <ScalarProperty Name="list_name" ColumnName="list_name" />
+                <ScalarProperty Name="cust_idd" ColumnName="cust_idd" />
+                <ScalarProperty Name="tr_id" ColumnName="tr_id" />
+                <ScalarProperty Name="list_date" ColumnName="list_date" />
+                <ScalarProperty Name="list_id" ColumnName="list_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_list1">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_list1">
+              <MappingFragment StoreEntitySet="TB_list1">
+                <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+                <ScalarProperty Name="emplo_id" ColumnName="emplo_id" />
+                <ScalarProperty Name="sending" ColumnName="sending" />
+                <ScalarProperty Name="pr_id" ColumnName="pr_id" />
+                <ScalarProperty Name="list_code" ColumnName="list_code" />
+                <ScalarProperty Name="list_nots" ColumnName="list_nots" />
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="list_unit" ColumnName="list_unit" />
+                <ScalarProperty Name="list_items" ColumnName="list_items" />
+                <ScalarProperty Name="list_exch" ColumnName="list_exch" />
+                <ScalarProperty Name="list_dcash" ColumnName="list_dcash" />
+                <ScalarProperty Name="list_scashUsd" ColumnName="list_scashUsd" />
+                <ScalarProperty Name="list_cridetIQ" ColumnName="list_cridetIQ" />
+                <ScalarProperty Name="list_cridetUsd" ColumnName="list_cridetUsd" />
+                <ScalarProperty Name="list_amountIQ" ColumnName="list_amountIQ" />
+                <ScalarProperty Name="list_amountUsd" ColumnName="list_amountUsd" />
+                <ScalarProperty Name="list_name" ColumnName="list_name" />
+                <ScalarProperty Name="cust_idd" ColumnName="cust_idd" />
+                <ScalarProperty Name="tr_id" ColumnName="tr_id" />
+                <ScalarProperty Name="list_date" ColumnName="list_date" />
+                <ScalarProperty Name="list_id" ColumnName="list_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_mov">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_mov">
+              <MappingFragment StoreEntitySet="TB_mov">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="amov_id" ColumnName="amov_id" />
+                <ScalarProperty Name="mov_dis" ColumnName="mov_dis" />
+                <ScalarProperty Name="mov_date" ColumnName="mov_date" />
+                <ScalarProperty Name="mov_id" ColumnName="mov_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Note">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_Note">
+              <MappingFragment StoreEntitySet="TB_Note">
+                <ScalarProperty Name="NoteType" ColumnName="NoteType" />
+                <ScalarProperty Name="NoteUser" ColumnName="NoteUser" />
+                <ScalarProperty Name="NoteManger" ColumnName="NoteManger" />
+                <ScalarProperty Name="NoteDate" ColumnName="NoteDate" />
+                <ScalarProperty Name="NoteDes" ColumnName="NoteDes" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_order">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_order">
+              <MappingFragment StoreEntitySet="TB_order">
+                <ScalarProperty Name="order_ndate" ColumnName="order_ndate" />
+                <ScalarProperty Name="order_ncode" ColumnName="order_ncode" />
+                <ScalarProperty Name="order_status" ColumnName="order_status" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="br_id" ColumnName="br_id" />
+                <ScalarProperty Name="order_code" ColumnName="order_code" />
+                <ScalarProperty Name="order_nots" ColumnName="order_nots" />
+                <ScalarProperty Name="car_name" ColumnName="car_name" />
+                <ScalarProperty Name="driver_name" ColumnName="driver_name" />
+                <ScalarProperty Name="car_id" ColumnName="car_id" />
+                <ScalarProperty Name="emplo_id" ColumnName="emplo_id" />
+                <ScalarProperty Name="order_unit" ColumnName="order_unit" />
+                <ScalarProperty Name="order_items" ColumnName="order_items" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="order_date" ColumnName="order_date" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_order1">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_order1">
+              <MappingFragment StoreEntitySet="TB_order1">
+                <ScalarProperty Name="order_ndate" ColumnName="order_ndate" />
+                <ScalarProperty Name="order_ncode" ColumnName="order_ncode" />
+                <ScalarProperty Name="order_status" ColumnName="order_status" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="br_id" ColumnName="br_id" />
+                <ScalarProperty Name="order_code" ColumnName="order_code" />
+                <ScalarProperty Name="order_nots" ColumnName="order_nots" />
+                <ScalarProperty Name="car_name" ColumnName="car_name" />
+                <ScalarProperty Name="driver_name" ColumnName="driver_name" />
+                <ScalarProperty Name="car_id" ColumnName="car_id" />
+                <ScalarProperty Name="emplo_id" ColumnName="emplo_id" />
+                <ScalarProperty Name="order_unit" ColumnName="order_unit" />
+                <ScalarProperty Name="order_items" ColumnName="order_items" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="order_date" ColumnName="order_date" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_stock">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_stock">
+              <MappingFragment StoreEntitySet="TB_stock">
+                <ScalarProperty Name="sto_nots" ColumnName="sto_nots" />
+                <ScalarProperty Name="sto_unit" ColumnName="sto_unit" />
+                <ScalarProperty Name="sto_items" ColumnName="sto_items" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="sto_date" ColumnName="sto_date" />
+                <ScalarProperty Name="sto_id" ColumnName="sto_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_str">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_str">
+              <MappingFragment StoreEntitySet="TB_str">
+                <ScalarProperty Name="str_renum" ColumnName="str_renum" />
+                <ScalarProperty Name="str_num" ColumnName="str_num" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="str_date" ColumnName="str_date" />
+                <ScalarProperty Name="items_id" ColumnName="items_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="str_id" ColumnName="str_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_str1">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_str1">
+              <MappingFragment StoreEntitySet="TB_str1">
+                <ScalarProperty Name="str_renum" ColumnName="str_renum" />
+                <ScalarProperty Name="str_num" ColumnName="str_num" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="str_date" ColumnName="str_date" />
+                <ScalarProperty Name="items_id" ColumnName="items_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="str_id" ColumnName="str_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_temp">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_temp">
+              <MappingFragment StoreEntitySet="TB_temp">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="temp_date" ColumnName="temp_date" />
+                <ScalarProperty Name="temp_renum" ColumnName="temp_renum" />
+                <ScalarProperty Name="temp_num" ColumnName="temp_num" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="items_id" ColumnName="items_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
+                <ScalarProperty Name="temp_id" ColumnName="temp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_travel">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_travel">
+              <MappingFragment StoreEntitySet="TB_travel">
+                <ScalarProperty Name="tr_sending" ColumnName="tr_sending" />
+                <ScalarProperty Name="tr_loading" ColumnName="tr_loading" />
+                <ScalarProperty Name="tr_rate" ColumnName="tr_rate" />
+                <ScalarProperty Name="user_id2" ColumnName="user_id2" />
+                <ScalarProperty Name="tr_lists" ColumnName="tr_lists" />
+                <ScalarProperty Name="tr_dfinal" ColumnName="tr_dfinal" />
+                <ScalarProperty Name="tr_sfinal" ColumnName="tr_sfinal" />
+                <ScalarProperty Name="tr_scashh" ColumnName="tr_scashh" />
+                <ScalarProperty Name="tr_dcashh" ColumnName="tr_dcashh" />
+                <ScalarProperty Name="tr_luck" ColumnName="tr_luck" />
+                <ScalarProperty Name="tr_p_un" ColumnName="tr_p_un" />
+                <ScalarProperty Name="tr_p_it" ColumnName="tr_p_it" />
+                <ScalarProperty Name="tr_recrideth_d" ColumnName="tr_recrideth_d" />
+                <ScalarProperty Name="tr_recrideth" ColumnName="tr_recrideth" />
+                <ScalarProperty Name="tr_recridetu_d" ColumnName="tr_recridetu_d" />
+                <ScalarProperty Name="tr_recridetu" ColumnName="tr_recridetu" />
+                <ScalarProperty Name="tr_dcash" ColumnName="tr_dcash" />
+                <ScalarProperty Name="tr_Scash" ColumnName="tr_Scash" />
+                <ScalarProperty Name="tr_cridet_d" ColumnName="tr_cridet_d" />
+                <ScalarProperty Name="tr_cridet" ColumnName="tr_cridet" />
+                <ScalarProperty Name="tr_cash_d" ColumnName="tr_cash_d" />
+                <ScalarProperty Name="tr_cash" ColumnName="tr_cash" />
+                <ScalarProperty Name="tr_amount_d" ColumnName="tr_amount_d" />
+                <ScalarProperty Name="tr_amount" ColumnName="tr_amount" />
+                <ScalarProperty Name="tr_id" ColumnName="tr_id" />
+                <ScalarProperty Name="tr_reunit" ColumnName="tr_reunit" />
+                <ScalarProperty Name="tr_reitems" ColumnName="tr_reitems" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="tr_unit" ColumnName="tr_unit" />
+                <ScalarProperty Name="tr_items" ColumnName="tr_items" />
+                <ScalarProperty Name="tr_nots" ColumnName="tr_nots" />
+                <ScalarProperty Name="tr_st_staus" ColumnName="tr_st_staus" />
+                <ScalarProperty Name="tr_st_id" ColumnName="tr_st_id" />
+                <ScalarProperty Name="car_id" ColumnName="car_id" />
+                <ScalarProperty Name="tr_date" ColumnName="tr_date" />
+                <ScalarProperty Name="emplo_id" ColumnName="emplo_id" />
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_travel1">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_travel1">
+              <MappingFragment StoreEntitySet="TB_travel1">
+                <ScalarProperty Name="tr_sending" ColumnName="tr_sending" />
+                <ScalarProperty Name="tr_loading" ColumnName="tr_loading" />
+                <ScalarProperty Name="tr_rate" ColumnName="tr_rate" />
+                <ScalarProperty Name="user_id2" ColumnName="user_id2" />
+                <ScalarProperty Name="tr_lists" ColumnName="tr_lists" />
+                <ScalarProperty Name="tr_dfinal" ColumnName="tr_dfinal" />
+                <ScalarProperty Name="tr_sfinal" ColumnName="tr_sfinal" />
+                <ScalarProperty Name="tr_scashh" ColumnName="tr_scashh" />
+                <ScalarProperty Name="tr_dcashh" ColumnName="tr_dcashh" />
+                <ScalarProperty Name="tr_luck" ColumnName="tr_luck" />
+                <ScalarProperty Name="tr_p_un" ColumnName="tr_p_un" />
+                <ScalarProperty Name="tr_p_it" ColumnName="tr_p_it" />
+                <ScalarProperty Name="tr_recrideth_d" ColumnName="tr_recrideth_d" />
+                <ScalarProperty Name="tr_recrideth" ColumnName="tr_recrideth" />
+                <ScalarProperty Name="tr_recridetu_d" ColumnName="tr_recridetu_d" />
+                <ScalarProperty Name="tr_recridetu" ColumnName="tr_recridetu" />
+                <ScalarProperty Name="tr_dcash" ColumnName="tr_dcash" />
+                <ScalarProperty Name="tr_Scash" ColumnName="tr_Scash" />
+                <ScalarProperty Name="tr_cridet_d" ColumnName="tr_cridet_d" />
+                <ScalarProperty Name="tr_cridet" ColumnName="tr_cridet" />
+                <ScalarProperty Name="tr_cash_d" ColumnName="tr_cash_d" />
+                <ScalarProperty Name="tr_cash" ColumnName="tr_cash" />
+                <ScalarProperty Name="tr_amount_d" ColumnName="tr_amount_d" />
+                <ScalarProperty Name="tr_amount" ColumnName="tr_amount" />
+                <ScalarProperty Name="tr_id" ColumnName="tr_id" />
+                <ScalarProperty Name="tr_reunit" ColumnName="tr_reunit" />
+                <ScalarProperty Name="tr_reitems" ColumnName="tr_reitems" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="tr_unit" ColumnName="tr_unit" />
+                <ScalarProperty Name="tr_items" ColumnName="tr_items" />
+                <ScalarProperty Name="tr_nots" ColumnName="tr_nots" />
+                <ScalarProperty Name="tr_st_staus" ColumnName="tr_st_staus" />
+                <ScalarProperty Name="tr_st_id" ColumnName="tr_st_id" />
+                <ScalarProperty Name="car_id" ColumnName="car_id" />
+                <ScalarProperty Name="tr_date" ColumnName="tr_date" />
+                <ScalarProperty Name="emplo_id" ColumnName="emplo_id" />
+                <ScalarProperty Name="city_id" ColumnName="city_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_type">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_type">
+              <MappingFragment StoreEntitySet="TB_type">
+                <ScalarProperty Name="type_name" ColumnName="type_name" />
+                <ScalarProperty Name="type_id" ColumnName="type_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_users">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_users">
+              <MappingFragment StoreEntitySet="TB_users">
+                <ScalarProperty Name="user_activity" ColumnName="user_activity" />
+                <ScalarProperty Name="user_state" ColumnName="user_state" />
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+                <ScalarProperty Name="IDDep" ColumnName="IDDep" />
+                <ScalarProperty Name="user_addDate" ColumnName="user_addDate" />
+                <ScalarProperty Name="user_role" ColumnName="user_role" />
+                <ScalarProperty Name="user_passward" ColumnName="user_passward" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="user_FullName" ColumnName="user_FullName" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_ads">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_ads">
+              <MappingFragment StoreEntitySet="TB_ads">
+                <ScalarProperty Name="ad_type" ColumnName="ad_type" />
+                <ScalarProperty Name="created_at" ColumnName="created_at" />
+                <ScalarProperty Name="sort_order" ColumnName="sort_order" />
+                <ScalarProperty Name="is_active" ColumnName="is_active" />
+                <ScalarProperty Name="subtitle" ColumnName="subtitle" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="image_url" ColumnName="image_url" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="ad_id" ColumnName="ad_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_GetCustomerExch" FunctionName="AlibaRamyModel.Store.SP_GetCustomerExch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AlibaRamyModel.SP_GetCustomerExch_Result">
+                <ScalarProperty Name="TotalUsd" ColumnName="TotalUsd" />
+                <ScalarProperty Name="TotalIq" ColumnName="TotalIq" />
+                <ScalarProperty Name="Exch" ColumnName="Exch" />
+                <ScalarProperty Name="PaymentsUsd" ColumnName="PaymentsUsd" />
+                <ScalarProperty Name="NetUsd" ColumnName="NetUsd" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="close_travel" FunctionName="AlibaRamyModel.Store.close_travel">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AlibaRamyModel.close_travel_Result">
+                <ScalarProperty Name="success" ColumnName="success" />
+                <ScalarProperty Name="message" ColumnName="message" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="import_travel_data" FunctionName="AlibaRamyModel.Store.import_travel_data">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AlibaRamyModel.import_travel_data_Result">
+                <ScalarProperty Name="success" ColumnName="success" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="imported_count" ColumnName="imported_count" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

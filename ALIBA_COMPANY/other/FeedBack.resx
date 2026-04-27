@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="txt_info.Text" xml:space="preserve">
+    <value>ملاحظات :
+1-كل حركة تقوم فيها كمستخدم للنظام تكون مسجلة وتقع على عاتق مسؤولية المستخدم 
+2-يجب معرفة تعليمات عمل النظام ليتسنى لك فهم العمل
+3-النظام هنا يتكون من عدة اقسام ولكل قسم صلاحيته الخاصه بشكل يقسم العمل بين الموظفين
+4-يمكن ان يتلقى المدير اشعارات بكل العمليات الخاصة بالنظام
+5-الاحتفاظ بكلمة المرور لنفسك فقط
+6-لا يعمل النظام في وضع عدم الاتصال يجب ان تكون متصلا بالشبكة دائما بشكل يضمن تحديث الاسعار والبيانات الاخرى
+
+الشركة تتكون من عدة اقسام ولكل قسم تعليمات يجب اتباعها  الموظف لكي يستطيع العمل على هذا النظام  :
+
+اولا : المخازن
+
+1-يقوم امين المخزن باادخال المواد الجديدة من خلال الوصولات التي لديه في المخزن من خلال البحث باسم المادة و اذا لم يجدها يقوم بااخبار الحسابات باادراج مادة جديده 
+2-يستطيع امين المخن بااخراج المواد الى الفروع الاخرى و كذلك يستطيع اخراج المواد التالفه 
+3-يستطيع امين المخزن بطباعة المواد التي عمل لها ادخال مخزني.
+4-اذا كان هنالك خطا في المواد التي عمل لها ادخال مخزني يستطع حذفها و ااعادة الادخال مرة اخرى او يعمل لها اخراج بحسب الفرق اذا كان الخطا في العدد و ليس اسم المادة.
+5-يقوم امين المخزن باانشاء و تعديل وحذف بيانات السفره 
+6-تعديل السفره يكون فقط اذا كانت السفره لا تحتوي وصولات او غير مرسلة او ليس لها راجع فاذا كان لها راجع يجب حذف الراجع اولا ثم حذف الوصولات ثانيا ثم تعديل السفره.
+7-حذف السفره يكون من قبل المنشىء لها فقط او من قبل المدير او الحسابات
+8-يقوم امين المخزن باادراج وحذف و تعديل الراجع للسفره
+9-كذلك من وظائف امين المخزن هو الكشف المخزني للمواد وعددها في المخزن وكذلك كشف التالف ويستطيع طباعة التقارير لذلك.
+10-اذا تم حذف السفرة فان البيانات التي تم استيرادها من قبل المندوب سيتم حذها كذلك لذا يجب اخبار المندوب بالاستيراد مرة اخرى.
+
+ثانيا : واجهة المندوبين
+
+1-يقوم المندوب بااستيراد بيانات السفرة مع العلم اذا كانت هناك بيانات قد استوردها من قبل سيضهر له تنبيه بحذف البيانات السابقة لكي يتمكن من استيراد البيانات الجديده.
+2-عند استيراد البيانات يجب ملاحظة التاريخ و اختيار اسم المندوب الصحيح.
+3-بعد استيراد البيانات سيرى المندوب المواد التي تم استيرادها من السفره ويقوم بالبيع من خلال وضع العدد للمادة المباعة ووضع السعر العراقي الذي قام البيع فيه .
+4-لا يستطيع ادراج نفس المادة بوصل واحد فقط اذا كانت المادة مخفظه بالسعر او هدية .
+5-بعد اكمال المواد للوصل الواحد يقوم باختيار الزبون اذا كانت موجود من خلال البحث فيختاره واذا كان غير موجود فيقوم بالتاشير على مربع الزبون الخارجي و يكتب اسم الزبون في خانة  البحث .
+6-بعد اختيار الزبون فان البيع نوعين اجل و نقدي اذا كان الزبون خارجي فلا يستطيع البيع له بالاجل في هذه الحالة يجب اخبار قسم الحسابات ليقوموا باادراج الزبون في النظام .
+7-عند الانتهاء من ادراج الوصلات يتحقق المندوب من المواد التي موجوده في الوصولات من خلال زر الوصولات في واجهة المندوبيين .
+8-بعد التحقق من الوصولات يقوم المندوب بطباعة الراجع من خلال زر المواد في واجهة المندوبيين.
+9-بعد الطباعة يقوم باارسال البيانات لتضهر الوصولات في قسم الحسابات 
+10-يستطيع المندوب الكشف عن اسعار المواد من خلال زر المواد الموجود في الشريط السريع في الجانب الابمن من النظام لرؤية اعلى و اقل سعر للمادة الواحدة .
+11-عندما يوجد هناك خطا في بيانات السفرة يجب اخبار امين المخزن بذلك ليتم تعديل  السفرة ومن ثم الاستيراد مرة اخرى 
+ملاحظة1 / عند تعديل او حذف سفره فان البيانات المستوردة يتم حذفها
+ملاحظة2/عندما يتم استيراد بيانات سفرة فلا احد اخر يستطيع استيرادها الا ان يقوم المستورد بحذف البيانات التي قام بااستيرادها او قام امين المخزن بتعديل السفره  
+
+
+((ومن الله التوفيق))
+
+</value>
+  </data>
+</root>
