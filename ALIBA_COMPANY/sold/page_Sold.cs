@@ -1,4 +1,6 @@
-﻿using ALIBA_COMPANY.report;
+﻿using ALIBA_COMPANY.classes;
+using ALIBA_COMPANY.other;
+using ALIBA_COMPANY.report;
 using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
 using System;
@@ -20,6 +22,8 @@ namespace ALIBA_COMPANY.sold
     {
         private AlibaRamyEntities context;
         public int? ID_traval=0;
+        public string EmploName;
+        public int EmploId;
         public page_Sold()
         {
             InitializeComponent();
@@ -28,116 +32,185 @@ namespace ALIBA_COMPANY.sold
 
         private void Btn_add_import_Click(object sender, EventArgs e)
         {
-           
-                    using (FRM_import childForm = new FRM_import())
+
+            using (FRM_import childForm = new FRM_import())
+            {
+
+                if (childForm.ShowDialog() == DialogResult.OK)
+                {
+
+                    
+                    GetIDandName_emplo();
+
+                }
+                
+            }
+        }
+        private void GetIDandName_emplo()
+        {
+            try
+            {
+                using (var context = new AlibaRamyEntities())
+                {
+                    var orderId = context.TB_temp
+                        .FirstOrDefault(e => e.user_id == AddPage.Users.Idd);
+
+                    if (orderId != null)
                     {
+                        var employeeName = context.TB_travel
+                            .Where(u => u.tr_id == orderId.order_id)
+                            .Select(u => new { u.TB_emplo.emplo_name, u.TB_emplo.emplo_id })
+                            .FirstOrDefault();
+                        lbl_status.ForeColor = Color.Green;
+                        lbl_status.Text = $"الان سفرة الموزع ({employeeName.emplo_name}) رقم ({orderId.order_id}) متاحة للعمل";
+                        EmploName = employeeName.emplo_name;
+                        EmploId= employeeName.emplo_id;
+                        ID_traval=orderId.order_id;
 
-                        if (childForm.ShowDialog() == DialogResult.OK)
-                        {
-                           
-                            ID_traval = childForm.ID_traval;
-
-                        }
                     }
-             
-           
+                    else
+                    {
+                        lbl_status.Text = "لا توجد أي سفرة الآن ... ابدأ بإستيراد سفرتك";
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("حدث خطأ: " + ex.Message);
+            }
         }
 
         private void Btn_add_export_Click(object sender, EventArgs e)
         {
             using (var context = new AlibaRamyEntities())
             {
+                // ✅ التحقق من وجود سفرة
                 var ID_t = context.TB_temp.FirstOrDefault(x => x.user_id == AddPage.Users.Idd);
-                if (ID_t != null)
+                if (ID_t == null)
                 {
-                    ID_traval = ID_t.order_id;
-                }
-                else
-                {
-                    MessageBox.Show("لا تـوجد بيانـات لارسالـهـا ", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                var ID_list = context.TB_list.Where(x => x.tr_id== ID_traval&&x.sending==true).Count();
-                var ID_list1 = context.TB_list.Where(x => x.tr_id == ID_traval && x.sending == false).Count();
-                if (ID_list1 <=0)
-                {
-                    MessageBox.Show("لا تـوجد بيانـات لارسالـهـا ", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    try { Notifications.ShowToast("خطأ", "لا تـوجد بيانـات لارسالـهـا"); } catch { }
                     return;
                 }
 
-                if (ID_list > 0)
-                    {
-                        MessageBox.Show("يوجد وصولات سابقة تمت اضافتها من قبل الحسابات\n يجب حذف تلك الوصولات ثم المحاولة مرة اخرى ", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-                    DialogResult result = MessageBox.Show(" اذا نسيت طباعة الراجع\n No اضغط \n واذا كملت طباعة  \n  Yes اضغط ", "انتبة رجاءا انتبه", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (result == DialogResult.Yes)
-                    {
-                     Cursor.Current = Cursors.WaitCursor;
-                    string sqlQuery1 = "UPDATE TB_travel SET tr_loading = @tr_loading, tr_sending = @tr_sending WHERE tr_id = @trId";
-                        context.Database.ExecuteSqlCommand(sqlQuery1,
-                            new SqlParameter("@tr_loading", SqlDbType.TinyInt) { Value = 0 },
-                            new SqlParameter("@tr_sending", SqlDbType.Bit) { Value = 1 },
-                            new SqlParameter("@trId", SqlDbType.Int) { Value = ID_traval });
+                ID_traval = ID_t.order_id;
 
+                // ✅ التحقق من البيانات
+                bool hasPending = context.TB_list.Any(x => x.tr_id == ID_traval && x.sending == false);
+                bool hasSent = context.TB_list.Any(x => x.tr_id == ID_traval && x.sending == true);
 
-                        string sqlQuery2 = @"
-                                            UPDATE TB_details 
-                                            SET sending = @sending,
-                                                sell_num = CASE WHEN sell_num IS NULL THEN 0.000 ELSE sell_num END
-                                            WHERE 
-                                                order_id = @orderId";
-                        context.Database.ExecuteSqlCommand(sqlQuery2,
-                            new SqlParameter("@sending", true),
-                            new SqlParameter("@orderId", ID_traval));
-
-
-                        string sqlQuery3 = "UPDATE TB_list SET sending = @sending WHERE tr_id = @orderId";
-                        context.Database.ExecuteSqlCommand(sqlQuery3,
-                            new SqlParameter("@sending", true),
-                            new SqlParameter("@orderId", ID_traval));
-
-                        string sqlQuery4 = "DELETE FROM TB_temp WHERE order_id = @orderId";
-                        context.Database.ExecuteSqlCommand(sqlQuery4, new SqlParameter("@orderId", ID_traval));
-
-                        context.SaveChanges();
-                        MessageBox.Show("تــم ارســال البيانــات بـنجاح", "نـجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Cursor.Current = Cursors.Default;
+                if (!hasPending)
+                {
+                    try { Notifications.ShowToast("خطأ", "لا تـوجد بيانـات لارسالـهـا"); } catch { }
+                    return;
                 }
-                    else
+
+                if (hasSent)
+                {
+                    MessageBox.Show("يوجد وصولات سابقة تمت اضافتها من قبل الحسابات\nيجب حذف تلك الوصولات ثم المحاولة مرة اخرى",
+                        "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // ✅ سؤال الطباعة
+                var result = MessageBox.Show("اذا نسيت طباعة الراجع\nNo اضغط\nواذا كملت طباعة\nYes اضغط",
+                    "انتبه رجاءاً", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.No)
+                {
+                    try
                     {
-                        try
+                        FRM_sell_mandob add = new FRM_sell_mandob
                         {
-                        FRM_sell_mandob add = new FRM_sell_mandob();
-                        add.ID_travel = (int)ID_traval;
-                        add.sellOrPage = 1;
+                            ID_travel = (int)ID_traval,
+                            sellOrPage = 1
+                        };
                         add.ShowDialog();
-                       
-                        }
-                        catch { MessageBox.Show(" - FRM_sell_mandob خطأ غير متوقع  "); }
-
                     }
-              
-                ID_traval = 0;
+                    catch { MessageBox.Show("خطأ غير متوقع - FRM_sell_mandob"); }
+                    return;
+                }
+
+                // ✅ الإرسال بـ SQL مباشر (سريع جداً)
+                try
+                {
+                    Cursor.Current = Cursors.WaitCursor;
+
+                    // تحديث السفرة
+                    context.Database.ExecuteSqlCommand(
+                        "UPDATE TB_travel SET tr_loading=0, tr_sending=1 WHERE tr_id=@p0", ID_traval);
+
+                    // تحديث التفاصيل
+                    context.Database.ExecuteSqlCommand(@"
+                UPDATE TB_details 
+                SET sending=1, sell_num=ISNULL(sell_num, 0.000)
+                WHERE order_id=@p0", ID_traval);
+
+                    // تحديث القائمة
+                    context.Database.ExecuteSqlCommand(
+                        "UPDATE TB_list SET sending=1 WHERE tr_id=@p0", ID_traval);
+
+                    // تحديث وصولات التحصيل (إذا وجدت)
+                    context.Database.ExecuteSqlCommand(@"
+                UPDATE TB_cridet SET sending=1 
+                WHERE user_id=@p0 AND emplo_id=@p1 AND tr_id=@p2 AND sending=0",
+                        AddPage.Users.Idd, EmploId, ID_traval);
+
+                    // حذف السفرة المؤقتة
+                    context.Database.ExecuteSqlCommand(
+                        "DELETE FROM TB_temp WHERE order_id=@p0", ID_traval);
+
+                    // ✅ تحديث الواجهة
+                    lbl_status.ForeColor = Color.Gray;
+                    lbl_status.Text = "لا توجد أي سفرة الآن ... ابدأ بإستيراد سفرتك";
+                    try { Notifications.ShowToast("نـجاح", "تــم ارســال البيانــات بـنجاح"); } catch { }
+                    ID_traval = 0;
+                    EmploId = 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("حدث خطأ أثناء الإرسال:\n" + ex.Message, "خطأ",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    Cursor.Current = Cursors.Default;
+                    ID_traval = 0;
+                }
             }
         }
-       
+
 
         private void BtnS_Sell_ButtonClick(object sender, DevExpress.XtraBars.Docking2010.ButtonEventArgs e)
         {
-            if (e.Button == BtnS_Sell.Buttons[4])
+            if (e.Button == BtnS_Sell.Buttons[0])
             {
                 try
                 {
-                    AddItemsToSell add = new AddItemsToSell();
-                    add.AccORMandob = 0;
-                   
-                    add.ShowDialog();
+                    ERM_cash Add = new ERM_cash();
+
+                    Add.AccountsOrMandob = 2;
+                    Add.ID_traval_MandobForm = (int)ID_traval;
+                    Add.ShowDialog();
                 }
-                catch { MessageBox.Show("خطأ غير متوقع - AddItemsToSell"); }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("error ERM_cash" + ex.Message);
+                }
 
             }
             else if (e.Button == BtnS_Sell.Buttons[2])
+            {
+                try
+                {
+                    FRM_sell_mandob add = new FRM_sell_mandob();
+                    add.sellOrPage = 1;
+                    add.ShowDialog();
+                }
+                catch { MessageBox.Show(" - FRM_sell_mandob خطأ غير متوقع  "); }
+
+            }
+            else if (e.Button == BtnS_Sell.Buttons[4])
             {
                 try
                 {
@@ -147,79 +220,78 @@ namespace ALIBA_COMPANY.sold
                 }
                 catch { MessageBox.Show(" - FRM_wasl خطأ غير متوقع  "); }
             }
-            else if (e.Button == BtnS_Sell.Buttons[0])
+            else if (e.Button == BtnS_Sell.Buttons[6])
             {
+                
+
                 try
                 {
-                    FRM_sell_mandob add = new FRM_sell_mandob();
-                    add.sellOrPage = 1;
+                    AddItemsToSell add = new AddItemsToSell();
+                    add.AccORMandob = 0;
+
                     add.ShowDialog();
                 }
-                catch { MessageBox.Show(" - FRM_sell_mandob خطأ غير متوقع  "); }
-               
-                /*try
-                {
-                    XtraReport_Retern report = new XtraReport_Retern();
-                    report.Parameters["parameter1"].Value = ALIBA_COMPANY.AddPage.Users.Idd;
-                    report.ShowPreview();
-                }
-                catch { MessageBox.Show("خطأ غير متوقع- BtnS_Sell"); }*/
+                catch { MessageBox.Show("خطأ غير متوقع - AddItemsToSell"); }
             }
+
         }
 
         private void Btn_delete_import_Click(object sender, EventArgs e)
         {
-            var rs = MessageBox.Show(" هل تريد حذف بيانات الاستيراد؟", "تاكييد", MessageBoxButtons.YesNo, MessageBoxIcon.Question); ;
-            if (rs == DialogResult.Yes)
+          
+            if (MessageBox.Show("هل تريد حذف بيانات الاستيراد؟", "تأكيد",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
+
+            using (var context = new AlibaRamyEntities())
             {
-                
-                using (var context = new AlibaRamyEntities())
+                var ID_t = context.TB_temp.FirstOrDefault(x => x.user_id == AddPage.Users.Idd);
+                if (ID_t == null)
                 {
-                    var ID_t = context.TB_temp.FirstOrDefault(x => x.user_id == AddPage.Users.Idd);
-                    if (ID_t != null)
-                    {
-                        Cursor.Current = Cursors.WaitCursor;
-                        ID_traval = ID_t.order_id;
-                        var query = context.TB_details.Where(list => list.order_id == ID_traval).Select(list => new{ list.items_id,});
+                    try { Notifications.ShowToast("تنبيه", "لا تـوجد بيانـات مستوردة"); } catch { }
+                    return;
+                }
 
-                        foreach (var listItem in query)
-                        {
-                            var UpdateSell_num = context.TB_details.FirstOrDefault(item => item.order_id == ID_traval && item.items_id == listItem.items_id);
-                            if (UpdateSell_num != null)
-                            {
-                                UpdateSell_num.sell_num = 0;
-                                context.Entry(UpdateSell_num).State = System.Data.Entity.EntityState.Modified;
-                            }
-                        }
-                        var UpdateLoading = context.TB_travel.Where(item => item.tr_id == ID_traval&& item.user_id2==null).FirstOrDefault();
-                        if (UpdateLoading != null)
-                        {
-                            UpdateLoading.tr_loading = 1;
-                            context.Entry(UpdateLoading).State = System.Data.Entity.EntityState.Modified;
-                        }
-                        var listToDelete = context.TB_list.Where(item => item.tr_id == ID_traval).ToList();
-                        if (listToDelete != null && listToDelete.Any())
-                        {
-                            context.TB_list.RemoveRange(listToDelete);
-                        }
+                try
+                {
+                    Cursor.Current = Cursors.WaitCursor;
+                    ID_traval = ID_t.order_id;
 
-                        var listToDelete2 = context.TB_temp.Where(x => x.user_id == AddPage.Users.Idd).ToList();
-                        if (listToDelete2 != null && listToDelete2.Any())
-                        {
-                            context.TB_temp.RemoveRange(listToDelete2);
-                        }
+                    // ✅ تصفير sell_num
+                    context.Database.ExecuteSqlCommand(
+                        "UPDATE TB_details SET sell_num=0 WHERE order_id=@p0", ID_traval);
 
-                        context.SaveChanges();
-                        MessageBox.Show("تم حذف البيانات المستوردة بنجاح ", "نجاح عملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ID_traval = 0;
-                        Cursor.Current = Cursors.Default;
-                    }
-                    else
-                    {
-                        MessageBox.Show("لا تـوجد بيانـات مستوردة ", "لا توجد بيانات", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                   
+                    // ✅ إعادة tr_loading إلى 1
+                    context.Database.ExecuteSqlCommand(
+                        "UPDATE TB_travel SET tr_loading=1 WHERE tr_id=@p0 AND user_id2 IS NULL", ID_traval);
 
+                    // ✅ حذف القائمة
+                    context.Database.ExecuteSqlCommand(
+                        "DELETE FROM TB_list WHERE tr_id=@p0", ID_traval);
+
+                    // ✅ حذف وصولات التحصيل غير المرسلة
+                    context.Database.ExecuteSqlCommand(
+                        "DELETE FROM TB_cridet WHERE user_id=@p0 AND  tr_id=@p1 AND sending=0",
+                        AddPage.Users.Idd,ID_traval);
+
+                    // ✅ حذف السفرة المؤقتة
+                    context.Database.ExecuteSqlCommand(
+                        "DELETE FROM TB_temp WHERE user_id=@p0", AddPage.Users.Idd);
+
+                    lbl_status.ForeColor = Color.Gray;
+                    lbl_status.Text = "لا توجد أي سفرة الآن ... ابدأ بإستيراد سفرتك";
+                    try { Notifications.ShowToast("نجاح", "تم حذف البيانات المستوردة بنجاح"); } catch { }
+                    ID_traval = 0;
+                    EmploId = 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("حدث خطأ أثناء الحذف:\n" + ex.Message, "خطأ",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    ID_traval = 0;
+                    Cursor.Current = Cursors.Default;
                 }
             }
         }
@@ -237,78 +309,136 @@ namespace ALIBA_COMPANY.sold
         private void Update_Data()
         {
             try
-            { 
+            {
                 using (var sourceContext = new AlibaRamyEntities())
                 {
-                    var ID_t = context.TB_temp.FirstOrDefault(x => x.user_id == AddPage.Users.Idd);
+                    var ID_t = sourceContext.TB_temp
+                        .FirstOrDefault(x => x.user_id == AddPage.Users.Idd);
+
                     if (ID_t == null)
                     {
-
-                        MessageBox.Show("لا يمكن التحديث", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("لا يمكن التحديث", "خطأ",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
-                    var specificData = sourceContext.TB_str.Where(s => s.order_id == ID_t.order_id && s.action_id == 3 ).ToList();
-                    if (specificData.Count == 0)
-                    {
-                        MessageBox.Show("ربما خطأ في التاريخ أو اسم الموزع", "لا توجد بيانات " + ID_traval, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                       
 
-                        foreach (var item in specificData)
+                    var specificData = sourceContext.TB_str
+                        .Where(s => s.order_id == ID_t.order_id && s.action_id == 3)
+                        .ToList();
+
+                    if (!specificData.Any())
+                    {
+                        MessageBox.Show("ربما خطأ في التاريخ أو اسم الموزع",
+                            "لا توجد بيانات", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    var itemIds = specificData.Select(s => s.items_id).ToList();
+
+                    // ✅ جلب كل temp الخاص بهذه السفرة
+                    var allExistingTemps = sourceContext.TB_temp
+                        .Where(t => t.order_id == ID_t.order_id && t.user_id == AddPage.Users.Idd)
+                        .ToList();
+
+                    // ✅ تصحيح: التحقق من null قبل التحويل
+                    var tempsToProcess = allExistingTemps
+                        .Where(t => t.items_id.HasValue && !itemIds.Contains(t.items_id.Value))
+                        .ToList();
+
+                    foreach (var temp in tempsToProcess)
+                    {
+                        if (temp.temp_renum > 0)
                         {
-                            // التحقق من وجود القيمة في جدول TB_items
-                            var existingItem = sourceContext.TB_items.FirstOrDefault(i => i.items_id == item.items_id);
-                            if (existingItem != null)
-                            {
+                            // ✅ لها وصل بيع - احذف الوصل تلقائياً
+                            sourceContext.Database.ExecuteSqlCommand(@"
+                        DELETE FROM TB_det 
+                        WHERE items_id=@p0 
+                        AND list_id IN (
+                            SELECT list_id FROM TB_list 
+                            WHERE tr_id=@p1 AND sending=0
+                        )", temp.items_id.Value, ID_t.order_id);
 
-                                var existingTemp = sourceContext.TB_temp.FirstOrDefault(t => t.items_id == item.items_id);
+                            // ✅ احذف الوصل إذا أصبح فارغاً
+                            sourceContext.Database.ExecuteSqlCommand(@"
+                        DELETE FROM TB_list 
+                        WHERE tr_id=@p0 AND sending=0
+                        AND list_id NOT IN (
+                            SELECT DISTINCT list_id FROM TB_det
+                        )", ID_t.order_id);
 
-                                if (existingTemp != null)
-                                {
+                            sourceContext.TB_temp.Remove(temp);
 
-                                    existingTemp.temp_num = item.str_num;
-                                }
-                                else
-                                {
-
-                                    var newItem = new TB_temp
-                                    {
-                                        temp_id = item.str_id,
-                                        temp_num = item.str_num,
-                                        temp_renum = item.str_renum,
-                                        order_id = item.order_id,
-                                        action_id = item.action_id,
-                                        items_id = item.items_id,
-                                        temp_date = item.str_date,
-                                        user_id = ALIBA_COMPANY.AddPage.Users.Idd,
-                                    };
-                                    sourceContext.TB_temp.Add(newItem);
-                                }
-                            }
-                            else
-                            {
-                                // إشعار بأن القيمة غير موجودة في TB_items
-                                MessageBox.Show($"القيمة {item.items_id} غير موجودة في جدول TB_items.", "خطأ يوجد مادة مفقودة", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            MessageBox.Show(
+                                $"تنبيه: المادة رقم {temp.items_id} تم حذفها من السفرة\n" +
+                                "وتم حذف وصل البيع المرتبط بها تلقائياً",
+                                "تم الحذف التلقائي", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-
-                        sourceContext.SaveChanges();
-                      
-                        MessageBox.Show("تم تحديث البيانات بنجاح.", "عملية ناجحة", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-
-
-
+                        else
+                        {
+                            // ✅ لا يوجد وصل بيع - احذف مباشرة
+                            sourceContext.TB_temp.Remove(temp);
+                        }
                     }
+
+                    // ✅ التحقق من المواد المفقودة في TB_items
+                    var existingItems = sourceContext.TB_items
+                        .Where(i => itemIds.Contains(i.items_id))
+                        .Select(i => i.items_id)
+                        .ToHashSet();
+
+                    var missingItems = itemIds.Where(id => !existingItems.Contains(id)).ToList();
+                    if (missingItems.Any())
+                    {
+                        MessageBox.Show(
+                            "المواد المفقودة:\n" + string.Join("\n", missingItems),
+                            "يوجد مواد مفقودة", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // ✅ تحديث أو إضافة المواد
+                    var existingTemps = allExistingTemps
+                        .Where(t => t.items_id.HasValue && itemIds.Contains(t.items_id.Value))
+                        .ToList();
+
+                    foreach (var item in specificData)
+                    {
+                        var existingTemp = existingTemps
+                            .FirstOrDefault(t => t.items_id == item.items_id);
+
+                        if (existingTemp != null)
+                        {
+                            existingTemp.temp_num = item.str_num;
+                        }
+                        else
+                        {
+                            sourceContext.TB_temp.Add(new TB_temp
+                            {
+                                temp_id = item.str_id,
+                                temp_num = item.str_num,
+                                temp_renum = item.str_renum,
+                                order_id = item.order_id,
+                                action_id = item.action_id,
+                                items_id = item.items_id,
+                                temp_date = item.str_date,
+                                user_id = AddPage.Users.Idd,
+                            });
+                        }
+                    }
+
+                    sourceContext.SaveChanges();
+                    try { Notifications.ShowToast("نجاح", "تم تحديث البيانات بنجاح"); } catch { }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(" حدث خطأ أثناء التحميل:Import_Data " + ex.Message);
+                MessageBox.Show("حدث خطأ أثناء التحديث:\n" + ex.Message, "خطأ",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        private void page_Sold_Load(object sender, EventArgs e)
+        {
+            GetIDandName_emplo();
+        }
     }
 }

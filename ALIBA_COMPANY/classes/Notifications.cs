@@ -1,33 +1,64 @@
 ﻿using DevExpress.XtraBars.ToastNotifications;
 using System;
+using System.Windows;
+using Microsoft.Toolkit.Uwp.Notifications;
+using System.IO;
+using System.Reflection;
 
 namespace ALIBA_COMPANY.classes
 {
     public static class Notifications
     {
-        private static ToastNotificationsManager toastNotificationsManager;
+        // ✅ مسار ثابت من الكمبيوتر مباشرة
+        private static readonly string logoPath = @"C:\AlibaImages\211.png";
+        private static readonly string soundPath = @"C:\AlibaImages\NS.mp3";
 
-        // Static Constructor to Initialize ToastNotificationsManager
-        static Notifications()
-        {
-            // إعداد ToastNotificationsManager
-            toastNotificationsManager = new ToastNotificationsManager();
-            toastNotificationsManager.ApplicationId = "ALIBA_COMPANY"; // معرف التطبيق
-        }
-
-        // Method to Show Toast Notification
         public static void ShowToast(string title, string description)
         {
-            // إنشاء ToastNotification باستخدام DevExpress
-            ToastNotification toast = new ToastNotification
+            try
             {
-                
-               
-            };
+                var builder = new ToastContentBuilder()
+                    .AddText(title)
+                    .AddText(description)
+                    .AddAttributionText("شركة اللبـة للتجارة العامة");
 
-         
-            // عرض الإشعار
-            toastNotificationsManager.ShowNotification(toast);
+                if (File.Exists(logoPath))
+                {
+                    string logoUri = "file:///" + logoPath.Replace("\\", "/");
+                    builder.AddAppLogoOverride(
+                        new Uri(logoUri),
+                        ToastGenericAppLogoCrop.Circle
+                    );
+                }
+                else
+                {
+                    // ✅ رسالة تخبرك إذا لم يجد الملف
+                    MessageBox.Show($"الأيقونة غير موجودة في:\n{logoPath}",
+                        "تنبيه", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+
+                if (File.Exists(soundPath))
+                {
+                    string soundUri = "file:///" + soundPath.Replace("\\", "/");
+                    builder.AddAudio(new Uri(soundUri));
+                }
+
+                builder.Show(toast =>
+                {
+                    toast.ExpirationTime = DateTimeOffset.Now.AddSeconds(10);
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, title,
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        public static void ShowBasicToast(string title, string description)
+        {
+            MessageBox.Show($"{description}", title,
+                MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

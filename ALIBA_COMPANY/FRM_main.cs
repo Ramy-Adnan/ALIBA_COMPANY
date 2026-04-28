@@ -24,6 +24,7 @@ namespace ALIBA_COMPANY
     {
         bool PageStageClose;
         XtraTabPage XtraPage;
+
         public FRM_main()
         {
             InitializeComponent();
@@ -31,6 +32,8 @@ namespace ALIBA_COMPANY
             InitializeTimer();
             accordionControl1.Appearance.Item.Normal.BackColor = Color.FromArgb(62, 91, 135);
             AddMouseClickHandlers(this.Controls);
+
+
 
         }
         private void AddMouseClickHandlers(Control.ControlCollection controls)
@@ -620,9 +623,11 @@ namespace ALIBA_COMPANY
         {
             try
             {
-                ERM_cash newItemForm = new ERM_cash();
+                ERM_cash Add = new ERM_cash();
 
-                newItemForm.ShowDialog();
+                Add.AccountsOrMandob = 1;
+
+                Add.ShowDialog();
             }
             catch (Exception ex)
             {
@@ -716,10 +721,8 @@ namespace ALIBA_COMPANY
 
         private void FRM_main_Load(object sender, EventArgs e)
         {
-            if (AddPage.Users.userRole == "مدير" || AddPage.Users.userRole == "مدير حسابات")
-            {
-                toastNotificationsManager1.ShowNotification("مرحبا بك");
-            }
+          
+            classes.Notifications.ShowToast(AddPage.Users.FullName, "مرحباً بك");
 
         }
 

@@ -37,7 +37,6 @@ namespace ALIBA_COMPANY.other
             this.label8 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.txt_not = new System.Windows.Forms.RichTextBox();
-            this.Txt_iq = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.Txt_us = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,6 +49,8 @@ namespace ALIBA_COMPANY.other
             this.Combo_dis = new System.Windows.Forms.ComboBox();
             this.Txt_ex = new System.Windows.Forms.TextBox();
             this.loading = new DevExpress.XtraWaitForm.ProgressPanel();
+            this.Txt_iq = new System.Windows.Forms.TextBox();
+            this.Lbl_words = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,7 +117,7 @@ namespace ALIBA_COMPANY.other
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("LBC", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DimGray;
-            this.label8.Location = new System.Drawing.Point(864, 406);
+            this.label8.Location = new System.Drawing.Point(864, 452);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(0, 26);
             this.label8.TabIndex = 16;
@@ -127,7 +128,7 @@ namespace ALIBA_COMPANY.other
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("GE SS Two Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label18.ForeColor = System.Drawing.Color.DimGray;
-            this.label18.Location = new System.Drawing.Point(418, 336);
+            this.label18.Location = new System.Drawing.Point(418, 406);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(130, 26);
             this.label18.TabIndex = 18;
@@ -138,29 +139,12 @@ namespace ALIBA_COMPANY.other
             this.txt_not.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_not.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_not.Font = new System.Drawing.Font("GE SS Two Bold", 12F, System.Drawing.FontStyle.Bold);
-            this.txt_not.Location = new System.Drawing.Point(554, 328);
+            this.txt_not.Location = new System.Drawing.Point(556, 384);
             this.txt_not.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_not.Name = "txt_not";
-            this.txt_not.Size = new System.Drawing.Size(428, 248);
+            this.txt_not.Size = new System.Drawing.Size(428, 238);
             this.txt_not.TabIndex = 17;
             this.txt_not.Text = "";
-            // 
-            // Txt_iq
-            // 
-            this.Txt_iq.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Txt_iq.Enabled = false;
-            this.Txt_iq.Font = new System.Drawing.Font("LBC", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txt_iq.ForeColor = System.Drawing.Color.Red;
-            this.Txt_iq.HideSelection = false;
-            this.Txt_iq.Location = new System.Drawing.Point(554, 268);
-            this.Txt_iq.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Txt_iq.MaxLength = 20;
-            this.Txt_iq.Name = "Txt_iq";
-            this.Txt_iq.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Txt_iq.Size = new System.Drawing.Size(433, 42);
-            this.Txt_iq.TabIndex = 78;
-            this.Txt_iq.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.Txt_iq.TextChanged += new System.EventHandler(this.Txt_iq_TextChanged);
             // 
             // label15
             // 
@@ -168,7 +152,7 @@ namespace ALIBA_COMPANY.other
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("GE SS Two Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label15.ForeColor = System.Drawing.Color.DimGray;
-            this.label15.Location = new System.Drawing.Point(400, 274);
+            this.label15.Location = new System.Drawing.Point(400, 337);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(148, 26);
             this.label15.TabIndex = 79;
@@ -208,7 +192,7 @@ namespace ALIBA_COMPANY.other
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("GE SS Two Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label2.ForeColor = System.Drawing.Color.DimGray;
-            this.label2.Location = new System.Drawing.Point(449, 88);
+            this.label2.Location = new System.Drawing.Point(449, 93);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(99, 26);
             this.label2.TabIndex = 82;
@@ -229,7 +213,7 @@ namespace ALIBA_COMPANY.other
             this.Btn_add.AppearanceHovered.Options.UseBackColor = true;
             this.Btn_add.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
             this.Btn_add.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.Btn_add.Location = new System.Drawing.Point(549, 611);
+            this.Btn_add.Location = new System.Drawing.Point(549, 657);
             this.Btn_add.Margin = new System.Windows.Forms.Padding(6);
             this.Btn_add.Name = "Btn_add";
             this.Btn_add.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -254,7 +238,7 @@ namespace ALIBA_COMPANY.other
             this.Btn_close.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
             this.Btn_close.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
             this.Btn_close.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_close.ImageOptions.SvgImage")));
-            this.Btn_close.Location = new System.Drawing.Point(791, 612);
+            this.Btn_close.Location = new System.Drawing.Point(791, 658);
             this.Btn_close.Margin = new System.Windows.Forms.Padding(6);
             this.Btn_close.Name = "Btn_close";
             this.Btn_close.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -313,17 +297,16 @@ namespace ALIBA_COMPANY.other
             this.Combo_dis.DropDownHeight = 420;
             this.Combo_dis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Combo_dis.Enabled = false;
-            this.Combo_dis.Font = new System.Drawing.Font("GE SS Two Bold", 16F, System.Drawing.FontStyle.Bold);
+            this.Combo_dis.Font = new System.Drawing.Font("GE SS Two Bold", 18F, System.Drawing.FontStyle.Bold);
             this.Combo_dis.FormattingEnabled = true;
             this.Combo_dis.IntegralHeight = false;
             this.Combo_dis.Location = new System.Drawing.Point(554, 82);
             this.Combo_dis.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Combo_dis.Name = "Combo_dis";
-            this.Combo_dis.Size = new System.Drawing.Size(433, 44);
+            this.Combo_dis.Size = new System.Drawing.Size(433, 48);
             this.Combo_dis.TabIndex = 125;
             this.Combo_dis.ValueMember = "0";
             this.Combo_dis.SelectedIndexChanged += new System.EventHandler(this.Combo_dis_SelectedIndexChanged);
-            this.Combo_dis.Leave += new System.EventHandler(this.Combo_dis_Leave);
             // 
             // Txt_ex
             // 
@@ -364,13 +347,46 @@ namespace ALIBA_COMPANY.other
             this.loading.Text = "progressPanel1";
             this.loading.Visible = false;
             // 
+            // Txt_iq
+            // 
+            this.Txt_iq.BackColor = System.Drawing.Color.White;
+            this.Txt_iq.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Txt_iq.Enabled = false;
+            this.Txt_iq.Font = new System.Drawing.Font("Cairo", 16F, System.Drawing.FontStyle.Bold);
+            this.Txt_iq.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.Txt_iq.Location = new System.Drawing.Point(557, 314);
+            this.Txt_iq.Margin = new System.Windows.Forms.Padding(4);
+            this.Txt_iq.Name = "Txt_iq";
+            this.Txt_iq.Size = new System.Drawing.Size(427, 57);
+            this.Txt_iq.TabIndex = 128;
+            this.Txt_iq.Text = "0";
+            this.Txt_iq.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Txt_iq.TextChanged += new System.EventHandler(this.Txt_iq_TextChanged);
+            this.Txt_iq.Enter += new System.EventHandler(this.Txt_iq_Enter);
+            this.Txt_iq.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_iq_KeyPress);
+            this.Txt_iq.Leave += new System.EventHandler(this.Txt_iq_Leave);
+            this.Txt_iq.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Txt_iq_MouseDown);
+            // 
+            // Lbl_words
+            // 
+            this.Lbl_words.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Lbl_words.Font = new System.Drawing.Font("GE SS Two Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.Lbl_words.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.Lbl_words.Location = new System.Drawing.Point(557, 253);
+            this.Lbl_words.Name = "Lbl_words";
+            this.Lbl_words.Size = new System.Drawing.Size(427, 57);
+            this.Lbl_words.TabIndex = 129;
+            this.Lbl_words.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FRM_cash_record
             // 
             this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(994, 701);
+            this.ClientSize = new System.Drawing.Size(994, 724);
+            this.Controls.Add(this.Lbl_words);
+            this.Controls.Add(this.Txt_iq);
             this.Controls.Add(this.loading);
             this.Controls.Add(this.Txt_ex);
             this.Controls.Add(this.Combo_dis);
@@ -384,7 +400,6 @@ namespace ALIBA_COMPANY.other
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Txt_us);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.Txt_iq);
             this.Controls.Add(this.txt_not);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label8);
@@ -397,6 +412,7 @@ namespace ALIBA_COMPANY.other
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "💰تسديدات العملاء";
             this.Load += new System.EventHandler(this.FRM_cash_record_Load);
             this.groupBox2.ResumeLayout(false);
@@ -415,7 +431,6 @@ namespace ALIBA_COMPANY.other
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label18;
         public System.Windows.Forms.RichTextBox txt_not;
-        public System.Windows.Forms.TextBox Txt_iq;
         private System.Windows.Forms.Label label15;
         public System.Windows.Forms.TextBox Txt_us;
         private System.Windows.Forms.Label label1;
@@ -428,5 +443,7 @@ namespace ALIBA_COMPANY.other
         private System.Windows.Forms.ComboBox Combo_dis;
         public System.Windows.Forms.TextBox Txt_ex;
         private DevExpress.XtraWaitForm.ProgressPanel loading;
+        public System.Windows.Forms.TextBox Txt_iq;
+        private System.Windows.Forms.Label Lbl_words;
     }
 }

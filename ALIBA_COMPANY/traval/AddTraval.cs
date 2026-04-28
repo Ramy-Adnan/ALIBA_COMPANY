@@ -599,26 +599,49 @@ namespace ALIBA_COMPANY.traval
 
         private void Btn_delete_row_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dataGridView2.SelectedRows)
+            // ✅ الحذف يعتمد على الصف المحدد في الـ Grid وليس على الحدث
+            if (dataGridView2.SelectedRows.Count == 0)
             {
-                if (!row.IsNewRow)
-                {
-                    if (ID_travel == 0)
-                    {
-                        dataGridView2.Rows.Remove(row);
-                       
-                    }
-                    else
-                    {
-                        travelItems.RemoveAt(row.Index);
-                        dataGridView2.RowCount = travelItems.Count;
-                       
-                    }
-                   
-                }
-                Count();
+                MessageBox.Show("الرجاء تحديد صف للحذف", "تنبيه",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+            foreach (DataGridViewRow selectedRow in dataGridView2.SelectedRows)
+            {
+                if (selectedRow.IsNewRow) continue;
+
+                if (ID_travel == 0)
+                {
+                    // ✅ سفرة جديدة - احذف مباشرة
+                    dataGridView2.Rows.Remove(selectedRow);
+                }
+                else
+                {
+                    //تعطيل مؤقتا
+                    // ✅ تعديل سفرة موجودة - تحقق أولاً
+                    //int itemId = Convert.ToInt32(selectedRow.Cells["ID"].Value);
+
+                    //if (!CanDeleteItem(itemId, ID_travel))
+                    //{
+                    //    MessageBox.Show(
+                    //        $"لا يمكن حذف المادة رقم {itemId}\n" +
+                    //        "يوجد وصل بيع مرتبط بهذه المادة\n" +
+                    //        "يجب على المندوب حذف وصل هذه الماده أولاً",
+                    //        "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //    return;
+                    //}
+
+                    int rowIndex = selectedRow.Index;
+                    travelItems.RemoveAt(rowIndex);
+                    dataGridView2.RowCount = travelItems.Count;
+                }
+            }
+
+            Count();
         }
+
+      
         private void Count()
         {
             if (ID_travel == 0)
@@ -680,6 +703,22 @@ namespace ALIBA_COMPANY.traval
                 }
             }
         }
+
+        //تعطيل مؤقتا
+        //// عند حذف مادة من السفرة - تحقق أولاً
+        //private bool CanDeleteItem(int itemId, int travelId)
+        //{
+        //    using (var context = new AlibaRamyEntities())
+        //    {
+        //        // هل للمادة وصل بيع غير مرسل؟
+        //        var hasSell = context.TB_det
+        //            .Any(d => d.items_id == itemId
+        //                   && d.TB_list.tr_id == travelId
+        //                   && d.TB_list.sending == false);
+
+        //        return !hasSell;
+        //    }
+        //}
         private void DataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (ID_travel > 0)
@@ -689,6 +728,7 @@ namespace ALIBA_COMPANY.traval
                 {
                     // الحصول على مؤشر على الصف المحدد
                     DataGridViewRow selectedRow = dataGridView2.Rows[e.RowIndex];
+                    int itemId = Convert.ToInt32(selectedRow.Cells["ID"].Value);
 
                     // قم بإزالة الصف من DataGridView ومن القائمة travelItems إذا كان متوفراً
                     if (ID_travel == 0)
@@ -697,6 +737,18 @@ namespace ALIBA_COMPANY.traval
                     }
                     else
                     {
+                        //تعطيل مؤقتا
+                        //// ✅ تحقق قبل الحذف
+                        //if (!CanDeleteItem(itemId, ID_travel))
+                        //{
+                        //    MessageBox.Show(
+                        //        $"لا يمكن حذف المادة رقم {itemId}\n" +
+                        //        "يوجد وصل بيع مرتبط بهذه المادة\n" +
+                        //        "يجب على المندوب حذف وصل بيع هذه المادة أولاً",
+                        //        "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        //    return;
+                        //}
+
                         int rowIndex = e.RowIndex;
                         travelItems.RemoveAt(rowIndex);
                         dataGridView2.Rows.RemoveAt(rowIndex);

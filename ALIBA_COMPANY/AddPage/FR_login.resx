@@ -121,19 +121,19 @@
   <data name="Btn_login.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAQ4AAABECAYAAABwBdsbAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAK7SURBVHhe7dq/S5VRGMDx/rimJqemFqemaMihhpAGG3Ro
-        cHG4i0P0BzRECCIhYpJoiTrYLyLiEkmIqGjIiefcH6Te+9Kzej8fOPh67tXt/XLOed8bBSBJOIA04QDS
-        hANIEw4gTTiAtMZwnJ2flvX2YpnfniqzGw/Kk5U75f7iTcMwruGI+zvu89bWZHn743U5/nPYLcFVQ8Ox
-        82ut/qOIRsRj7/dm2T9pdz8Frpu4v+M+//BzuTzfnan3fwRkkCvhiMrEH829f1QOTve7s8CoaWrBhXDE
-        F6fX7g6tDDB6Yvfx7N29CzuOC+GIuogGcFlsYeL8o6cfjqhKLEkABnn5qVUWvr6o1zUc8fQkDkKcaQDD
-        RCfiKKN99K0TjtiexDYFoEmsOGLlUcMRz23jEQxAk++HH+uqo4bj6ep4XX4ANIntysTSrU44Hr4Za3xL
-        DKAn3jKt4YgLgP8hHECacABpwgGkCQeQJhxAmnAAacIBpAkHkCYcQJpwAGnCAaQJB5AmHECacABpwgGk
-        CQeQJhxAmnAAacIBpAkHkCYcQJpwAGnCAaQJB5AmHECacABpwgGkCQeQJhxAmnAAacIBpAkHkCYcQJpw
-        AGn9cEws3Spn56d1EqBJPxxPVu6U/ZN2nQRo0g/H3PtHZefXWp0EGKZ99K08XR3vhGPh64vy8lOrfgAw
-        zNsfr8vz3ZlOOGKbEhVxzgE0aW1Nlg8/lzvhCK8+z9cBMMh6e7HMb0/V6344YrUxu/GgfDnY6c4AdByc
-        7tddyfGfw/p7PxwhDj6m1+7WnwAhohGLir3fm92ZS+EIseKIeMSBKTDa4jwjVhr/RiNcCUeIbUs8ZYnK
-        xClqFAcYDbEd6Z1nxGFob3vyr4Hh6InKxKOXx8u360sfhmFc//HwzViNRsRjmMZwAAwiHECacABpwgGk
-        CQeQVMpfT20L2IN6dmcAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAALBSURBVHhe7doxaxRBGIBhf5yVVSorm1RWYpEUsRCxiIUp
+        LNJYXJMi+AMsJARCCCFoUDQJxkKjIiJHyCEhqFxERr49bsntXVa/NnkeGG7vdpNuX2Zm90oBSLrS/AHg
+        X4QDSBMOIE04gDThANJaw3H6p19eddfK0tv5svh6ptzfulFur101DOMCjri/4z7v7N0rL76tlJ+/T5pJ
+        qJ0bjv2j7eofRTQiHu+/vym9X93mZcAFEfd33Oe7h5tl+d1Cdf9HQCYZC0dUJv7o8c6dctzvNU8Dl0Rb
+        C0bCERc+3L55bmWAyydWH49e3hpZcYyEI+oiGkBTLGFi/2OoDkdUJaYkAJM8PeiU1c9PquMqHPH0JDZC
+        musYgKHoRGxldH98GYQjliexTAFoEzOOmHlU4YjntvEIBqDN15MP1ayjCseD59PV9AOgTSxXZtevDcIx
+        tzHV+pYYwFC8ZVqFIw4A/odwAGnCAaQJB5AmHECacABpwgGkCQeQJhxAmnAAacIBpAkHkCYcQJpwAGnC
+        AaQJB5AmHECacABpwgGkCQeQJhxAmnAAacIBpAkHkCYcQJpwAGnCAaQJB5AmHECacABpwgGkCQeQJhxA
+        mnAAacIBpNXhmF2/Vk7/9JvnAcbU4bi/daP0fnWb5wHG1OF4vHOn7B9tN88DjOj++FIePJ8ehGP185Py
+        9KDTvAZgxItvK2X53cIgHLFMiYrY5wDadPbuld3DzUE4wrOPS9UAmORVd60svZ2vjutwxGxj8fVM+XS8
+        f/ZagHLc71Wrkp+/T6rvdThCbHw83L5ZfQKEiEZMKt5/f1P/NhKOEDOOiEdsmAKXW+xnxEzjbDTCWDhC
+        LFviKUtUJnZRozjA5RDLkeF+RmyGDpcnZ00Mx1BUJh693N28Xr30YRjGxR9zG1NVNCIe52kNB8AkwgGk
+        CQeQJhxAmnAAaX8BT20L2EUaM0YAAAAASUVORK5CYII=
 </value>
   </data>
   <assembly alias="DevExpress.Data.v24.1" name="DevExpress.Data.v24.1, Version=24.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />

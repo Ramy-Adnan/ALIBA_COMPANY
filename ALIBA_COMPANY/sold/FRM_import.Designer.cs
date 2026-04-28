@@ -88,6 +88,7 @@ namespace ALIBA_COMPANY.sold
             this.dateTimePicker1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dateTimePicker1.Size = new System.Drawing.Size(194, 51);
             this.dateTimePicker1.TabIndex = 2;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // Btn_import_traval
             // 

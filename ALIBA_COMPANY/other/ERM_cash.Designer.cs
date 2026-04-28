@@ -37,7 +37,7 @@ namespace ALIBA_COMPANY.other
             this.Combo_driver = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Lbl_mandob = new System.Windows.Forms.Label();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -99,13 +99,13 @@ namespace ALIBA_COMPANY.other
             this.panelControl2.Controls.Add(this.Combo_driver);
             this.panelControl2.Controls.Add(this.label4);
             this.panelControl2.Controls.Add(this.label10);
-            this.panelControl2.Controls.Add(this.label3);
+            this.panelControl2.Controls.Add(this.Lbl_mandob);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl2.Location = new System.Drawing.Point(0, 0);
             this.panelControl2.Margin = new System.Windows.Forms.Padding(6);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.panelControl2.Size = new System.Drawing.Size(1620, 73);
+            this.panelControl2.Size = new System.Drawing.Size(1636, 73);
             this.panelControl2.TabIndex = 34;
             // 
             // lbl_cridit
@@ -169,6 +169,7 @@ namespace ALIBA_COMPANY.other
             this.Combo_driver.Size = new System.Drawing.Size(384, 45);
             this.Combo_driver.TabIndex = 120;
             this.Combo_driver.ValueMember = "0";
+            this.Combo_driver.Visible = false;
             this.Combo_driver.SelectedIndexChanged += new System.EventHandler(this.Combo_driver_SelectedIndexChanged);
             // 
             // label4
@@ -199,19 +200,20 @@ namespace ALIBA_COMPANY.other
             this.label10.Text = "تحصيل له :";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label3
+            // Lbl_mandob
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("LBC", 12F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.label3.Location = new System.Drawing.Point(1512, 14);
-            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 42);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "الموزع :";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Lbl_mandob.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Lbl_mandob.BackColor = System.Drawing.Color.Transparent;
+            this.Lbl_mandob.Font = new System.Drawing.Font("LBC", 12F, System.Drawing.FontStyle.Bold);
+            this.Lbl_mandob.ForeColor = System.Drawing.Color.LightSeaGreen;
+            this.Lbl_mandob.Location = new System.Drawing.Point(1512, 14);
+            this.Lbl_mandob.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.Lbl_mandob.Name = "Lbl_mandob";
+            this.Lbl_mandob.Size = new System.Drawing.Size(92, 42);
+            this.Lbl_mandob.TabIndex = 5;
+            this.Lbl_mandob.Text = "الموزع :";
+            this.Lbl_mandob.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Lbl_mandob.Visible = false;
             // 
             // panelControl1
             // 
@@ -224,10 +226,10 @@ namespace ALIBA_COMPANY.other
             this.panelControl1.Controls.Add(this.lbl_usd);
             this.panelControl1.Controls.Add(this.label19);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControl1.Location = new System.Drawing.Point(0, 636);
+            this.panelControl1.Location = new System.Drawing.Point(0, 643);
             this.panelControl1.Margin = new System.Windows.Forms.Padding(6);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(1620, 121);
+            this.panelControl1.Size = new System.Drawing.Size(1636, 121);
             this.panelControl1.TabIndex = 35;
             // 
             // groupBox1
@@ -265,10 +267,10 @@ namespace ALIBA_COMPANY.other
             this.Btn_new.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold);
             this.Btn_new.ForeColor = System.Drawing.Color.White;
             this.Btn_new.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Btn_new.Location = new System.Drawing.Point(458, 29);
+            this.Btn_new.Location = new System.Drawing.Point(458, 31);
             this.Btn_new.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_new.Name = "Btn_new";
-            this.Btn_new.Size = new System.Drawing.Size(132, 61);
+            this.Btn_new.Size = new System.Drawing.Size(132, 56);
             this.Btn_new.TabIndex = 126;
             this.Btn_new.Text = "جديد";
             this.Btn_new.UseVisualStyleBackColor = false;
@@ -293,14 +295,16 @@ namespace ALIBA_COMPANY.other
             this.Combo_travel.DisplayMember = "كل الاصناف";
             this.Combo_travel.DropDownHeight = 820;
             this.Combo_travel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Combo_travel.Font = new System.Drawing.Font("Cairo", 12F);
             this.Combo_travel.FormattingEnabled = true;
             this.Combo_travel.IntegralHeight = false;
-            this.Combo_travel.Location = new System.Drawing.Point(24, 34);
+            this.Combo_travel.Location = new System.Drawing.Point(25, 38);
             this.Combo_travel.Margin = new System.Windows.Forms.Padding(4);
             this.Combo_travel.Name = "Combo_travel";
-            this.Combo_travel.Size = new System.Drawing.Size(425, 40);
+            this.Combo_travel.Size = new System.Drawing.Size(425, 45);
             this.Combo_travel.TabIndex = 121;
             this.Combo_travel.ValueMember = "0";
+            this.Combo_travel.Visible = false;
             this.Combo_travel.SelectedIndexChanged += new System.EventHandler(this.Combo_travel_SelectedIndexChanged);
             // 
             // groupBox4
@@ -338,10 +342,10 @@ namespace ALIBA_COMPANY.other
             this.Btn_delete.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold);
             this.Btn_delete.ForeColor = System.Drawing.Color.White;
             this.Btn_delete.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Btn_delete.Location = new System.Drawing.Point(18, 29);
+            this.Btn_delete.Location = new System.Drawing.Point(18, 31);
             this.Btn_delete.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_delete.Name = "Btn_delete";
-            this.Btn_delete.Size = new System.Drawing.Size(132, 61);
+            this.Btn_delete.Size = new System.Drawing.Size(132, 56);
             this.Btn_delete.TabIndex = 129;
             this.Btn_delete.Text = "حذف";
             this.Btn_delete.UseVisualStyleBackColor = false;
@@ -366,13 +370,14 @@ namespace ALIBA_COMPANY.other
             this.Btn_print.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold);
             this.Btn_print.ForeColor = System.Drawing.Color.White;
             this.Btn_print.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Btn_print.Location = new System.Drawing.Point(202, 29);
+            this.Btn_print.Location = new System.Drawing.Point(202, 31);
             this.Btn_print.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_print.Name = "Btn_print";
-            this.Btn_print.Size = new System.Drawing.Size(132, 61);
+            this.Btn_print.Size = new System.Drawing.Size(132, 57);
             this.Btn_print.TabIndex = 128;
             this.Btn_print.Text = "طباعة";
             this.Btn_print.UseVisualStyleBackColor = false;
+            this.Btn_print.Visible = false;
             this.Btn_print.Click += new System.EventHandler(this.Btn_print_Click);
             // 
             // lbl_irq
@@ -445,7 +450,7 @@ namespace ALIBA_COMPANY.other
             this.gridControl1.Margin = new System.Windows.Forms.Padding(4);
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.gridControl1.Size = new System.Drawing.Size(1620, 563);
+            this.gridControl1.Size = new System.Drawing.Size(1636, 570);
             this.gridControl1.TabIndex = 37;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -554,10 +559,10 @@ namespace ALIBA_COMPANY.other
             this.loading.AppearanceCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.loading.Caption = "...لطفاً انتضر";
             this.loading.Description = "";
-            this.loading.Location = new System.Drawing.Point(719, 323);
+            this.loading.Location = new System.Drawing.Point(612, 300);
             this.loading.Margin = new System.Windows.Forms.Padding(4);
             this.loading.Name = "loading";
-            this.loading.Size = new System.Drawing.Size(289, 92);
+            this.loading.Size = new System.Drawing.Size(289, 113);
             this.loading.TabIndex = 38;
             this.loading.Text = "progressPanel1";
             this.loading.Visible = false;
@@ -568,7 +573,7 @@ namespace ALIBA_COMPANY.other
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1620, 757);
+            this.ClientSize = new System.Drawing.Size(1636, 764);
             this.Controls.Add(this.loading);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.panelControl2);
@@ -580,6 +585,7 @@ namespace ALIBA_COMPANY.other
             this.Name = "ERM_cash";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "قبض نقدي-تسجيل التحصيلات";
             this.Load += new System.EventHandler(this.ERM_cash_Load);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
@@ -608,7 +614,7 @@ namespace ALIBA_COMPANY.other
         private System.Windows.Forms.ComboBox Combo_driver;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label Lbl_mandob;
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label5;

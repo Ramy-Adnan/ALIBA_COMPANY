@@ -31,9 +31,10 @@ namespace ALIBA_COMPANY.sold
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(page_Sold));
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions1 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions2 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
-            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions3 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions9 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions10 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions11 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
+            DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions windowsUIButtonImageOptions12 = new DevExpress.XtraBars.Docking2010.WindowsUIButtonImageOptions();
             this.Btn_add_import = new DevExpress.XtraEditors.SimpleButton();
             this.Btn_add_export = new DevExpress.XtraEditors.SimpleButton();
             this.BtnS_Sell = new DevExpress.XtraBars.Docking2010.WindowsUIButtonPanel();
@@ -48,6 +49,7 @@ namespace ALIBA_COMPANY.sold
             this.Btn_add_update = new DevExpress.XtraEditors.SimpleButton();
             this.bunifuElipse5 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lbl_status = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -62,9 +64,9 @@ namespace ALIBA_COMPANY.sold
             this.Btn_add_import.Appearance.Options.UseFont = true;
             this.Btn_add_import.Appearance.Options.UseForeColor = true;
             this.Btn_add_import.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Btn_add_import.ImageOptions.Image")));
-            this.Btn_add_import.Location = new System.Drawing.Point(739, 523);
+            this.Btn_add_import.Location = new System.Drawing.Point(727, 577);
             this.Btn_add_import.Name = "Btn_add_import";
-            this.Btn_add_import.Size = new System.Drawing.Size(174, 64);
+            this.Btn_add_import.Size = new System.Drawing.Size(159, 56);
             this.Btn_add_import.TabIndex = 0;
             this.Btn_add_import.Text = "استيراد";
             this.Btn_add_import.Click += new System.EventHandler(this.Btn_add_import_Click);
@@ -81,9 +83,9 @@ namespace ALIBA_COMPANY.sold
             this.Btn_add_export.Appearance.Options.UseFont = true;
             this.Btn_add_export.Appearance.Options.UseForeColor = true;
             this.Btn_add_export.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_add_export.ImageOptions.SvgImage")));
-            this.Btn_add_export.Location = new System.Drawing.Point(359, 523);
+            this.Btn_add_export.Location = new System.Drawing.Point(397, 577);
             this.Btn_add_export.Name = "Btn_add_export";
-            this.Btn_add_export.Size = new System.Drawing.Size(167, 64);
+            this.Btn_add_export.Size = new System.Drawing.Size(159, 56);
             this.Btn_add_export.TabIndex = 1;
             this.Btn_add_export.Text = "ارسال";
             this.Btn_add_export.Click += new System.EventHandler(this.Btn_add_export_Click);
@@ -105,20 +107,23 @@ namespace ALIBA_COMPANY.sold
             this.BtnS_Sell.AppearanceButton.Pressed.Options.UseForeColor = true;
             this.BtnS_Sell.BackColor = System.Drawing.Color.DarkBlue;
             this.BtnS_Sell.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            windowsUIButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions1.Image")));
-            windowsUIButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions2.Image")));
-            windowsUIButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions3.Image")));
+            windowsUIButtonImageOptions9.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("windowsUIButtonImageOptions9.SvgImage")));
+            windowsUIButtonImageOptions10.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions10.Image")));
+            windowsUIButtonImageOptions11.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions11.Image")));
+            windowsUIButtonImageOptions12.Image = ((System.Drawing.Image)(resources.GetObject("windowsUIButtonImageOptions12.Image")));
             this.BtnS_Sell.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("المواد", true, windowsUIButtonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("تسديد الديون", true, windowsUIButtonImageOptions9, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
             new DevExpress.XtraBars.Docking2010.WindowsUISeparator(),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton("وصولات", true, windowsUIButtonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("المواد", true, windowsUIButtonImageOptions10, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
             new DevExpress.XtraBars.Docking2010.WindowsUISeparator(),
-            new DevExpress.XtraBars.Docking2010.WindowsUIButton(" بيع", true, windowsUIButtonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton("وصولات", true, windowsUIButtonImageOptions11, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false),
+            new DevExpress.XtraBars.Docking2010.WindowsUISeparator(),
+            new DevExpress.XtraBars.Docking2010.WindowsUIButton(" بيع", true, windowsUIButtonImageOptions12, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1, false)});
             this.BtnS_Sell.Font = new System.Drawing.Font("GE SS Two Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.BtnS_Sell.Location = new System.Drawing.Point(307, 327);
+            this.BtnS_Sell.Location = new System.Drawing.Point(81, 395);
             this.BtnS_Sell.Name = "BtnS_Sell";
             this.BtnS_Sell.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.BtnS_Sell.Size = new System.Drawing.Size(652, 138);
+            this.BtnS_Sell.Size = new System.Drawing.Size(1114, 136);
             this.BtnS_Sell.TabIndex = 109;
             this.BtnS_Sell.Tag = "sell";
             this.BtnS_Sell.Text = "windowsUIButtonPanel1";
@@ -138,16 +143,16 @@ namespace ALIBA_COMPANY.sold
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = global::ALIBA_COMPANY.Properties.Resources.aliba;
-            this.pictureBox1.Location = new System.Drawing.Point(437, 38);
+            this.pictureBox1.Location = new System.Drawing.Point(404, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(410, 248);
+            this.pictureBox1.Size = new System.Drawing.Size(469, 296);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 111;
             this.pictureBox1.TabStop = false;
             // 
             // bunifuElipse1
             // 
-            this.bunifuElipse1.ElipseRadius = 39;
+            this.bunifuElipse1.ElipseRadius = 100;
             this.bunifuElipse1.TargetControl = this.BtnS_Sell;
             // 
             // bunifuElipse2
@@ -169,11 +174,11 @@ namespace ALIBA_COMPANY.sold
             this.Btn_delete_import.Appearance.Options.UseBackColor = true;
             this.Btn_delete_import.Appearance.Options.UseFont = true;
             this.Btn_delete_import.Appearance.Options.UseForeColor = true;
+            this.Btn_delete_import.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Btn_delete_import.ImageOptions.Image")));
             this.Btn_delete_import.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.Btn_delete_import.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_delete_import.ImageOptions.SvgImage")));
-            this.Btn_delete_import.Location = new System.Drawing.Point(437, 630);
+            this.Btn_delete_import.Location = new System.Drawing.Point(397, 644);
             this.Btn_delete_import.Name = "Btn_delete_import";
-            this.Btn_delete_import.Size = new System.Drawing.Size(410, 64);
+            this.Btn_delete_import.Size = new System.Drawing.Size(489, 60);
             this.Btn_delete_import.TabIndex = 112;
             this.Btn_delete_import.Text = "حذف بيانات الاستيراد";
             this.Btn_delete_import.Click += new System.EventHandler(this.Btn_delete_import_Click);
@@ -195,9 +200,9 @@ namespace ALIBA_COMPANY.sold
             this.Btn_add_update.AppearanceHovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.Btn_add_update.AppearanceHovered.Options.UseForeColor = true;
             this.Btn_add_update.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Btn_add_update.ImageOptions.Image")));
-            this.Btn_add_update.Location = new System.Drawing.Point(538, 523);
+            this.Btn_add_update.Location = new System.Drawing.Point(562, 577);
             this.Btn_add_update.Name = "Btn_add_update";
-            this.Btn_add_update.Size = new System.Drawing.Size(190, 64);
+            this.Btn_add_update.Size = new System.Drawing.Size(159, 56);
             this.Btn_add_update.TabIndex = 113;
             this.Btn_add_update.Text = "تحديث";
             this.Btn_add_update.Click += new System.EventHandler(this.Btn_add_update_Click);
@@ -218,12 +223,27 @@ namespace ALIBA_COMPANY.sold
             this.pictureBox2.TabIndex = 114;
             this.pictureBox2.TabStop = false;
             // 
+            // lbl_status
+            // 
+            this.lbl_status.AccessibleName = "";
+            this.lbl_status.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lbl_status.Font = new System.Drawing.Font("Cairo ExtraBold", 14.8F, System.Drawing.FontStyle.Bold);
+            this.lbl_status.ForeColor = System.Drawing.Color.Gray;
+            this.lbl_status.Location = new System.Drawing.Point(110, 320);
+            this.lbl_status.Name = "lbl_status";
+            this.lbl_status.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lbl_status.Size = new System.Drawing.Size(1057, 69);
+            this.lbl_status.TabIndex = 115;
+            this.lbl_status.Text = "لا توجد أي سفرة الآن ... ابدأ بإستيراد سفرتك";
+            this.lbl_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // page_Sold
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbl_status);
             this.Controls.Add(this.Btn_delete_import);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.Btn_add_update);
@@ -233,7 +253,7 @@ namespace ALIBA_COMPANY.sold
             this.Controls.Add(this.Btn_add_import);
             this.Name = "page_Sold";
             this.Size = new System.Drawing.Size(1282, 764);
-        
+            this.Load += new System.EventHandler(this.page_Sold_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -256,5 +276,6 @@ namespace ALIBA_COMPANY.sold
         private DevExpress.XtraEditors.SimpleButton Btn_add_update;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse5;
         private System.Windows.Forms.PictureBox pictureBox2;
+        public System.Windows.Forms.Label lbl_status;
     }
 }

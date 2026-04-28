@@ -30,8 +30,8 @@ namespace ALIBA_COMPANY.other
             InitializeComponent();
             this.Copyright.Text = "Programming By Eng Ramy® 2024 - " + DateTime.Now.Year.ToString();
 
-            Notifications.ShowToast("رسالة موجهة", "تفاصيل الرسالة هنا");
 
+           
             //// إنشاء مثيل من الكلاس ImageSlider
             //ImageSlider imageSlider = new ImageSlider(panelImageDisplay, button1, button2);
 

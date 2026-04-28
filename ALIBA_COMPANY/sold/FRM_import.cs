@@ -1,9 +1,11 @@
 ﻿
+using ALIBA_COMPANY.classes;
 using System;
 
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 
 using System.Windows.Forms;
@@ -134,12 +136,8 @@ namespace ALIBA_COMPANY.sold
 
                     if (result != null && result.success == 1)
                     {
-                        MessageBox.Show(
-                            $"تم استيراد {result.imported_count} مادة بنجاح",
-                            "عملية ناجحة",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information
-                        );
+                       
+                        try { Notifications.ShowToast("عملية ناجحة", "تــم استيراد السفرة بـنجاح"); } catch { }
                         this.DialogResult = DialogResult.OK;
                     }
                     else
@@ -185,32 +183,60 @@ namespace ALIBA_COMPANY.sold
             }
            
         }
+        // ✅ عند تغيير التاريخ أيضاً
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            Set_ID_Traval();
+        }
+
+        private void Combo_Traval_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            Set_ID_Traval();
+        }
+
         private void Set_ID_Traval()
         {
             try
             {
-               
-                if (Combo_Traval.SelectedItem != null && !string.IsNullOrEmpty(Combo_Traval.SelectedItem.ToString()))
-                {
-                    using (var dbbb = new AlibaRamyEntities())
-                    {
-                        var selectedDate = dateTimePicker1.Value.Date;
-                        var Idd = dbbb.TB_travel
-                            .Where(x => x.TB_emplo.emplo_name == Combo_Traval.SelectedItem.ToString() && x.tr_loading == 1 && DbFunctions.TruncateTime(x.tr_date) == selectedDate).Select(x => x.tr_id)
-                            .FirstOrDefault();
-                        ID_traval = Idd;
-                    }
+                if (Combo_Traval.SelectedItem == null ||
+                    string.IsNullOrEmpty(Combo_Traval.SelectedItem.ToString()))
+                    return;
 
+                using (var dbbb = new AlibaRamyEntities())
+                {
+                    var selectedDate = dateTimePicker1.Value.Date;
+                    var selectedName = Combo_Traval.SelectedItem.ToString();
+
+                    var Idd = dbbb.TB_travel
+                        .Where(x => x.TB_emplo.emplo_name == selectedName
+                                 && x.tr_loading == 1
+                                 && DbFunctions.TruncateTime(x.tr_date) == selectedDate)
+                        .Select(x => x.tr_id)
+                        .FirstOrDefault();
+
+                    ID_traval = Idd;
+
+                    // ✅ تنبيه إذا لم يجد نتيجة
+                    if (ID_traval == 0 && !string.IsNullOrEmpty(selectedName))
+                    {
+                         page_Sold pageSoldInstance = new page_Sold(); // Create an instance of page_Sold  
+                        pageSoldInstance.lbl_status.Text = "لا توجد سفرة بهذا التاريخ";
+                        pageSoldInstance.lbl_status.ForeColor = Color.Red;
+                    }
+                    
+                    else if (ID_traval > 0)
+                    {
+                        page_Sold pageSoldInstance = new page_Sold();
+                        pageSoldInstance.lbl_status.Text = $"تم تحديد السفرة رقم {ID_traval}";
+                        pageSoldInstance.lbl_status.ForeColor = Color.Green;
+                    }
                 }
-                
             }
             catch (Exception ex)
             {
-                MessageBox.Show(" خطا في الاتصال " + ex.Message);
+                MessageBox.Show("خطا في الاتصال " + ex.Message);
             }
-
         }
-
         private void FRM_import_Activated(object sender, EventArgs e)
         {
             Load_Combo_Traval();
@@ -220,10 +246,7 @@ namespace ALIBA_COMPANY.sold
 
      
 
-        private void Combo_Traval_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-                Set_ID_Traval();
-        }
+        
 
        
     }
