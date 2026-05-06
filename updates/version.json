@@ -1,0 +1,6 @@
+{
+  "version": "3.0.0",
+  "downloadUrl": "https://api.alliba.uk/dev/ramy/apps/Alliba/ALIBA_COMPANY.exe",
+  "releaseNotes": "- إصلاح مشكلة الطباعة\n- تحسين الأداء",
+  "mandatory": false
+}
