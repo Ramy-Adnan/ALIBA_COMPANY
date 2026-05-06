@@ -1139,6 +1139,7 @@
     <Content Include="Assets\logo.png" />
     <Content Include="Assets\Icon3.png" />
     <Content Include="ico.ico" />
+    <Content Include="updates\ALIBA_COMPANY.exe" />
     <None Include="Resources\converted_icon.ico" />
     <None Include="Resources\transparent_icon.ico" />
     <None Include="Resources\logo11.png" />
@@ -1332,9 +1333,7 @@
       <Version>1.7.2</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="updates\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
