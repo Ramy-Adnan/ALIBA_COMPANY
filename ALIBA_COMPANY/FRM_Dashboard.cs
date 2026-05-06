@@ -171,7 +171,7 @@ namespace ALIBA_COMPANY.other
                 var salesQ = db.TB_list
                     .AsNoTracking()
                     .Where(l => 
-                              l.list_date >= from && l.list_date <= to);
+                              l.list_date >= from && l.list_date <= to && l.sending==true);
 
                 if (emplo != "كل الموزعيين")
                     salesQ = salesQ.Where(l => l.TB_emplo.emplo_name == emplo);
@@ -192,7 +192,7 @@ namespace ALIBA_COMPANY.other
                     .AsNoTracking()
                     .Where(c => (c.action_id == 6 || c.action_id == 7)
                              && c.cridet_date >= from && c.cridet_date <= to
-                             && c.cridet_s > 0);
+                             && c.cridet_s > 0&&c.sending==true);
 
                 if (emplo != "كل الموزعيين")
                     payQ = payQ.Where(c => c.TB_emplo.emplo_name == emplo);
