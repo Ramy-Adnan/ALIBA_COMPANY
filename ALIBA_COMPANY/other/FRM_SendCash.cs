@@ -1,28 +1,34 @@
 ﻿using ALIBA_COMPANY.classes;
 using DevExpress.XtraEditors;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ALIBA_COMPANY.other
 {
-    public partial class FRM_cash_record : DevExpress.XtraEditors.XtraForm
+    public partial class FRM_SendCash : DevExpress.XtraEditors.XtraForm
     {
         public string selectedItem;
-        public int ID_traval;
-        public int? emplo_id_fromERM_cash;
+       
+        public int ExAmount;
+      
         public int? emplo_id;
         public int? cust_id;
-        public decimal ExAmount;
-        public int AccountsOrMandob;
-        public other.ERM_cash page;
+      
+    
 
         // ✅ فلاق لمنع تشغيل الأحداث أثناء التحميل
         private bool _isLoading = false;
 
-        public FRM_cash_record()
+        public FRM_SendCash()
         {
             InitializeComponent();
             Txt_iq.KeyPress += (sender, e) => RAMY.HandleTextBoxKeyPress(sender, e, 20);
@@ -38,7 +44,7 @@ namespace ALIBA_COMPANY.other
             Combo_dis.Enabled = false;
         }
 
-       
+
         // ============================================================
         // البحث عن العملاء
         // ============================================================
@@ -58,7 +64,10 @@ namespace ALIBA_COMPANY.other
                 {
                     var suggestions = db.TB_cust
                         .Where(x => x.cust_name.StartsWith(inputText))
+                        .AsNoTracking()
                         .ToList();
+
+
 
                     listbox_suggestions.DataSource = suggestions;
                     listbox_suggestions.DisplayMember = "cust_name";
@@ -70,12 +79,7 @@ namespace ALIBA_COMPANY.other
                         return;
                     }
 
-                    // ✅ ابحث عن سعر الصرف فقط إذا تم اختيار موزع
-                    if (!string.IsNullOrWhiteSpace(Combo_dis.Text)
-                        && Combo_dis.Text != "")
-                    {
-                        SearchExch();
-                    }
+                   
                 }
             }
             catch (Exception ex)
@@ -96,6 +100,9 @@ namespace ALIBA_COMPANY.other
                 cust_id = selected.cust_id;
                 selectedItem = selected.cust_name;
 
+                // إظهار اللست بوكس وإخفاؤها
+                listbox_suggestions.Visible = false;
+
                 // ✅ جلب الموزعين الخاصين بهذا العميل فقط
                 Load_Combo_driver_ByCust(selected.cust_id);
             }
@@ -106,6 +113,8 @@ namespace ALIBA_COMPANY.other
             }
         }
 
+
+
         // ============================================================
         // أحداث القوائم
         // ============================================================
@@ -114,7 +123,7 @@ namespace ALIBA_COMPANY.other
             if (listbox_suggestions.SelectedItem == null) return;
 
             ClearResults();
-            Txt_iq.Enabled=false;
+            Txt_iq.Enabled = false;
             GetMaterialsData();
         }
 
@@ -135,15 +144,17 @@ namespace ALIBA_COMPANY.other
         // ✅ الحدث الرئيسي — محمي بـ _isLoading
         private void Combo_dis_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_isLoading) return;   // ✅ لا تفعل شيئاً أثناء التحميل
+            Txt_us.Enabled = false;
+            Txt_ex.Enabled = true;
+            
+            Txt_iq.Text = "0";
+           ;   // ✅ لا تفعل شيئاً أثناء التحميل
 
             if (string.IsNullOrWhiteSpace(Combo_dis.Text)) return;
 
             Set_ID_driver();
 
-            // ابحث فقط إذا تم اختيار عميل أيضاً
-            if (!string.IsNullOrWhiteSpace(Txt_xx.Text))
-                SearchExch();
+
         }
 
         // ============================================================
@@ -168,188 +179,77 @@ namespace ALIBA_COMPANY.other
             catch { emplo_id = null; }
         }
 
-    
-      
 
-        // ============================================================
-        // البحث عن سعر الصرف (Stored Procedure)
-        // ============================================================
-        private async void SearchExch()
-        {
-            try
-            {
-                string selectedCust = Txt_xx.Text.Trim();
-                string selectedEmplo = Combo_dis.SelectedItem?.ToString()?.Trim();
 
-                // ✅ تحقق صارم قبل الاستدعاء
-                if (string.IsNullOrEmpty(selectedCust)
-                    || string.IsNullOrEmpty(selectedEmplo)
-                    || selectedEmplo == ""
-                    || selectedEmplo == "كل الموزعيين")
-                    return;  // ✅ لا رسالة خطأ — فقط توقف
 
-                loading.Visible = true;
-
-                decimal exchValue = await System.Threading.Tasks.Task.Run(() =>
-                {
-                    using (var db = new AlibaRamyEntities())
-                    {
-                        var conn = db.Database.Connection;
-                        conn.Open();
-
-                        using (var cmd = conn.CreateCommand())
-                        {
-                            cmd.CommandText = "SP_GetCustomerExch";
-                            cmd.CommandType = CommandType.StoredProcedure;
-                            cmd.CommandTimeout = 60;
-                            cmd.Parameters.Add(new SqlParameter("@emplo_name", selectedEmplo));
-                            cmd.Parameters.Add(new SqlParameter("@list_name", selectedCust));
-
-                            using (var reader = cmd.ExecuteReader())
-                            {
-                                if (reader.Read() && !reader.IsDBNull(reader.GetOrdinal("Exch")))
-                                    return Convert.ToDecimal(reader["Exch"]);
-                            }
-                        }
-                        return 0m;
-                    }
-                });
-
-                this.Invoke((MethodInvoker)(() =>
-                {
-                    if (exchValue > 0)
-                    {
-                        Txt_ex.Text = exchValue.ToString("F2"); //  // ✅ عرض فقط بخانتين
-                        ExAmount = exchValue;         //// ✅ القيمة الكاملة للحساب
-                        Txt_iq.Enabled = true;
-                        Txt_iq.ForeColor = System.Drawing.Color.DodgerBlue; // ✅ لون أخضر للدلالة على وجود دين
-                    }
-                    else
-                    {
-                        Txt_ex.Text = "لا يوجد دين لهذا العميل او الموزع";
-                        ExAmount = 0;                       // ✅ صفّر ExAmount إذا لا يوجد دين
-                    }
-                }));
-            }
-            catch (Exception ex)
-            {
-                this.Invoke((MethodInvoker)(() =>
-                    MessageBox.Show("خطأ في جلب سعر الصرف: " + ex.Message)));
-            }
-            finally
-            {
-                this.Invoke((MethodInvoker)(() => loading.Visible = false));
-            }
-        }
+     
 
         // ============================================================
         // الحفظ
         // ============================================================
         private void Btn_add_Click(object sender, EventArgs e)
         {
-            if (AccountsOrMandob == 1)
+            try
             {
-                try
-                {
-                    if (!IsFormDataValid()) return;
+                if (!IsFormDataValid()) return;
 
-                    using (var db = new AlibaRamyEntities())
+                using (var db = new AlibaRamyEntities())
+                {
+                    // ✅ تحقق من وجود وصول معلقة عند المندوب
+                    var pendingCount = db.TB_cridet
+                        .Where(x => x.cust_id == cust_id
+                                 && x.emplo_id == emplo_id
+                                 && x.sending == false
+                                 && x.action_id == 9)
+                        .Count();
+
+                    if (pendingCount > 0)
                     {
-                        // ✅ تحقق من وجود وصول معلقة عند المندوب
-                        var pendingCount = db.TB_cridet
-                            .Where(x => x.cust_id == cust_id
-                                     && x.emplo_id == emplo_id
-                                     && x.sending == false
-                                     && x.action_id == 7)
-                            .Count();
-
-                        if (pendingCount > 0)
-                        {
-                            MessageBox.Show(
-                                "يوجد وصل غير مُرسل لهذا العميل عند المندوب\n" +
-                                "يرجى انتظار إرسال المندوب أولاً",
-                                "تحذير",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
-                            return;
-                        }
-
-                        db.TB_cridet.Add(CreateRecordFromInputs());
-                        db.SaveChanges();
-                        Notifications.ShowToast("تمت العملية بنجاح ✅", "نجاح");
-                        ClearResults();
-                        this.DialogResult = DialogResult.OK;
+                        MessageBox.Show(
+                            "يوجد وصل غير مُرسل لهذا العميل عند المندوب\n" +
+                            "يرجى انتظار إرسال المندوب أولاً",
+                            "تحذير",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                        return;
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("خطأ في الحفظ: " + ex.Message);
+
+                    db.TB_cridet.Add(CreateRecordFromInputs());
+                    db.SaveChanges();
+                    Notifications.ShowToast("تمت العملية بنجاح ✅", "نجاح");
+                    ClearResults();
+                    this.DialogResult = DialogResult.OK;
                 }
             }
-            else if (AccountsOrMandob == 2)
+            catch (Exception ex)
             {
-                try
-                {
-                    if (!IsFormDataValid()) return;
-
-                    using (var db = new AlibaRamyEntities())
-                    {
-                        // ✅ نفس التحقق للمندوب - لا يضيف وصلين لنفس العميل والموزع
-                        var pendingCount = db.TB_cridet
-                            .Where(x => x.cust_id == cust_id
-                                     && x.emplo_id == emplo_id
-                                     && x.sending == false
-                                     && x.action_id == 7)
-                            .Count();
-
-                        if (pendingCount > 0)
-                        {
-                            MessageBox.Show(
-                                "يوجد وصل غير مُرسل لهذا العميل بالفعل\n" +
-                                "يرجى إرسال الوصل السابق أولاً",
-                                "تحذير",
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
-                            return;
-                        }
-
-                        db.TB_cridet.Add(CreateRecordFromInputs());
-                        db.SaveChanges();
-                        Notifications.ShowToast("تم اضافة وصل الديون بنجاح ✅", "نجاح");
-                       
-                        ClearResults();
-                        this.DialogResult = DialogResult.OK;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("خطأ في الحفظ: " + ex.Message);
-                }
+                MessageBox.Show("خطأ في الحفظ: " + ex.Message);
             }
+
+
         }
 
         private TB_cridet CreateRecordFromInputs()
         {
-            
-                return new TB_cridet
-                {
-                    cridet_date = DateTime.Now,
-                    cridet_amount = decimal.Parse(Txt_us.Text.Replace(",", "")),
-                    cridet_s = decimal.Parse(Txt_us.Text.Replace(",", "")),
-                    cridet_d = decimal.Parse(Txt_iq.Text.Replace(",", "")),
-                    cridet_ex = ExAmount,
-                    cridet_nots = txt_not.Text,
-                    user_id = AddPage.Users.Idd,
-                    emplo_id = emplo_id,
-                    tr_id = ID_traval,
-                    action_id = 7,
-                    pr_id = emplo_id_fromERM_cash,
-                    cridet_code = GetLastCode() + 1,
-                    cust_id = cust_id,
-                    list_name = selectedItem,
 
-                    sending = AccountsOrMandob == 1 ? true : false
-                };
+            return new TB_cridet
+            {
+                cridet_date = DateTime.Now,
+                cridet_amount = decimal.Parse(Txt_us.Text.Replace(",", "")),
+                cridet_s = decimal.Parse(Txt_us.Text.Replace(",", "")),
+                cridet_d = decimal.Parse(Txt_iq.Text.Replace(",", "")),
+                cridet_ex = decimal.Parse(Txt_ex.Text.Replace(",", "")),
+                cridet_nots = txt_not.Text,
+                user_id = AddPage.Users.Idd,
+                emplo_id = emplo_id,
+                tr_id = null,
+                action_id = 9,
+                pr_id = 1,
+                cridet_code = GetLastCode() + 1,
+                cust_id = cust_id,
+                list_name = selectedItem,
+                sending = true
+            };
         }
 
         private int GetLastCode()
@@ -377,6 +277,7 @@ namespace ALIBA_COMPANY.other
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
+           
 
             if (string.IsNullOrWhiteSpace(Txt_xx.Text))
             {
@@ -386,11 +287,20 @@ namespace ALIBA_COMPANY.other
             }
 
             if (string.IsNullOrWhiteSpace(Txt_iq.Text) ||
-                 string.IsNullOrWhiteSpace(Txt_us.Text) ||
-                 !decimal.TryParse(Txt_iq.Text, out decimal iqValue) ||
-                 iqValue == 0)
+              string.IsNullOrWhiteSpace(Txt_us.Text) ||
+              !decimal.TryParse(Txt_iq.Text, out decimal iqValue) ||
+              iqValue == 0 ||
+              iqValue % 250 != 0) // التأكد من أن المبلغ من مضاعفات 250
             {
-                MessageBox.Show("الرجاء إدخال مبلغ صحيح", "تنبيه",
+                string message = "الرجاء إدخال مبلغ صحيح";
+
+                // إضافة تنبيه مخصص إذا كان السبب هو مضاعفات الـ 250
+                if (decimal.TryParse(Txt_iq.Text, out decimal val) && val % 250 != 0)
+                {
+                    message = "يجب أن يكون المبلغ بالدينار من مضاعفات الـ 250 (مثلاً: 250، 500، 750...)";
+                }
+
+                MessageBox.Show(message, "تنبيه",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
@@ -398,6 +308,15 @@ namespace ALIBA_COMPANY.other
             if (!decimal.TryParse(Txt_ex.Text, out _))
             {
                 MessageBox.Show("لا يوجد دين لهذا العميل", "تنبيه",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(Txt_iq.Text) ||
+                 string.IsNullOrWhiteSpace(Txt_us.Text) ||
+                 !decimal.TryParse(Txt_iq.Text, out decimal usValue) ||
+                 usValue == 0)
+            {
+                MessageBox.Show("الرجاء إدخال مبلغ بالدولار", "تنبيه",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
@@ -426,7 +345,7 @@ namespace ALIBA_COMPANY.other
             selectedItem = "";
         }
 
-       
+
 
         private void Load_Combo_driver_ByCust(int custId)
         {
@@ -504,8 +423,8 @@ namespace ALIBA_COMPANY.other
                 Lbl_words.Text = ""; // ✅ الليبل فوق التيكست
                 return;
             }
+            try { Txt_us.Text = (amount / ExAmount).ToString("N2"); } catch { }
 
-            Txt_us.Text = (amount / ExAmount).ToString("N2");
 
             // ✅ عرض المبلغ كتابةً في الليبل
             Lbl_words.Text = NumberToArabicWords.Convert(amount);
@@ -552,12 +471,42 @@ namespace ALIBA_COMPANY.other
             Txt_iq.SelectAll(); // تحديد كل النص تلقائياً
             // ✅ احذف الفواصل عند التعديل حتى لا تتكرر
             Txt_iq.Text = Txt_iq.Text.Replace(",", "");
-            
+
         }
 
         private void Txt_iq_MouseDown(object sender, MouseEventArgs e)
         {
             Txt_iq.SelectAll();
+        }
+
+      
+
+
+
+        private void Txt_ex_TextChanged(object sender, EventArgs e)
+        {
+
+            if (decimal.TryParse(Txt_ex.Text, out decimal exRate) && exRate > 0)
+            {
+                ExAmount = (int)exRate; // تحديث القيمة الحسابية
+                Txt_iq.Enabled = true; // تفعيل التيكست العراقي
+            }
+            else
+            {
+                Txt_iq.Enabled = false;
+            }
+
+            if (decimal.TryParse(Txt_iq.Text, out decimal iq) && iq > 0) { }
+            try { Txt_us.Text = (iq / ExAmount).ToString("N2"); } catch { }
+        }
+
+        private void Txt_ex_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != '.' && e.KeyChar != '\b')
+                e.Handled = true;
+
+            if (e.KeyChar == '.' && Txt_iq.Text.Contains('.'))
+                e.Handled = true;
         }
     }
 }

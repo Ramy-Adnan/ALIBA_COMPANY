@@ -10,13 +10,20 @@ namespace ALIBA_COMPANY.classes
     public static class Notifications
     {
         // ✅ مسار ثابت من الكمبيوتر مباشرة
-        private static readonly string logoPath = @"C:\AlibaImages\211.png";
+        private static readonly string logoPath = @"C:\AlibaImages\20262026.png";
         private static readonly string soundPath = @"C:\AlibaImages\NS.mp3";
+
 
         public static void ShowToast(string title, string description)
         {
             try
             {
+                // ✅ هذا السطر يحل مشكلة التحزيم
+                if (!ToastNotificationManagerCompat.WasCurrentProcessToastActivated())
+                {
+                    // تسجيل التطبيق
+                }
+
                 var builder = new ToastContentBuilder()
                     .AddText(title)
                     .AddText(description)
@@ -32,9 +39,9 @@ namespace ALIBA_COMPANY.classes
                 }
                 else
                 {
-                    // ✅ رسالة تخبرك إذا لم يجد الملف
-                    MessageBox.Show($"الأيقونة غير موجودة في:\n{logoPath}",
-                        "تنبيه", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    //// ✅ رسالة تخبرك إذا لم يجد الملف
+                    //MessageBox.Show($"الأيقونة غير موجودة في:\n{logoPath}",
+                    //    "تنبيه", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
 
                 if (File.Exists(soundPath))

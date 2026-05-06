@@ -67,6 +67,7 @@
         <AssociationConnector Association="AlibaRamyModel.FK_TB_travel_TB_users3" />
         <EntityTypeShape EntityType="AlibaRamyModel.TB_ads" Width="1.5" PointX="16.375" PointY="10.75" />
         <AssociationConnector Association="AlibaRamyModel.FK_Ads_Users" />
+        <EntityTypeShape EntityType="AlibaRamyModel.TB_permissions" Width="1.5" PointX="16.375" PointY="14.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

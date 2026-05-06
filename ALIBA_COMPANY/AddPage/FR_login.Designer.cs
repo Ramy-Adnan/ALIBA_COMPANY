@@ -32,6 +32,7 @@ namespace ALIBA_COMPANY.AddPage
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FR_login));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.loading = new DevExpress.XtraWaitForm.ProgressPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Btn_login = new Bunifu.Framework.UI.BunifuThinButton2();
@@ -50,6 +51,7 @@ namespace ALIBA_COMPANY.AddPage
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnUpdate);
             this.panel1.Controls.Add(this.loading);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.Btn_login);
@@ -62,6 +64,15 @@ namespace ALIBA_COMPANY.AddPage
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(465, 655);
             this.panel1.TabIndex = 0;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(94, 463);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(283, 68);
+            this.btnUpdate.TabIndex = 15;
+            this.btnUpdate.Text = "button1";
+            this.btnUpdate.UseVisualStyleBackColor = true;
             // 
             // loading
             // 
@@ -82,7 +93,7 @@ namespace ALIBA_COMPANY.AddPage
             this.loading.Description = "";
             this.loading.FrameInterval = 2000;
             this.loading.LineAnimationElementType = DevExpress.Utils.Animation.LineAnimationElementType.Rectangle;
-            this.loading.Location = new System.Drawing.Point(208, 537);
+            this.loading.Location = new System.Drawing.Point(212, 547);
             this.loading.Name = "loading";
             this.loading.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.loading.ShowCaption = false;
@@ -96,7 +107,7 @@ namespace ALIBA_COMPANY.AddPage
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = global::ALIBA_COMPANY.Properties.Resources.aliba;
-            this.pictureBox1.Location = new System.Drawing.Point(63, 82);
+            this.pictureBox1.Location = new System.Drawing.Point(69, 82);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(332, 190);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -122,7 +133,7 @@ namespace ALIBA_COMPANY.AddPage
             this.Btn_login.IdleFillColor = System.Drawing.Color.White;
             this.Btn_login.IdleForecolor = System.Drawing.Color.SeaGreen;
             this.Btn_login.IdleLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(111)))), ((int)(((byte)(190)))), ((int)(((byte)(68)))));
-            this.Btn_login.Location = new System.Drawing.Point(94, 460);
+            this.Btn_login.Location = new System.Drawing.Point(100, 460);
             this.Btn_login.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Btn_login.Name = "Btn_login";
             this.Btn_login.Size = new System.Drawing.Size(270, 68);
@@ -144,7 +155,7 @@ namespace ALIBA_COMPANY.AddPage
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(465, 73);
             this.labelControl1.TabIndex = 12;
-            this.labelControl1.Text = "شركة اللبة";
+            this.labelControl1.Text = "شركة اللبــة";
             // 
             // panel2
             // 
@@ -202,7 +213,7 @@ namespace ALIBA_COMPANY.AddPage
             this.edt_password.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(181)))), ((int)(((byte)(73)))));
             this.edt_password.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(255)))), ((int)(((byte)(102)))));
             this.edt_password.LineThickness = 8;
-            this.edt_password.Location = new System.Drawing.Point(63, 371);
+            this.edt_password.Location = new System.Drawing.Point(69, 371);
             this.edt_password.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.edt_password.MaxLength = 32767;
             this.edt_password.Name = "edt_password";
@@ -230,7 +241,7 @@ namespace ALIBA_COMPANY.AddPage
             this.edt_username.LineIdleColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(181)))), ((int)(((byte)(73)))));
             this.edt_username.LineMouseHoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(255)))), ((int)(((byte)(102)))));
             this.edt_username.LineThickness = 8;
-            this.edt_username.Location = new System.Drawing.Point(63, 281);
+            this.edt_username.Location = new System.Drawing.Point(69, 281);
             this.edt_username.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.edt_username.MaxLength = 32767;
             this.edt_username.Name = "edt_username";
@@ -283,5 +294,6 @@ namespace ALIBA_COMPANY.AddPage
         private Bunifu.Framework.UI.BunifuMaterialTextbox edt_username;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }

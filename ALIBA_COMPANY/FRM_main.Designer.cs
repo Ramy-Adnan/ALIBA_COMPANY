@@ -131,9 +131,9 @@ namespace ALIBA_COMPANY
             this.Btn_sarf = new DevExpress.XtraBars.BarButtonItem();
             this.Btn_dis_sarf = new DevExpress.XtraBars.BarButtonItem();
             this.Btn_dis_on_emplo = new DevExpress.XtraBars.BarButtonItem();
-            this.Btn_dis_on_br = new DevExpress.XtraBars.BarButtonItem();
-            this.Btn_dis_balance = new DevExpress.XtraBars.BarButtonItem();
             this.Mandob_dis = new DevExpress.XtraBars.BarButtonItem();
+            this.Btn_dis_balance = new DevExpress.XtraBars.BarButtonItem();
+            this.Btn_dis_on_br = new DevExpress.XtraBars.BarButtonItem();
             this.Btn_dis_compant_amount = new DevExpress.XtraBars.BarButtonItem();
             this.Btn_qabth = new DevExpress.XtraBars.BarButtonItem();
             this.Btn_incentive = new DevExpress.XtraBars.BarButtonItem();
@@ -151,6 +151,7 @@ namespace ALIBA_COMPANY
             this.Btn_connection = new DevExpress.XtraBars.BarButtonItem();
             this.Btn_backup = new DevExpress.XtraBars.BarButtonItem();
             this.Btn_restor = new DevExpress.XtraBars.BarButtonItem();
+            this.Btn_Permissions = new DevExpress.XtraBars.BarButtonItem();
             this.Btn_backup11111111 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem23 = new DevExpress.XtraBars.BarButtonItem();
@@ -542,7 +543,7 @@ namespace ALIBA_COMPANY
             this.Btn_cash_recive.ImageOptions.SvgImageSize = new System.Drawing.Size(30, 30);
             this.Btn_cash_recive.Name = "Btn_cash_recive";
             this.Btn_cash_recive.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.Btn_cash_recive.Text = "قبض نقدي";
+            this.Btn_cash_recive.Text = "قبض آجل";
             this.Btn_cash_recive.Click += new System.EventHandler(this.Btn_cash_recive_Click);
             // 
             // s14
@@ -571,7 +572,8 @@ namespace ALIBA_COMPANY
             this.Btn_cash_sell.ImageOptions.SvgImageSize = new System.Drawing.Size(30, 30);
             this.Btn_cash_sell.Name = "Btn_cash_sell";
             this.Btn_cash_sell.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.Btn_cash_sell.Text = "صرف نقدي";
+            this.Btn_cash_sell.Text = "صرف آجل";
+            this.Btn_cash_sell.Click += new System.EventHandler(this.Btn_cash_sell_Click);
             // 
             // s8
             // 
@@ -750,7 +752,8 @@ namespace ALIBA_COMPANY
             this.Btn_in1,
             this.Btn_Out1,
             this.Btn_dis_stock1,
-            this.Share_Post});
+            this.Share_Post,
+            this.Btn_Permissions});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Manager = this.fluentFormDefaultManager1;
             this.fluentDesignFormControl1.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
@@ -875,8 +878,9 @@ namespace ALIBA_COMPANY
             this.Btn_in1,
             this.Btn_Out1,
             this.Btn_dis_stock1,
-            this.Share_Post});
-            this.fluentFormDefaultManager1.MaxItemId = 174;
+            this.Share_Post,
+            this.Btn_Permissions});
+            this.fluentFormDefaultManager1.MaxItemId = 179;
             this.fluentFormDefaultManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemHypertextLabel1,
             this.repositoryItemTextEdit1,
@@ -1215,10 +1219,9 @@ namespace ALIBA_COMPANY
             new DevExpress.XtraBars.LinkPersistInfo(this.Btn_sarf),
             new DevExpress.XtraBars.LinkPersistInfo(this.Btn_dis_sarf),
             new DevExpress.XtraBars.LinkPersistInfo(this.Btn_dis_on_emplo),
-            new DevExpress.XtraBars.LinkPersistInfo(this.Btn_dis_on_br),
             new DevExpress.XtraBars.LinkPersistInfo(this.Mandob_dis),
             new DevExpress.XtraBars.LinkPersistInfo(this.Btn_dis_balance),
-            new DevExpress.XtraBars.LinkPersistInfo(this.Mandob_dis),
+            new DevExpress.XtraBars.LinkPersistInfo(this.Btn_dis_on_br),
             new DevExpress.XtraBars.LinkPersistInfo(this.Btn_dis_compant_amount),
             new DevExpress.XtraBars.LinkPersistInfo(this.Btn_qabth),
             new DevExpress.XtraBars.LinkPersistInfo(this.Btn_incentive)});
@@ -1244,18 +1247,21 @@ namespace ALIBA_COMPANY
             // 
             // Btn_dis_on_emplo
             // 
-            this.Btn_dis_on_emplo.Caption = "كشف على مستوى الموزعيين";
+            this.Btn_dis_on_emplo.Caption = "كشف حساب عميل";
             this.Btn_dis_on_emplo.Id = 75;
             this.Btn_dis_on_emplo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Btn_dis_on_emplo.ImageOptions.Image")));
             this.Btn_dis_on_emplo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("Btn_dis_on_emplo.ImageOptions.LargeImage")));
             this.Btn_dis_on_emplo.Name = "Btn_dis_on_emplo";
             this.Btn_dis_on_emplo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Btn_dis_on_emplo_ItemClick);
             // 
-            // Btn_dis_on_br
+            // Mandob_dis
             // 
-            this.Btn_dis_on_br.Caption = "كشف على مستوى الفرع";
-            this.Btn_dis_on_br.Id = 91;
-            this.Btn_dis_on_br.Name = "Btn_dis_on_br";
+            this.Mandob_dis.Caption = "كشف حساب موزع";
+            this.Mandob_dis.Id = 76;
+            this.Mandob_dis.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Mandob_dis.ImageOptions.Image")));
+            this.Mandob_dis.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("Mandob_dis.ImageOptions.LargeImage")));
+            this.Mandob_dis.Name = "Mandob_dis";
+            this.Mandob_dis.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Mandob_dis_ItemClick);
             // 
             // Btn_dis_balance
             // 
@@ -1265,14 +1271,11 @@ namespace ALIBA_COMPANY
             this.Btn_dis_balance.Name = "Btn_dis_balance";
             this.Btn_dis_balance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Btn_dis_balance_ItemClick);
             // 
-            // Mandob_dis
+            // Btn_dis_on_br
             // 
-            this.Mandob_dis.Caption = "كشف أرصدة الموزعيين";
-            this.Mandob_dis.Id = 76;
-            this.Mandob_dis.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("Mandob_dis.ImageOptions.Image")));
-            this.Mandob_dis.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("Mandob_dis.ImageOptions.LargeImage")));
-            this.Mandob_dis.Name = "Mandob_dis";
-            this.Mandob_dis.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Mandob_dis_ItemClick);
+            this.Btn_dis_on_br.Caption = "كشف على مستوى الفرع";
+            this.Btn_dis_on_br.Id = 91;
+            this.Btn_dis_on_br.Name = "Btn_dis_on_br";
             // 
             // Btn_dis_compant_amount
             // 
@@ -1382,7 +1385,8 @@ namespace ALIBA_COMPANY
             new DevExpress.XtraBars.LinkPersistInfo(this.Btn_user),
             new DevExpress.XtraBars.LinkPersistInfo(this.Btn_connection),
             new DevExpress.XtraBars.LinkPersistInfo(this.Btn_backup),
-            new DevExpress.XtraBars.LinkPersistInfo(this.Btn_restor)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.Btn_restor),
+            new DevExpress.XtraBars.LinkPersistInfo(this.Btn_Permissions)});
             this.Btn_seting.Name = "Btn_seting";
             this.Btn_seting.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             // 
@@ -1418,6 +1422,13 @@ namespace ALIBA_COMPANY
             this.Btn_restor.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("Btn_restor.ImageOptions.SvgImage")));
             this.Btn_restor.Name = "Btn_restor";
             this.Btn_restor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Btn_restor_ItemClick);
+            // 
+            // Btn_Permissions
+            // 
+            this.Btn_Permissions.Caption = "صلاحيات";
+            this.Btn_Permissions.Id = 177;
+            this.Btn_Permissions.Name = "Btn_Permissions";
+            this.Btn_Permissions.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.Btn_Permissions_ItemClick);
             // 
             // Btn_backup11111111
             // 
@@ -1749,6 +1760,7 @@ namespace ALIBA_COMPANY
         private DevExpress.XtraBars.BarButtonItem Btn_Out1;
         public DevExpress.XtraBars.BarButtonItem Btn_dis_InOrOut;
         public DevExpress.XtraBars.BarButtonItem Btn_dis_stock1;
-        private DevExpress.XtraBars.BarStaticItem Share_Post;
+        private DevExpress.XtraBars.BarButtonItem Btn_Permissions;
+        public DevExpress.XtraBars.BarStaticItem Share_Post;
     }
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>AlibaSystem</id>
+    <version>1.0.0</version> 
+    <title>Aliba Company System</title>
+    <authors>Ramy</authors>
+    <description>نظام شركة اللبة للتجارة العامة</description>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+  </metadata>
+  <files>
+    <file src="bin\Release\**" target="lib\net45\" />
+  </files>
+</package>

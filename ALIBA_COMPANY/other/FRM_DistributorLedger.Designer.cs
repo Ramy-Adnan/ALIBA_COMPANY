@@ -184,7 +184,7 @@ namespace ALIBA_COMPANY.other
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMain.Location = new System.Drawing.Point(0, 82);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1632, 558);
+            this.pnlMain.Size = new System.Drawing.Size(1632, 506);
             this.pnlMain.TabIndex = 0;
             // 
             // gridControl1
@@ -194,7 +194,7 @@ namespace ALIBA_COMPANY.other
             this.gridControl1.Location = new System.Drawing.Point(0, 0);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1375, 558);
+            this.gridControl1.Size = new System.Drawing.Size(1375, 506);
             this.gridControl1.TabIndex = 0;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -230,7 +230,7 @@ namespace ALIBA_COMPANY.other
             this.pnlRight.Location = new System.Drawing.Point(1375, 0);
             this.pnlRight.Name = "pnlRight";
             this.pnlRight.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.pnlRight.Size = new System.Drawing.Size(257, 558);
+            this.pnlRight.Size = new System.Drawing.Size(257, 506);
             this.pnlRight.TabIndex = 1;
             // 
             // Lst_cust
@@ -242,7 +242,7 @@ namespace ALIBA_COMPANY.other
             this.Lst_cust.Location = new System.Drawing.Point(0, 78);
             this.Lst_cust.Name = "Lst_cust";
             this.Lst_cust.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Lst_cust.Size = new System.Drawing.Size(252, 384);
+            this.Lst_cust.Size = new System.Drawing.Size(252, 332);
             this.Lst_cust.TabIndex = 1;
             this.Lst_cust.SelectedIndexChanged += new System.EventHandler(this.Lst_cust_SelectedIndexChanged);
             // 
@@ -277,7 +277,7 @@ namespace ALIBA_COMPANY.other
             this.lblFilter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblFilter.Font = new System.Drawing.Font("Cairo SemiBold", 9.5F, System.Drawing.FontStyle.Bold);
             this.lblFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(100)))), ((int)(((byte)(150)))));
-            this.lblFilter.Location = new System.Drawing.Point(0, 462);
+            this.lblFilter.Location = new System.Drawing.Point(0, 410);
             this.lblFilter.Name = "lblFilter";
             this.lblFilter.Size = new System.Drawing.Size(252, 26);
             this.lblFilter.TabIndex = 3;
@@ -291,7 +291,7 @@ namespace ALIBA_COMPANY.other
             this.Chk_credit.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Chk_credit.Font = new System.Drawing.Font("Cairo SemiBold", 10.8F, System.Drawing.FontStyle.Bold);
             this.Chk_credit.ForeColor = System.Drawing.Color.DarkGreen;
-            this.Chk_credit.Location = new System.Drawing.Point(0, 488);
+            this.Chk_credit.Location = new System.Drawing.Point(0, 436);
             this.Chk_credit.Name = "Chk_credit";
             this.Chk_credit.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.Chk_credit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -307,7 +307,7 @@ namespace ALIBA_COMPANY.other
             this.Chk_debit.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.Chk_debit.Font = new System.Drawing.Font("Cairo SemiBold", 10.8F, System.Drawing.FontStyle.Bold);
             this.Chk_debit.ForeColor = System.Drawing.Color.DarkRed;
-            this.Chk_debit.Location = new System.Drawing.Point(0, 522);
+            this.Chk_debit.Location = new System.Drawing.Point(0, 470);
             this.Chk_debit.Name = "Chk_debit";
             this.Chk_debit.Padding = new System.Windows.Forms.Padding(0, 0, 8, 0);
             this.Chk_debit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -323,9 +323,9 @@ namespace ALIBA_COMPANY.other
             this.pnlFooter.Controls.Add(this.pnlTotals);
             this.pnlFooter.Controls.Add(this.loading);
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFooter.Location = new System.Drawing.Point(0, 640);
+            this.pnlFooter.Location = new System.Drawing.Point(0, 588);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(1632, 42);
+            this.pnlFooter.Size = new System.Drawing.Size(1632, 145);
             this.pnlFooter.TabIndex = 2;
             // 
             // pnlTotals
@@ -337,29 +337,29 @@ namespace ALIBA_COMPANY.other
             this.pnlTotals.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTotals.Location = new System.Drawing.Point(180, 0);
             this.pnlTotals.Name = "pnlTotals";
-            this.pnlTotals.Size = new System.Drawing.Size(1450, 40);
+            this.pnlTotals.Size = new System.Drawing.Size(1450, 143);
             this.pnlTotals.TabIndex = 0;
             // 
             // Lbl_total_debit
             // 
             this.Lbl_total_debit.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Lbl_total_debit.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold);
+            this.Lbl_total_debit.Font = new System.Drawing.Font("Cairo SemiBold", 14F, System.Drawing.FontStyle.Bold);
             this.Lbl_total_debit.ForeColor = System.Drawing.Color.DarkRed;
-            this.Lbl_total_debit.Location = new System.Drawing.Point(180, 0);
+            this.Lbl_total_debit.Location = new System.Drawing.Point(6, 0);
             this.Lbl_total_debit.Name = "Lbl_total_debit";
-            this.Lbl_total_debit.Size = new System.Drawing.Size(440, 40);
+            this.Lbl_total_debit.Size = new System.Drawing.Size(459, 143);
             this.Lbl_total_debit.TabIndex = 0;
-            this.Lbl_total_debit.Text = "إجمالي المبيعات: 0.00 $";
+            this.Lbl_total_debit.Text = "إجمالي \r\nالمبيعات\r\n: 0.00 $";
             this.Lbl_total_debit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Lbl_total_credit
             // 
             this.Lbl_total_credit.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Lbl_total_credit.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold);
+            this.Lbl_total_credit.Font = new System.Drawing.Font("Cairo SemiBold", 14F, System.Drawing.FontStyle.Bold);
             this.Lbl_total_credit.ForeColor = System.Drawing.Color.DarkGreen;
-            this.Lbl_total_credit.Location = new System.Drawing.Point(620, 0);
+            this.Lbl_total_credit.Location = new System.Drawing.Point(465, 0);
             this.Lbl_total_credit.Name = "Lbl_total_credit";
-            this.Lbl_total_credit.Size = new System.Drawing.Size(430, 40);
+            this.Lbl_total_credit.Size = new System.Drawing.Size(454, 143);
             this.Lbl_total_credit.TabIndex = 1;
             this.Lbl_total_credit.Text = "إجمالي المدفوعات: 0.00 $";
             this.Lbl_total_credit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -367,11 +367,11 @@ namespace ALIBA_COMPANY.other
             // Lbl_net
             // 
             this.Lbl_net.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Lbl_net.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold);
+            this.Lbl_net.Font = new System.Drawing.Font("Cairo SemiBold", 14F, System.Drawing.FontStyle.Bold);
             this.Lbl_net.ForeColor = System.Drawing.Color.DarkRed;
-            this.Lbl_net.Location = new System.Drawing.Point(1050, 0);
+            this.Lbl_net.Location = new System.Drawing.Point(919, 0);
             this.Lbl_net.Name = "Lbl_net";
-            this.Lbl_net.Size = new System.Drawing.Size(400, 40);
+            this.Lbl_net.Size = new System.Drawing.Size(531, 143);
             this.Lbl_net.TabIndex = 2;
             this.Lbl_net.Text = "صافي الدين: 0.00 $";
             this.Lbl_net.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -383,7 +383,7 @@ namespace ALIBA_COMPANY.other
             this.loading.ForeColor = System.Drawing.Color.SteelBlue;
             this.loading.Location = new System.Drawing.Point(0, 0);
             this.loading.Name = "loading";
-            this.loading.Size = new System.Drawing.Size(180, 40);
+            this.loading.Size = new System.Drawing.Size(180, 143);
             this.loading.TabIndex = 1;
             this.loading.Text = "⏳ جاري التحميل...";
             this.loading.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -392,7 +392,7 @@ namespace ALIBA_COMPANY.other
             // FRM_DistributorLedger
             // 
             this.Appearance.Options.UseFont = true;
-            this.ClientSize = new System.Drawing.Size(1632, 682);
+            this.ClientSize = new System.Drawing.Size(1632, 733);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlFilter);
             this.Controls.Add(this.pnlFooter);

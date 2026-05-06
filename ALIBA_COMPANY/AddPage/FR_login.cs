@@ -1,12 +1,7 @@
-﻿using DevExpress.XtraEditors;
+﻿using ALIBA_COMPANY.pages;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -28,6 +23,10 @@ namespace ALIBA_COMPANY.AddPage
             this.lblcopy.Text = "جميع الحقوق محفوظة © 2011-" + DateTime.Now.Year.ToString();
 
             this.AutoScaleMode = AutoScaleMode.Dpi;
+
+            // أضف هنا فقط هذين السطرين
+            SilentUpdater.Initialize(btnUpdate);
+            btnUpdate.Click += (s, e) => SilentUpdater.ApplyUpdate();
         }
 
        
@@ -119,6 +118,8 @@ namespace ALIBA_COMPANY.AddPage
                 {
                     // Sign in 
                     FRM_main main1 = new FRM_main();
+
+                    page_home home = new page_home();
                     // Set User Data
                     Properties.Settings.Default.UserID = tbadd.user_id;
                     Properties.Settings.Default.FullName = tbadd.user_FullName;
@@ -129,6 +130,14 @@ namespace ALIBA_COMPANY.AddPage
                     var entry = db.Entry(tbadd);
                     entry.Property(e1 => e1.user_state).IsModified = true;
                     db.SaveChanges();
+
+
+                    // ✅ أضفه هنا مباشرةً بعد SaveChanges
+                    //FRM_Permissions.AuthService.ReloadFromDB();
+
+
+
+
 
                     Properties.Settings.Default.Save();
 
@@ -166,6 +175,11 @@ namespace ALIBA_COMPANY.AddPage
 
                         main1.lblName.Caption = tbadd.user_FullName;
                         main1.lblRol.Caption = tbadd.user_role;
+
+                        main1.Share_Post.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        home.Chart_Show.Visible = false;
+
+
                         main1.Show();
                     }
                     else if (tbadd.user_role == "امين مخزن")
@@ -209,6 +223,9 @@ namespace ALIBA_COMPANY.AddPage
                         main1.s5.Visible = false;
                         main1.s3.Visible = false;
 
+                        main1.Share_Post.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+                        home.Chart_Show.Visible = false;
+
                         main1.lblName.Caption = tbadd.user_FullName;
                         main1.lblRol.Caption = tbadd.user_role;
                         main1.Show();
@@ -219,6 +236,7 @@ namespace ALIBA_COMPANY.AddPage
 
                         main1.lblName.Caption = tbadd.user_FullName;
                         main1.lblRol.Caption = tbadd.user_role;
+                        
                         main1.Show();
                     }
                     else if (tbadd.user_role == "اداري")
@@ -320,6 +338,8 @@ namespace ALIBA_COMPANY.AddPage
         {
             base.OnDpiChanged(e);
         }
+
+      
     }
     public static class Users
     {

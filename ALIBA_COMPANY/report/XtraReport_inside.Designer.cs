@@ -33,9 +33,6 @@ namespace ALIBA_COMPANY.report
             DevExpress.XtraReports.UI.XRWatermark xrWatermark1 = new DevExpress.XtraReports.UI.XRWatermark();
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
-            this.xrLabel33 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
-            this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.table2 = new DevExpress.XtraReports.UI.XRTable();
             this.tableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -88,6 +85,10 @@ namespace ALIBA_COMPANY.report
             this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLabel22 = new DevExpress.XtraReports.UI.XRLabel();
             this.action = new DevExpress.XtraReports.Parameters.Parameter();
+            this.xrLabel29 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel30 = new DevExpress.XtraReports.UI.XRLabel();
+            this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
+            this.xrPageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -99,53 +100,12 @@ namespace ALIBA_COMPANY.report
             // BottomMargin
             // 
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.xrLabel33,
-            this.xrPageInfo1,
-            this.pageInfo2});
-            this.BottomMargin.HeightF = 37.08333F;
+            this.xrLabel29,
+            this.xrLabel30,
+            this.pageInfo2,
+            this.xrPageInfo1});
+            this.BottomMargin.HeightF = 59F;
             this.BottomMargin.Name = "BottomMargin";
-            // 
-            // xrLabel33
-            // 
-            this.xrLabel33.BorderColor = System.Drawing.Color.DarkRed;
-            this.xrLabel33.Font = new DevExpress.Drawing.DXFont("Cairo", 10F);
-            this.xrLabel33.ForeColor = System.Drawing.Color.DimGray;
-            this.xrLabel33.LocationFloat = new DevExpress.Utils.PointFloat(167.3227F, 0F);
-            this.xrLabel33.Multiline = true;
-            this.xrLabel33.Name = "xrLabel33";
-            this.xrLabel33.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel33.RightToLeft = DevExpress.XtraReports.UI.RightToLeft.No;
-            this.xrLabel33.SizeF = new System.Drawing.SizeF(504.3697F, 31.45833F);
-            this.xrLabel33.StylePriority.UseBorderColor = false;
-            this.xrLabel33.StylePriority.UseFont = false;
-            this.xrLabel33.StylePriority.UseForeColor = false;
-            this.xrLabel33.StylePriority.UseTextAlignment = false;
-            this.xrLabel33.Text = "Designer ENG-RAMY 2024© :07809774178";
-            this.xrLabel33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            // 
-            // xrPageInfo1
-            // 
-            this.xrPageInfo1.Font = new DevExpress.Drawing.DXFont("Cairo", 10F);
-            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(671.6926F, 0F);
-            this.xrPageInfo1.Name = "xrPageInfo1";
-            this.xrPageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
-            this.xrPageInfo1.RightToLeft = DevExpress.XtraReports.UI.RightToLeft.Yes;
-            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(139.3073F, 31.45833F);
-            this.xrPageInfo1.StylePriority.UseFont = false;
-            this.xrPageInfo1.StylePriority.UseTextAlignment = false;
-            this.xrPageInfo1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            this.xrPageInfo1.TextFormatString = "{0:yyyy-MM-dd hh:mm tt}";
-            // 
-            // pageInfo2
-            // 
-            this.pageInfo2.Font = new DevExpress.Drawing.DXFont("Cairo", 10F);
-            this.pageInfo2.LocationFloat = new DevExpress.Utils.PointFloat(11.08309F, 0F);
-            this.pageInfo2.Name = "pageInfo2";
-            this.pageInfo2.SizeF = new System.Drawing.SizeF(88.58269F, 31.45833F);
-            this.pageInfo2.StylePriority.UseFont = false;
-            this.pageInfo2.StylePriority.UseTextAlignment = false;
-            this.pageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopLeft;
-            this.pageInfo2.TextFormatString = "Page {0} of {1}";
             // 
             // Detail
             // 
@@ -940,6 +900,74 @@ namespace ALIBA_COMPANY.report
             this.action.Name = "action";
             this.action.Visible = false;
             // 
+            // xrLabel29
+            // 
+            this.xrLabel29.BorderColor = System.Drawing.Color.DarkRed;
+            this.xrLabel29.BorderWidth = 0F;
+            this.xrLabel29.Font = new DevExpress.Drawing.DXFont("Cairo ExtraBold", 9F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel29.ForeColor = System.Drawing.Color.DimGray;
+            this.xrLabel29.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
+            this.xrLabel29.Multiline = true;
+            this.xrLabel29.Name = "xrLabel29";
+            this.xrLabel29.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel29.RightToLeft = DevExpress.XtraReports.UI.RightToLeft.No;
+            this.xrLabel29.SizeF = new System.Drawing.SizeF(177.1653F, 54.29764F);
+            this.xrLabel29.StylePriority.UseBorderColor = false;
+            this.xrLabel29.StylePriority.UseBorderWidth = false;
+            this.xrLabel29.StylePriority.UseFont = false;
+            this.xrLabel29.StylePriority.UseForeColor = false;
+            this.xrLabel29.StylePriority.UseTextAlignment = false;
+            this.xrLabel29.Text = "للبرمجة والتصميم           مهندس رامي-07809774178";
+            this.xrLabel29.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrLabel30
+            // 
+            this.xrLabel30.BorderColor = System.Drawing.Color.DarkRed;
+            this.xrLabel30.BorderWidth = 0F;
+            this.xrLabel30.Font = new DevExpress.Drawing.DXFont("Cairo ExtraBold", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel30.ForeColor = System.Drawing.Color.DimGray;
+            this.xrLabel30.LocationFloat = new DevExpress.Utils.PointFloat(177.1653F, 0F);
+            this.xrLabel30.Multiline = true;
+            this.xrLabel30.Name = "xrLabel30";
+            this.xrLabel30.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel30.RightToLeft = DevExpress.XtraReports.UI.RightToLeft.Yes;
+            this.xrLabel30.SizeF = new System.Drawing.SizeF(494.527F, 54.29764F);
+            this.xrLabel30.StylePriority.UseBorderColor = false;
+            this.xrLabel30.StylePriority.UseBorderWidth = false;
+            this.xrLabel30.StylePriority.UseFont = false;
+            this.xrLabel30.StylePriority.UseForeColor = false;
+            this.xrLabel30.StylePriority.UseTextAlignment = false;
+            this.xrLabel30.Text = " العنــــوان : محافظــة القادســـية - طريق ديوانية-حلة ";
+            this.xrLabel30.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // pageInfo2
+            // 
+            this.pageInfo2.Font = new DevExpress.Drawing.DXFont("Cairo ExtraBold", 9F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.pageInfo2.ForeColor = System.Drawing.Color.DimGray;
+            this.pageInfo2.LocationFloat = new DevExpress.Utils.PointFloat(671.6927F, 29.52754F);
+            this.pageInfo2.Name = "pageInfo2";
+            this.pageInfo2.SizeF = new System.Drawing.SizeF(141.3813F, 24.7701F);
+            this.pageInfo2.StylePriority.UseFont = false;
+            this.pageInfo2.StylePriority.UseForeColor = false;
+            this.pageInfo2.StylePriority.UseTextAlignment = false;
+            this.pageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            this.pageInfo2.TextFormatString = "Page {0} of {1}";
+            // 
+            // xrPageInfo1
+            // 
+            this.xrPageInfo1.Font = new DevExpress.Drawing.DXFont("Cairo ExtraBold", 9F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrPageInfo1.ForeColor = System.Drawing.Color.DimGray;
+            this.xrPageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(671.6925F, 0F);
+            this.xrPageInfo1.Name = "xrPageInfo1";
+            this.xrPageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
+            this.xrPageInfo1.RightToLeft = DevExpress.XtraReports.UI.RightToLeft.No;
+            this.xrPageInfo1.SizeF = new System.Drawing.SizeF(141.3816F, 29.52754F);
+            this.xrPageInfo1.StylePriority.UseFont = false;
+            this.xrPageInfo1.StylePriority.UseForeColor = false;
+            this.xrPageInfo1.StylePriority.UseTextAlignment = false;
+            this.xrPageInfo1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            this.xrPageInfo1.TextFormatString = "{0:yyyy-MM-dd hh:mm tt}";
+            // 
             // XtraReport_inside
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -950,7 +978,7 @@ namespace ALIBA_COMPANY.report
             this.GroupHeader1,
             this.ReportFooter});
             this.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F);
-            this.Margins = new DevExpress.Drawing.DXMargins(2F, 4F, 3.020833F, 37.08333F);
+            this.Margins = new DevExpress.Drawing.DXMargins(2F, 4F, 3.020833F, 59F);
             this.PageHeight = 1169;
             this.PageWidth = 827;
             this.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.A4;
@@ -972,9 +1000,10 @@ namespace ALIBA_COMPANY.report
             this.Units,
             this.Items,
             this.action});
-            this.Version = "23.2";
+            this.Version = "24.1";
             xrWatermark1.Id = "Watermark1";
-            this.Watermarks.Add(xrWatermark1);
+            this.Watermarks.AddRange(new DevExpress.XtraPrinting.Drawing.Watermark[] {
+            xrWatermark1});
             ((System.ComponentModel.ISupportInitialize)(this.table2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
@@ -1006,8 +1035,6 @@ namespace ALIBA_COMPANY.report
         private DevExpress.XtraReports.UI.XRTableCell tableCell4;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell2;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell4;
-        private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo1;
-        private DevExpress.XtraReports.UI.XRPageInfo pageInfo2;
         private DevExpress.XtraReports.Parameters.Parameter Date;
         private DevExpress.XtraReports.Parameters.Parameter Driver;
         private DevExpress.XtraReports.Parameters.Parameter City;
@@ -1017,7 +1044,6 @@ namespace ALIBA_COMPANY.report
         private DevExpress.XtraReports.Parameters.Parameter Code;
         private DevExpress.XtraReports.UI.ReportFooterBand ReportFooter;
         private DevExpress.XtraReports.UI.XRLine xrLine1;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel33;
         private DevExpress.XtraReports.UI.XRLabel xrLabel22;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell1;
         private DevExpress.XtraReports.UI.XRLabel xrLabel10;
@@ -1039,5 +1065,9 @@ namespace ALIBA_COMPANY.report
         private DevExpress.XtraReports.UI.XRLabel xrLabel25;
         private DevExpress.XtraReports.UI.XRBarCode xrBarCode1;
         private DevExpress.XtraReports.UI.XRLine xrLine2;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel29;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel30;
+        private DevExpress.XtraReports.UI.XRPageInfo pageInfo2;
+        private DevExpress.XtraReports.UI.XRPageInfo xrPageInfo1;
     }
 }

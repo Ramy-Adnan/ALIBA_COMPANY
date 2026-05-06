@@ -33,9 +33,9 @@ namespace ALIBA_COMPANY.other
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panelImageDisplay = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.panelImageDisplay = new System.Windows.Forms.Panel();
             this.msg = new System.Windows.Forms.Label();
             this.labelDownload = new System.Windows.Forms.Label();
             this.labelSpeed = new System.Windows.Forms.Label();
@@ -96,54 +96,56 @@ namespace ALIBA_COMPANY.other
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.panel1.Size = new System.Drawing.Size(1479, 687);
+            this.panel1.Size = new System.Drawing.Size(1267, 647);
             this.panel1.TabIndex = 6;
-            // 
-            // panelImageDisplay
-            // 
-            this.panelImageDisplay.Location = new System.Drawing.Point(23, 368);
-            this.panelImageDisplay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panelImageDisplay.Name = "panelImageDisplay";
-            this.panelImageDisplay.Size = new System.Drawing.Size(417, 256);
-            this.panelImageDisplay.TabIndex = 42;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::ALIBA_COMPANY.Properties.Resources.left;
-            this.button2.Location = new System.Drawing.Point(150, 624);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(26, 22);
-            this.button2.TabIndex = 44;
-            this.button2.UseVisualStyleBackColor = false;
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackColor = System.Drawing.Color.DimGray;
             this.button1.BackgroundImage = global::ALIBA_COMPANY.Properties.Resources.aroow1;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::ALIBA_COMPANY.Properties.Resources.right;
-            this.button1.Location = new System.Drawing.Point(258, 624);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.DimGray;
+            this.button1.Location = new System.Drawing.Point(29, 630);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(26, 22);
+            this.button1.Size = new System.Drawing.Size(30, 10);
             this.button1.TabIndex = 43;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Gray;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(13, 619);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(10, 22);
+            this.button2.TabIndex = 44;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Visible = false;
+            // 
+            // panelImageDisplay
+            // 
+            this.panelImageDisplay.Location = new System.Drawing.Point(11, 351);
+            this.panelImageDisplay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelImageDisplay.Name = "panelImageDisplay";
+            this.panelImageDisplay.Size = new System.Drawing.Size(369, 263);
+            this.panelImageDisplay.TabIndex = 42;
             // 
             // msg
             // 
             this.msg.AllowDrop = true;
-            this.msg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.msg.AutoEllipsis = true;
             this.msg.BackColor = System.Drawing.Color.Transparent;
             this.msg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.msg.Font = new System.Drawing.Font("Droid Arabic Kufi", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.msg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.msg.Location = new System.Drawing.Point(980, 12);
+            this.msg.Location = new System.Drawing.Point(917, 4);
             this.msg.Name = "msg";
             this.msg.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.msg.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.msg.Size = new System.Drawing.Size(484, 239);
+            this.msg.Size = new System.Drawing.Size(343, 230);
             this.msg.TabIndex = 41;
             // 
             // labelDownload
@@ -151,7 +153,7 @@ namespace ALIBA_COMPANY.other
             this.labelDownload.BackColor = System.Drawing.Color.Transparent;
             this.labelDownload.Font = new System.Drawing.Font("Cairo", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDownload.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelDownload.Location = new System.Drawing.Point(1021, 450);
+            this.labelDownload.Location = new System.Drawing.Point(812, 442);
             this.labelDownload.Name = "labelDownload";
             this.labelDownload.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelDownload.Size = new System.Drawing.Size(439, 39);
@@ -163,7 +165,7 @@ namespace ALIBA_COMPANY.other
             this.labelSpeed.BackColor = System.Drawing.Color.Transparent;
             this.labelSpeed.Font = new System.Drawing.Font("Cairo", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSpeed.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.labelSpeed.Location = new System.Drawing.Point(1021, 402);
+            this.labelSpeed.Location = new System.Drawing.Point(812, 394);
             this.labelSpeed.Name = "labelSpeed";
             this.labelSpeed.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelSpeed.Size = new System.Drawing.Size(439, 42);
@@ -174,7 +176,7 @@ namespace ALIBA_COMPANY.other
             // 
             this.what.BackColor = System.Drawing.Color.Transparent;
             this.what.Image = global::ALIBA_COMPANY.Properties.Resources.whatsapp__1_;
-            this.what.Location = new System.Drawing.Point(1171, 624);
+            this.what.Location = new System.Drawing.Point(965, 594);
             this.what.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.what.Name = "what";
             this.what.Size = new System.Drawing.Size(51, 47);
@@ -186,7 +188,7 @@ namespace ALIBA_COMPANY.other
             // 
             this.tiktok.BackColor = System.Drawing.Color.Transparent;
             this.tiktok.Image = global::ALIBA_COMPANY.Properties.Resources.tik_tok;
-            this.tiktok.Location = new System.Drawing.Point(1229, 624);
+            this.tiktok.Location = new System.Drawing.Point(1023, 594);
             this.tiktok.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tiktok.Name = "tiktok";
             this.tiktok.Size = new System.Drawing.Size(51, 47);
@@ -198,7 +200,7 @@ namespace ALIBA_COMPANY.other
             // 
             this.tele.BackColor = System.Drawing.Color.Transparent;
             this.tele.Image = global::ALIBA_COMPANY.Properties.Resources.telegram;
-            this.tele.Location = new System.Drawing.Point(1289, 624);
+            this.tele.Location = new System.Drawing.Point(1083, 594);
             this.tele.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tele.Name = "tele";
             this.tele.Size = new System.Drawing.Size(51, 47);
@@ -210,7 +212,7 @@ namespace ALIBA_COMPANY.other
             // 
             this.inst.BackColor = System.Drawing.Color.Transparent;
             this.inst.Image = global::ALIBA_COMPANY.Properties.Resources.instagram;
-            this.inst.Location = new System.Drawing.Point(1351, 624);
+            this.inst.Location = new System.Drawing.Point(1145, 594);
             this.inst.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.inst.Name = "inst";
             this.inst.Size = new System.Drawing.Size(51, 47);
@@ -222,7 +224,7 @@ namespace ALIBA_COMPANY.other
             // 
             this.face.BackColor = System.Drawing.Color.Transparent;
             this.face.Image = global::ALIBA_COMPANY.Properties.Resources.facebook;
-            this.face.Location = new System.Drawing.Point(1413, 624);
+            this.face.Location = new System.Drawing.Point(1207, 594);
             this.face.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.face.Name = "face";
             this.face.Size = new System.Drawing.Size(51, 47);
@@ -232,15 +234,13 @@ namespace ALIBA_COMPANY.other
             // 
             // marqueeProgressBarControl1
             // 
-            this.marqueeProgressBarControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.marqueeProgressBarControl1.EditValue = 0;
-            this.marqueeProgressBarControl1.Location = new System.Drawing.Point(11, 341);
+            this.marqueeProgressBarControl1.Location = new System.Drawing.Point(8, 324);
             this.marqueeProgressBarControl1.Margin = new System.Windows.Forms.Padding(9, 7, 9, 7);
             this.marqueeProgressBarControl1.Name = "marqueeProgressBarControl1";
             this.marqueeProgressBarControl1.Properties.Appearance.BackColor = System.Drawing.Color.Black;
             this.marqueeProgressBarControl1.Properties.Appearance.ForeColor = System.Drawing.Color.LavenderBlush;
-            this.marqueeProgressBarControl1.Size = new System.Drawing.Size(1455, 18);
+            this.marqueeProgressBarControl1.Size = new System.Drawing.Size(1243, 18);
             this.marqueeProgressBarControl1.TabIndex = 32;
             // 
             // label1
@@ -248,7 +248,7 @@ namespace ALIBA_COMPANY.other
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("GE SS Two Bold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.label1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.label1.Location = new System.Drawing.Point(269, 267);
+            this.label1.Location = new System.Drawing.Point(157, 250);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(945, 66);
             this.label1.TabIndex = 30;
@@ -259,7 +259,7 @@ namespace ALIBA_COMPANY.other
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::ALIBA_COMPANY.Properties.Resources.aliba;
-            this.pictureBox1.Location = new System.Drawing.Point(522, 21);
+            this.pictureBox1.Location = new System.Drawing.Point(424, 4);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(411, 230);
@@ -279,7 +279,7 @@ namespace ALIBA_COMPANY.other
             this.bunifuCircleProgressbar1.LabelVisible = true;
             this.bunifuCircleProgressbar1.LineProgressThickness = 13;
             this.bunifuCircleProgressbar1.LineThickness = 13;
-            this.bunifuCircleProgressbar1.Location = new System.Drawing.Point(627, 423);
+            this.bunifuCircleProgressbar1.Location = new System.Drawing.Point(529, 394);
             this.bunifuCircleProgressbar1.Margin = new System.Windows.Forms.Padding(11, 9, 11, 9);
             this.bunifuCircleProgressbar1.MaxValue = 100;
             this.bunifuCircleProgressbar1.Name = "bunifuCircleProgressbar1";
@@ -294,12 +294,12 @@ namespace ALIBA_COMPANY.other
             this.Copyright.BackColor = System.Drawing.Color.Transparent;
             this.Copyright.Font = new System.Drawing.Font("Cairo SemiBold", 12F, System.Drawing.FontStyle.Bold);
             this.Copyright.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Copyright.Location = new System.Drawing.Point(3, 641);
+            this.Copyright.Location = new System.Drawing.Point(402, 603);
             this.Copyright.Name = "Copyright";
             this.Copyright.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Copyright.Size = new System.Drawing.Size(437, 37);
+            this.Copyright.Size = new System.Drawing.Size(454, 37);
             this.Copyright.TabIndex = 31;
-            this.Copyright.Text = "Programming By Eng Ramy® 2024- ";
+            this.Copyright.Text = "Programming By Eng Ramy® 2024 - ";
             this.Copyright.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LblUpdate
@@ -307,7 +307,7 @@ namespace ALIBA_COMPANY.other
             this.LblUpdate.BackColor = System.Drawing.Color.Transparent;
             this.LblUpdate.Font = new System.Drawing.Font("Cairo", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblUpdate.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.LblUpdate.Location = new System.Drawing.Point(962, 360);
+            this.LblUpdate.Location = new System.Drawing.Point(753, 349);
             this.LblUpdate.Name = "LblUpdate";
             this.LblUpdate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.LblUpdate.Size = new System.Drawing.Size(498, 38);
@@ -327,14 +327,14 @@ namespace ALIBA_COMPANY.other
             this.progressBarControl.Location = new System.Drawing.Point(1355, 15367);
             this.progressBarControl.Margin = new System.Windows.Forms.Padding(169, 148, 169, 148);
             this.progressBarControl.Name = "progressBarControl";
-            this.progressBarControl.Size = new System.Drawing.Size(50627, 564);
+            this.progressBarControl.Size = new System.Drawing.Size(50415, 564);
             this.progressBarControl.TabIndex = 5;
             // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1481, 689);
+            this.ClientSize = new System.Drawing.Size(1269, 649);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.progressBarControl);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);

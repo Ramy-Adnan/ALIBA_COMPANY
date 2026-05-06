@@ -102,6 +102,10 @@ namespace ALIBA_COMPANY.sold
                 TT.Insert(0, "");
                 Combo_travel.DataSource = TT;
 
+
+                
+
+
                 db.Database.Connection.Close();
             }
             catch (Exception ex)

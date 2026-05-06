@@ -338,6 +338,7 @@ using ALIBA_COMPANY.classes;
 using DevExpress.Office.Drawing;
 using TheArtOfDev.HtmlRenderer.Adapters;
 using System.Data.SqlClient;
+using System.Windows.Documents;
 
 namespace ALIBA_COMPANY.Store
 {
@@ -385,7 +386,7 @@ namespace ALIBA_COMPANY.Store
         {
             InitializeComponent();
             ApplyProfessionalTheme();
-            SetDefaultImage();
+         
         }
 
         // ════════════════════════════════════════════════════════════════════════
@@ -404,6 +405,7 @@ namespace ALIBA_COMPANY.Store
             ser_item.ForeColor = COLOR_TEXT_MAIN;
             ser_item.Font = new Font("Cairo", 13f, FontStyle.Bold);
             ser_item.BorderStyle = BorderStyle.FixedSingle;
+            ser_item.TextAlign = HorizontalAlignment.Center;
 
             StyleListBox(listbox_suggestions);
 
@@ -416,11 +418,7 @@ namespace ALIBA_COMPANY.Store
                 if (c is Label lbl) StyleLabel(lbl);
             }
 
-            // ─ بطاقة الصورة ─
-            StyleGroupBox(grpImage, "🖼️  صورة المادة", Color.FromArgb(160, 100, 200));
-            pictureEdit1.BackColor = COLOR_BG;
-            pictureEdit1.BorderStyle = BorderStyle.None;
-            pictureEdit1.SizeMode = PictureBoxSizeMode.Zoom;
+           
 
             // ─ حقل الكمية ─
             txt_Number.BackColor = Color.White;
@@ -433,17 +431,16 @@ namespace ALIBA_COMPANY.Store
             StyleButton(btn_add, GetAddButtonText(), COLOR_SUCCESS, Color.White);
             StyleButton(Btn_close, "✖  خروج", COLOR_DANGER, Color.White);
 
-            // ─ لوحة المعلومات السفلية ─
-            if (pnlInfo != null) pnlInfo.BackColor = COLOR_HIGHLIGHT;
+           
         }
 
         private string GetFormTitle()
         {
             switch (IN_OUT_STOCK)
             {
-                case 1: return "📥  إدراج داخل  —  إضافة مادة";
-                case 2: return "📤  إدراج خارج  —  إضافة مادة";
-                case 11: return "🗑️  إتلاف مخزون —  إضافة مادة";
+                case 1: return "📥   ادخال مواد الى المخزن";
+                case 2: return "📤   اخراج مواد من الخزن";
+                case 11: return "🗑️  اتلاف مواد من المخزن";
                 default: return "📦  إدراج مادة";
             }
         }
@@ -483,7 +480,7 @@ namespace ALIBA_COMPANY.Store
         {
             tb.BackColor = Color.White;
             tb.ForeColor = COLOR_TEXT_MAIN;
-            tb.Font = new Font("Cairo", 10.5f);
+            tb.Font = new Font("Cairo", 12.5f);
             tb.BorderStyle = BorderStyle.FixedSingle;
             tb.ReadOnly = true;
             tb.TabStop = false;
@@ -493,7 +490,7 @@ namespace ALIBA_COMPANY.Store
         {
             rtb.BackColor = Color.White;
             rtb.ForeColor = COLOR_TEXT_MAIN;
-            rtb.Font = new Font("Cairo", 10f);
+            rtb.Font = new Font("Cairo", 12f);
             rtb.BorderStyle = BorderStyle.FixedSingle;
             rtb.ReadOnly = true;
             rtb.TabStop = false;
@@ -502,16 +499,17 @@ namespace ALIBA_COMPANY.Store
         private static void StyleLabel(Label lbl)
         {
             lbl.ForeColor = COLOR_TEXT_HINT;
-            lbl.Font = new Font("Cairo", 9.5f, FontStyle.Bold);
+            lbl.Font = new Font("Cairo", 11f, FontStyle.Bold);
         }
 
         private static void StyleListBox(ListBox lb)
         {
-            lb.Font = new Font("Cairo", 11f);
+            lb.Font = new Font("Cairo", 13f, FontStyle.Bold);
+            
             lb.BackColor = Color.White;
             lb.ForeColor = COLOR_TEXT_MAIN;
             lb.BorderStyle = BorderStyle.FixedSingle;
-            lb.ItemHeight = 32;
+            lb.ItemHeight = 45;
             lb.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             lb.DrawItem += ListBox_DrawItem;
         }
@@ -562,7 +560,6 @@ namespace ALIBA_COMPANY.Store
             btn_add.Text = GetAddButtonText();
 
             ser_item.Select();
-            SetDefaultImage();
             ClearResults();
         }
 
@@ -675,13 +672,15 @@ namespace ALIBA_COMPANY.Store
                 using (db = new AlibaRamyEntities())
                 {
                     var suggestions = db.TB_items
-                        .Where(x => x.items_name.StartsWith(input)
-                                 || x.items_code.StartsWith(input)
-                                 || x.items_enname.StartsWith(input))
-                        .OrderBy(x => x.items_name)
-                        .Select(x => x.items_name)
-                        .Take(50)
-                        .ToList();
+                                     .AsNoTracking()  // ✅ أسرع للقراءة فقط
+                                     .Where(x => x.items_name.Contains(input)
+                                      || x.items_code.Contains(input)
+                                      || x.items_enname.Contains(input))
+                                     .OrderBy(x => x.items_name)
+                                     .Select(x => x.items_name)
+                                     .Take(300)
+                                     .ToList();
+
 
                     if (suggestions.Count > 0)
                     {
@@ -735,12 +734,17 @@ namespace ALIBA_COMPANY.Store
                     var group = db.TB_groups.FirstOrDefault(m => m.groups_id == item.groups_id);
                     txt_gat.Text = group?.groups_name ?? "";
 
-                    // ─ الصورة ─
-                    LoadItemImage(item.items_pic, txt_gat.Text);
 
-                    // ─ إظهار المخزون المتاح إن وجد ─
-                    if (IN_OUT_STOCK == 2 || IN_OUT_STOCK == 11)
-                        ShowStockInfo();
+                    
+
+                    if(IN_OUT_STOCK == 2 || IN_OUT_STOCK == 11)
+                    {
+                        Lbl_stay.Visible = true;
+                        Lbl_stay_lbl.Visible = true;
+                        Lbl_stay.Text = Number_of_itemStored().ToString();
+
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -749,111 +753,8 @@ namespace ALIBA_COMPANY.Store
             }
         }
 
-        // ════════════════════════════════════════════════════════════════════════
-        //  IMAGE HANDLING
-        // ════════════════════════════════════════════════════════════════════════
-        private void LoadItemImage(string imagePath, string categoryName)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(imagePath) && File.Exists(imagePath))
-                {
-                    pictureEdit1.Image = Image.FromFile(imagePath);
-                    return;
-                }
-
-                // لا توجد صورة → رسم أيقونة افتراضية ذكية
-                pictureEdit1.Image = CreateDefaultImage(categoryName);
-            }
-            catch
-            {
-                pictureEdit1.Image = CreateDefaultImage(categoryName);
-            }
-        }
-
-        private static void SetDefaultImage()
-        {
-            // تُستدعى عند الفتح فقط — يتم رسم لوحة ترحيب خفيفة
-        }
-
-        /// <summary>
-        /// يرسم صورة GDI+ افتراضية تحمل إيموجي الصنف داخل دائرة ملوّنة.
-        /// </summary>
-        private static Image CreateDefaultImage(string categoryName)
-        {
-            // اختيار الإيموجي المناسب
-            string emoji = "📦";
-            if (!string.IsNullOrEmpty(categoryName))
-            {
-                foreach (var kv in _categoryEmojis)
-                {
-                    if (categoryName.Contains(kv.Key))
-                    {
-                        emoji = kv.Value;
-                        break;
-                    }
-                }
-            }
-
-            int size = 160;
-            var bmp = new Bitmap(size, size);
-            using (var g = Graphics.FromImage(bmp))
-            {
-                g.SmoothingMode = SmoothingMode.AntiAlias;
-                g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-
-                // خلفية متدرجة
-                using (var bg = new LinearGradientBrush(
-                    new Rectangle(0, 0, size, size),
-                    Color.FromArgb(235, 242, 255),
-                    Color.FromArgb(210, 225, 255),
-                    LinearGradientMode.ForwardDiagonal))
-                {
-                    g.FillRectangle(bg, 0, 0, size, size);
-                }
-
-                // دائرة مركزية
-                int margin = 20;
-                using (var circleBrush = new SolidBrush(Color.FromArgb(180, COLOR_PRIMARY)))
-                    g.FillEllipse(circleBrush, margin, margin, size - 2 * margin, size - 2 * margin);
-
-                // الإيموجي
-                using (var emojiFont = new Font("Segoe UI Emoji", 38f, FontStyle.Regular, GraphicsUnit.Point))
-                using (var sf = new StringFormat
-                {
-                    Alignment = StringAlignment.Center,
-                    LineAlignment = StringAlignment.Center
-                })
-                {
-                    g.DrawString(emoji, emojiFont, Brushes.White,
-                        new RectangleF(0, 0, size, size), sf);
-                }
-
-                // نص "لا توجد صورة" تحت الدائرة
-                using (var smallFont = new Font("Cairo", 7.5f, FontStyle.Regular, GraphicsUnit.Point))
-                using (var sf = new StringFormat { Alignment = StringAlignment.Center })
-                {
-                    g.DrawString("لا توجد صورة", smallFont,
-                        new SolidBrush(Color.FromArgb(120, 120, 150)),
-                        new RectangleF(0, size - 18, size, 18), sf);
-                }
-            }
-            return bmp;
-        }
-
-        // ════════════════════════════════════════════════════════════════════════
-        //  STOCK INFO
-        // ════════════════════════════════════════════════════════════════════════
-        private void ShowStockInfo()
-        {
-            decimal stored = Number_of_itemStored();
-            if (lblStockInfo != null)
-            {
-                lblStockInfo.Text = $"المخزون الحالي: {stored:N2}";
-                lblStockInfo.ForeColor = stored > 0 ? COLOR_SUCCESS : COLOR_DANGER;
-                lblStockInfo.Visible = true;
-            }
-        }
+       
+       
 
         // ════════════════════════════════════════════════════════════════════════
         //  CLEAR
@@ -869,9 +770,7 @@ namespace ALIBA_COMPANY.Store
             txt_info.Text = string.Empty;
             txt_Number.Text = "0";
 
-            pictureEdit1.Image = CreateDefaultImage(null);
-
-            if (lblStockInfo != null) lblStockInfo.Visible = false;
+           
         }
 
         // ════════════════════════════════════════════════════════════════════════
@@ -923,7 +822,7 @@ namespace ALIBA_COMPANY.Store
                 if (stored < entered)
                 {
                     MessageBox.Show(
-                        $"الكمية المطلوبة ({entered:N2}) أكبر من المخزون المتاح ({stored:N2}).",
+                        $"({entered:N2}) الكمية المطلوبة\n({stored:N2}) أكبر من المخزون المتاح",
                         "تحذير — مخزون غير كافٍ",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -1034,7 +933,7 @@ namespace ALIBA_COMPANY.Store
                 "خطأ غير متوقع", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        
+       
     }
 
     // ── امتداد GDI+ لرسم مستطيل دائري الزوايا ─────────────────────────────────

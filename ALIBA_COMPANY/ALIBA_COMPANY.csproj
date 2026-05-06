@@ -14,6 +14,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,7 +27,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -56,7 +56,7 @@
   <PropertyGroup />
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>ico.ico</ApplicationIcon>
+    <ApplicationIcon>alibaicons.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>ALIBA_COMPANY.manifest</ApplicationManifest>
@@ -261,6 +261,7 @@
     <Compile Include="classes\Notifications.cs" />
     <Compile Include="classes\NumberToArabicWords.cs" />
     <Compile Include="classes\Product.cs" />
+    <Compile Include="classes\SilentUpdater.cs" />
     <Compile Include="classes\SystemUtilities.cs" />
     <Compile Include="classes\UIHelper.cs" />
     <Compile Include="classes\Validator.cs" />
@@ -270,7 +271,6 @@
     <Compile Include="DevExpress\XtraEditors\Timer.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ExplodedPointsMode.cs" />
     <Compile Include="FilteredTravelRecords_Result.cs">
       <DependentUpon>M5.tt</DependentUpon>
     </Compile>
@@ -286,8 +286,26 @@
     <Compile Include="FRM_main.Designer.cs">
       <DependentUpon>FRM_main.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRM_Permissions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_Permissions.Designer.cs">
+      <DependentUpon>FRM_Permissions.cs</DependentUpon>
+    </Compile>
     <Compile Include="import_travel_data_Result.cs">
       <DependentUpon>M5.tt</DependentUpon>
+    </Compile>
+    <Compile Include="other\FRM_cashAndcridet_Add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="other\FRM_cashAndcridet_Add.Designer.cs">
+      <DependentUpon>FRM_cashAndcridet_Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="other\FRM_cashAndcridet_record.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="other\FRM_cashAndcridet_record.Designer.cs">
+      <DependentUpon>FRM_cashAndcridet_record.cs</DependentUpon>
     </Compile>
     <Compile Include="other\FRM_CridetLedger.cs">
       <SubType>Form</SubType>
@@ -300,6 +318,12 @@
     </Compile>
     <Compile Include="other\FRM_DistributorLedger.Designer.cs">
       <DependentUpon>FRM_DistributorLedger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="other\FRM_SendCash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="other\FRM_SendCash.Designer.cs">
+      <DependentUpon>FRM_SendCash.cs</DependentUpon>
     </Compile>
     <Compile Include="other\FRM_Share.cs">
       <SubType>Form</SubType>
@@ -707,6 +731,9 @@
     <Compile Include="TB_order1.cs">
       <DependentUpon>M5.tt</DependentUpon>
     </Compile>
+    <Compile Include="TB_permissions.cs">
+      <DependentUpon>M5.tt</DependentUpon>
+    </Compile>
     <Compile Include="TB_stock.cs">
       <DependentUpon>M5.tt</DependentUpon>
     </Compile>
@@ -836,11 +863,23 @@
     <EmbeddedResource Include="FRM_main.resx">
       <DependentUpon>FRM_main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FRM_Permissions.resx">
+      <DependentUpon>FRM_Permissions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="other\FRM_cashAndcridet_Add.resx">
+      <DependentUpon>FRM_cashAndcridet_Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="other\FRM_cashAndcridet_record.resx">
+      <DependentUpon>FRM_cashAndcridet_record.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="other\FRM_CridetLedger.resx">
       <DependentUpon>FRM_CridetLedger.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="other\FRM_DistributorLedger.resx">
       <DependentUpon>FRM_DistributorLedger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="other\FRM_SendCash.resx">
+      <DependentUpon>FRM_SendCash.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="other\FRM_Share.resx">
       <DependentUpon>FRM_Share.cs</DependentUpon>
@@ -856,6 +895,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="other\FeedBack.resx">
       <DependentUpon>FeedBack.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="other\FRM_about.resx">
       <DependentUpon>FRM_about.cs</DependentUpon>
@@ -1003,6 +1043,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Store\FRM_detailss.resx">
       <DependentUpon>FRM_detailss.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Store\page_outside.resx">
       <DependentUpon>page_outside.cs</DependentUpon>
@@ -1094,7 +1135,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\211.png" />
+    <Content Include="alibaicons.ico" />
+    <Content Include="Assets\logo.png" />
     <Content Include="Assets\Icon3.png" />
     <Content Include="ico.ico" />
     <None Include="Resources\converted_icon.ico" />
@@ -1168,6 +1210,12 @@
     </PackageReference>
     <PackageReference Include="Microsoft.Win32.Primitives">
       <Version>4.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="squirrel.windows">
+      <Version>2.0.1</Version>
     </PackageReference>
     <PackageReference Include="System.AppContext">
       <Version>4.3.0</Version>
@@ -1285,4 +1333,11 @@
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>copy "$(SolutionDir)Updater\bin\$(ConfigurationName)\Updater.exe" "$(TargetDir)Updater.exe"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

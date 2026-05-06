@@ -20,8 +20,12 @@ namespace ALIBA_COMPANY.pages
             lblClock.Text = DateTime.Now.ToString("hh:mm:ss tt");
             lbldata.Text = DateTime.Now.ToString("yyyy/MM/dd");
             timer1.Start();
+          
+            
+           
+           
         }
-      
+
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
@@ -45,8 +49,6 @@ namespace ALIBA_COMPANY.pages
 
         private void Chart_Show_Click(object sender, EventArgs e)
         {
-
-
             try
             {
                 FRM_Dashboard newItemForm = new FRM_Dashboard();
@@ -56,6 +58,14 @@ namespace ALIBA_COMPANY.pages
             catch (Exception ex)
             {
                 MessageBox.Show("error to open FRM_Dashboard" + ex.Message);
+            }
+        }
+
+        private void page_home_Load(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.UserRole == "موزع" || Properties.Settings.Default.UserRole == "امين مخزن" || Properties.Settings.Default.UserRole == "مسؤول الموزعيين")
+            {
+                Chart_Show.Visible = false;
             }
         }
     }

@@ -214,6 +214,7 @@ namespace ALIBA_COMPANY.other
             this.Dt_from.Name = "Dt_from";
             this.Dt_from.Size = new System.Drawing.Size(150, 42);
             this.Dt_from.TabIndex = 4;
+            this.Dt_from.ValueChanged += new System.EventHandler(this.Dt_from_EditValueChanged);
             // 
             // lblTo
             // 
@@ -232,6 +233,7 @@ namespace ALIBA_COMPANY.other
             this.Dt_to.Name = "Dt_to";
             this.Dt_to.Size = new System.Drawing.Size(150, 42);
             this.Dt_to.TabIndex = 6;
+            this.Dt_to.ValueChanged += new System.EventHandler(this.Dt_to_EditValueChanged);
             // 
             // Btn_refresh
             // 
@@ -408,10 +410,10 @@ namespace ALIBA_COMPANY.other
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Chart_main.BackColor = System.Drawing.Color.White;
             this.Chart_main.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.False;
-            this.Chart_main.Location = new System.Drawing.Point(578, 5);
+            this.Chart_main.Location = new System.Drawing.Point(671, 5);
             this.Chart_main.Name = "Chart_main";
             this.Chart_main.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            this.Chart_main.Size = new System.Drawing.Size(1055, 315);
+            this.Chart_main.Size = new System.Drawing.Size(962, 315);
             this.Chart_main.TabIndex = 0;
             // 
             // Chart_pie
@@ -419,10 +421,10 @@ namespace ALIBA_COMPANY.other
             this.Chart_pie.BackColor = System.Drawing.Color.White;
             this.Chart_pie.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.False;
             this.Chart_pie.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
-            this.Chart_pie.Location = new System.Drawing.Point(275, 5);
+            this.Chart_pie.Location = new System.Drawing.Point(332, 5);
             this.Chart_pie.Name = "Chart_pie";
             this.Chart_pie.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            this.Chart_pie.Size = new System.Drawing.Size(297, 315);
+            this.Chart_pie.Size = new System.Drawing.Size(333, 315);
             this.Chart_pie.TabIndex = 1;
             // 
             // Chart_line
@@ -432,12 +434,12 @@ namespace ALIBA_COMPANY.other
             this.Chart_line.Location = new System.Drawing.Point(10, 5);
             this.Chart_line.Name = "Chart_line";
             this.Chart_line.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            this.Chart_line.Size = new System.Drawing.Size(255, 210);
+            this.Chart_line.Size = new System.Drawing.Size(316, 315);
             this.Chart_line.TabIndex = 2;
             // 
             // pnlGrids
             // 
-            this.pnlGrids.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(39)))), ((int)(((byte)(68)))));
+            this.pnlGrids.BackColor = System.Drawing.Color.White;
             this.pnlGrids.Controls.Add(this.label5);
             this.pnlGrids.Controls.Add(this.label4);
             this.pnlGrids.Controls.Add(this.Grid_top_dist);
@@ -454,7 +456,7 @@ namespace ALIBA_COMPANY.other
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Cairo SemiBold", 13F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label5.Location = new System.Drawing.Point(263, 18);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(209, 42);
@@ -466,7 +468,7 @@ namespace ALIBA_COMPANY.other
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Cairo SemiBold", 13F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label4.Location = new System.Drawing.Point(1096, 18);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(260, 42);
@@ -487,6 +489,12 @@ namespace ALIBA_COMPANY.other
             // 
             // GV_dist
             // 
+            this.GV_dist.AppearancePrint.HeaderPanel.Options.UseTextOptions = true;
+            this.GV_dist.AppearancePrint.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.GV_dist.AppearancePrint.HeaderPanel.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.GV_dist.AppearancePrint.Row.Options.UseTextOptions = true;
+            this.GV_dist.AppearancePrint.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.GV_dist.AppearancePrint.Row.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.GV_dist.GridControl = this.Grid_top_dist;
             this.GV_dist.Name = "GV_dist";
             this.GV_dist.OptionsView.ShowGroupPanel = false;
@@ -505,6 +513,12 @@ namespace ALIBA_COMPANY.other
             // 
             // GV_debt
             // 
+            this.GV_debt.AppearancePrint.HeaderPanel.Options.UseTextOptions = true;
+            this.GV_debt.AppearancePrint.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.GV_debt.AppearancePrint.HeaderPanel.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.GV_debt.AppearancePrint.Row.Options.UseTextOptions = true;
+            this.GV_debt.AppearancePrint.Row.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.GV_debt.AppearancePrint.Row.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.GV_debt.GridControl = this.Grid_top_debt;
             this.GV_debt.Name = "GV_debt";
             this.GV_debt.OptionsView.ShowGroupPanel = false;
@@ -525,9 +539,7 @@ namespace ALIBA_COMPANY.other
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "📊 لوحة الأداء المالي";
-            this.TopMost = true;
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.Text = "📊 ملخص الحسابات";
             this.Load += new System.EventHandler(this.FRM_Dashboard_Load);
             this.pnlFilter.ResumeLayout(false);
             this.pnlFilter.PerformLayout();

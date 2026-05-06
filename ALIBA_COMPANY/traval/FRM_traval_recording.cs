@@ -170,25 +170,107 @@ namespace ALIBA_COMPANY.traval
             }
             catch { }
         }
+        //private async void Load_GridView()
+        //{//تحديث يجب اخذ بيانات المبيع من جدول ليت وليس ديتلز لتطابق المبيع مع الصاعد كونه يحدث خطا عند حذف ماده معينه من المخزن 
+        //    try
+        //    {
+        //        if (!this.IsHandleCreated)
+        //        {
+        //            this.CreateHandle();
+        //        }
+        //        loading.Visible = true;
+
+        //        var data = await Task.Run(() =>
+        //        {
+        //            var db = new AlibaRamyEntities();
+
+        //                return db.TB_details
+        //                    .Where(x => x.order_id == ID_traval)
+        //                    .AsNoTracking()
+        //                    .ToList();
+
+        //        });
+
+        //        this.Invoke((MethodInvoker)delegate
+        //        {
+        //            gridControl1.DataSource = data;
+        //            loading.Visible = false;
+        //        });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show("حدث خطأ في الاتصال Load_GridView(): " + ex.Message);
+        //        loading.Visible = false;
+        //    }
+        //}
+
         private async void Load_GridView()
         {
             try
             {
                 if (!this.IsHandleCreated)
-                {
                     this.CreateHandle();
-                }
+
                 loading.Visible = true;
 
                 var data = await Task.Run(() =>
                 {
-                    var db = new AlibaRamyEntities();
-                    
-                        return db.TB_details
+                    using (var db = new AlibaRamyEntities())
+                    {
+                        // الصاعد والراجع من TB_details
+                        var details = db.TB_details
                             .Where(x => x.order_id == ID_traval)
                             .AsNoTracking()
+                            .Select(d => new
+                            {
+                                d.items_id,
+                                d.order_id,
+                                details_num = d.details_num ?? 0,  // الصاعد
+                                details_renum = d.details_renum ?? 0, // الراجع
+                            })
                             .ToList();
-                    
+
+                        // المبيوع الحقيقي من TB_det عبر TB_list
+                        var sellFromDet = db.TB_det
+                            .Where(x => x.TB_list.tr_id == ID_traval)
+                            .GroupBy(x => x.items_id)
+                            .Select(g => new
+                            {
+                                items_id = g.Key,
+                                total_sell = g.Sum(x => x.de_num) ?? 0
+                            })
+                            .ToList();
+
+                        // دمج كل items_id من المصدرين
+                        var allItemIds = details.Select(d => d.items_id)
+                            .Union(sellFromDet.Select(s => s.items_id))
+                            .Distinct()
+                            .ToList();
+
+                        var result = allItemIds.Select(itemId => new
+                        {
+                            items_id = itemId,
+                            order_id = ID_traval,
+
+                            // الصاعد - من TB_details
+                            details_num = details
+                                .FirstOrDefault(d => d.items_id == itemId)
+                                ?.details_num ?? 0,
+
+                            // الراجع - من TB_details
+                            details_renum = details
+                                .FirstOrDefault(d => d.items_id == itemId)
+                                ?.details_renum ?? 0,
+
+                            // المبيوع - من TB_det + TB_list
+                            sell_num = sellFromDet
+                                .FirstOrDefault(s => s.items_id == itemId)
+                                ?.total_sell ?? 0
+
+                        }).ToList();
+
+                        return result;
+                    }
                 });
 
                 this.Invoke((MethodInvoker)delegate
@@ -199,7 +281,7 @@ namespace ALIBA_COMPANY.traval
             }
             catch (Exception ex)
             {
-                MessageBox.Show("حدث خطأ في الاتصال Load_GridView(): " + ex.Message);
+                MessageBox.Show("حدث خطأ في Load_GridView(): " + ex.Message);
                 loading.Visible = false;
             }
         }
@@ -331,8 +413,15 @@ namespace ALIBA_COMPANY.traval
                     }
 
 
-                    int totalItems = context.TB_details
-                                            .Count(x => x.order_id == ID_traval && x.sell_num != 0);
+                    //int totalItems = context.TB_details
+                    //                        .Count(x => x.order_id == ID_traval && x.sell_num != 0);
+
+                    // ✅ جديد - صحيح
+                    int totalItems = context.TB_det
+                        .Where(x => x.TB_list.tr_id == ID_traval)
+                        .Select(x => x.items_id)
+                        .Distinct()
+                        .Count();
                     if (totalItems != 0)
                     {
                         Lbl_items.Text = totalItems.ToString("0");
@@ -480,7 +569,7 @@ namespace ALIBA_COMPANY.traval
 
             if (!HascellZero())
             {
-                MessageBox.Show("يوجد خطأ في الراجع او المبيع", "خطأ",
+                MessageBox.Show("البيانات غير متطابقة الجرد غير صحيح", "خطأ",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }

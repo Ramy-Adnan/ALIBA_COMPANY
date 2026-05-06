@@ -814,16 +814,16 @@ namespace ALIBA_COMPANY
 
         private void Share_Post_ItemClick(object sender, ItemClickEventArgs e)
         {
-            try
-            {
-                FRM_Share newItemForm = new FRM_Share();
+            //try
+            //{
+            //    FRM_Share newItemForm = new FRM_Share();
 
-                newItemForm.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("error to open FRM_Share" + ex.Message);
-            }
+            //    newItemForm.ShowDialog();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("error to open FRM_Share" + ex.Message);
+            //}
         }
 
         private void Mandob_dis_ItemClick(object sender, ItemClickEventArgs e)
@@ -856,9 +856,44 @@ namespace ALIBA_COMPANY
 
         private void Btn_sarf_ItemClick(object sender, ItemClickEventArgs e)
         {
-            
+            try
+            {
+                FRM_cashAndcridet_record newItemForm = new FRM_cashAndcridet_record();
 
+                newItemForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error to open FRM_cashAndcridet_record" + ex.Message);
+            }
+        }
 
+        private void Btn_Permissions_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            //try
+            //{
+            //    FRM_Permissions newItemForm = new FRM_Permissions();
+
+            //    newItemForm.ShowDialog();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("error to open FRM_Permissions" + ex.Message);
+            //}
+        }
+
+        private void Btn_cash_sell_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FRM_SendCash newItemForm = new FRM_SendCash();
+
+                newItemForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error to open FRM_SendCash" + ex.Message);
+            }
         }
     }
 }

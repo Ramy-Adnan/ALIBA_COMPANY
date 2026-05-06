@@ -60,6 +60,7 @@ namespace ALIBA_COMPANY
         public virtual DbSet<TB_type> TB_type { get; set; }
         public virtual DbSet<TB_users> TB_users { get; set; }
         public virtual DbSet<TB_ads> TB_ads { get; set; }
+        public virtual DbSet<TB_permissions> TB_permissions { get; set; }
     
         public virtual ObjectResult<Nullable<decimal>> GetItemStored(Nullable<int> itemId)
         {

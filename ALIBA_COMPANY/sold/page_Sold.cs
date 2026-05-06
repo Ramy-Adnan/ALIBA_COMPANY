@@ -1,19 +1,9 @@
 ﻿using ALIBA_COMPANY.classes;
 using ALIBA_COMPANY.other;
-using ALIBA_COMPANY.report;
-using DevExpress.XtraEditors;
-using DevExpress.XtraReports.UI;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.Entity;
-using System.Data.SqlClient;
 using System.Drawing;
-using System.Drawing.Printing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ALIBA_COMPANY.sold
@@ -152,9 +142,9 @@ namespace ALIBA_COMPANY.sold
 
                     // تحديث وصولات التحصيل (إذا وجدت)
                     context.Database.ExecuteSqlCommand(@"
-                UPDATE TB_cridet SET sending=1 
-                WHERE user_id=@p0 AND emplo_id=@p1 AND tr_id=@p2 AND sending=0",
-                        AddPage.Users.Idd, EmploId, ID_traval);
+                         UPDATE TB_cridet SET sending=1 
+                         WHERE user_id=@p0 AND tr_id=@p1 AND sending=0",
+                        AddPage.Users.Idd, ID_traval);
 
                     // حذف السفرة المؤقتة
                     context.Database.ExecuteSqlCommand(
@@ -191,6 +181,8 @@ namespace ALIBA_COMPANY.sold
 
                     Add.AccountsOrMandob = 2;
                     Add.ID_traval_MandobForm = (int)ID_traval;
+                    Add.emplo_id_fromPage_soldorAccount = EmploId;
+
                     Add.ShowDialog();
                 }
                 catch (Exception ex)

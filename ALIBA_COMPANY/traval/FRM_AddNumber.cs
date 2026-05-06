@@ -63,7 +63,7 @@ namespace ALIBA_COMPANY.traval
                 using (db = new AlibaRamyEntities())
                 {
                    
-                    var suggestions = db.TB_items
+                    var suggestions = db.TB_items.AsNoTracking()
                         .Where(x => x.items_name.Contains(inputText) || x.items_code.Contains(inputText) || x.items_enname.Contains(inputText))
                         .Select(x => x.items_name)
                         .ToList();

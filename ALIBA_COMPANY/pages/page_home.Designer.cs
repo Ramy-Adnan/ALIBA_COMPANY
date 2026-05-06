@@ -218,6 +218,7 @@ namespace ALIBA_COMPANY.pages
             this.Controls.Add(this.lblDate);
             this.Name = "page_home";
             this.Size = new System.Drawing.Size(1296, 743);
+            this.Load += new System.EventHandler(this.page_home_Load);
             this.lblDate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Chart_Show)).EndInit();
             this.panel2.ResumeLayout(false);
@@ -243,6 +244,6 @@ namespace ALIBA_COMPANY.pages
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private DevExpress.XtraEditors.LabelControl rgrg;
-        private System.Windows.Forms.PictureBox Chart_Show;
+        public System.Windows.Forms.PictureBox Chart_Show;
     }
 }

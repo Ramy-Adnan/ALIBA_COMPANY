@@ -15,6 +15,8 @@ namespace ALIBA_COMPANY.other
         int ID_traval;
         int ID_traval2;
         public int AccountsOrMandob;
+        public int emplo_id_fromPage_soldorAccount;
+        
         public int ID_traval_MandobForm;
         public ERM_cash()
         {
@@ -33,7 +35,7 @@ namespace ALIBA_COMPANY.other
                         loading.Visible = true;
 
                         var data = db.TB_cridet
-                            .Where(x => x.tr_id == ID_traval && x.action_id == 6 && x.sending == true)
+                            .Where(x => x.tr_id == ID_traval && x.action_id == 7 && x.sending == true)
                             .AsNoTracking()
                             .ToList();
 
@@ -107,7 +109,7 @@ namespace ALIBA_COMPANY.other
                         loading.Visible = true;
 
                         var data = db.TB_cridet
-                            .Where(x => x.tr_id == ID_traval_MandobForm && x.action_id == 6&&x.sending==false)
+                            .Where(x => x.tr_id == ID_traval_MandobForm && x.action_id == 7 &&x.sending==false)
                             .AsNoTracking()
                             .ToList();
 
@@ -186,7 +188,7 @@ namespace ALIBA_COMPANY.other
                     {
 
                         var TT = db.TB_travel
-                        .Where(x => x.tr_st_id == 1 && x.user_id2 == null).AsNoTracking()
+                        .Where(x => x.tr_sending == true && x.user_id2 == null).AsNoTracking()
                         .Select(x => x.TB_emplo.emplo_name)
                         .ToList();
                         TT.Insert(0, "");
@@ -194,6 +196,8 @@ namespace ALIBA_COMPANY.other
 
 
                     }
+
+                   
                 }
                 catch (Exception ex)
                 {
@@ -211,7 +215,7 @@ namespace ALIBA_COMPANY.other
                     {
                         var selectedDriver = Combo_driver.SelectedItem.ToString();
                         var Idd = db.TB_travel
-                            .Where(x => x.TB_emplo.emplo_name == selectedDriver && x.tr_st_id == 1 && x.user_id2 == null)
+                            .Where(x => x.TB_emplo.emplo_name == selectedDriver && x.user_id2 == null && x.tr_sending==true)
                             .Select(x => x.tr_id)
                             .FirstOrDefault();
                         ID_traval = Idd > 0 ? Idd : 0; // Ensure ID_traval is set correctly
@@ -235,7 +239,7 @@ namespace ALIBA_COMPANY.other
                     using (var db = new AlibaRamyEntities())
                     {
                         var TT = db.TB_travel
-                       .Where(x => x.user_id2 == null && x.tr_st_id == 1).AsNoTracking()
+                       .Where(x => x.user_id2 == null).AsNoTracking()
                        .Select(x => x.TB_emplo.emplo_name)
                        .ToList();
                         TT.Insert(0, "");
@@ -259,16 +263,20 @@ namespace ALIBA_COMPANY.other
                     {
 
                         var Iddd = db.TB_travel
-                        .Where(x => x.TB_emplo.emplo_name == Combo_travel.SelectedItem.ToString() && x.tr_st_id == 1 && x.user_id2 == null)
-                        .Select(x => x.tr_id)
+                        .Where(x => x.TB_emplo.emplo_name == Combo_travel.SelectedItem.ToString() && x.user_id2 == null)
+                        .Select(  x => new { x.tr_id, x.emplo_id })
                         .FirstOrDefault();
-                        if (Iddd != 0)
+
+                        // ✅ التحقق من null أولاً
+                        if (Iddd != null && Iddd.tr_id != 0)
                         {
-                            ID_traval2 = Iddd;
+                            ID_traval2 = Iddd.tr_id;
+                            emplo_id_fromPage_soldorAccount = (int)Iddd.emplo_id;
                         }
                         else
                         {
                             ID_traval2 = 0;
+                            emplo_id_fromPage_soldorAccount = 0;
                         }
 
                     }
@@ -317,8 +325,9 @@ namespace ALIBA_COMPANY.other
                         FRM_cash_record Add = new FRM_cash_record();
                         Add.ID_traval = ID_traval2;
                         Add.AccountsOrMandob = 1;
+                        Add.emplo_id_fromERM_cash = emplo_id_fromPage_soldorAccount;
                         Add.page = this;
-
+                     
                         if (Add.ShowDialog() == DialogResult.OK)
                         {
                             Load_GridView();
@@ -343,7 +352,7 @@ namespace ALIBA_COMPANY.other
                         FRM_cash_record Add = new FRM_cash_record();
                         Add.AccountsOrMandob = AccountsOrMandob;
                         Add.ID_traval = ID_traval_MandobForm;
-
+                        Add.emplo_id_fromERM_cash = emplo_id_fromPage_soldorAccount;
                         Add.page = this;
                         if (Add.ShowDialog() == DialogResult.OK)
                         {
@@ -352,7 +361,7 @@ namespace ALIBA_COMPANY.other
                     }
                     else
                     {
-                        MessageBox.Show("لا يوجد موزع محدد ال ID_traval_MandobForm=0");
+                        MessageBox.Show("استورد سفرة");
                     }
                 }
                 catch (Exception ex)
@@ -445,7 +454,7 @@ namespace ALIBA_COMPANY.other
                             report.Parameters["driver"].Value = Driver;
                             report.Parameters["Num"].Value = Num;
                             report.Parameters["cridit_s"].Value = cridet_s;
-                            report.Parameters["word"].Value = ConvertToWords(cridet_s);
+                            report.Parameters["word"].Value = NumberToArabicWords.Convert(cridet_s);
                             report.Parameters["emplo"].Value = User;
                             report.ShowPreview();
 
@@ -466,80 +475,7 @@ namespace ALIBA_COMPANY.other
                 }
             }
         }
-        public static string ConvertToWords(decimal amount)
-        {
-            if (amount == 0)
-            {
-                return "صفر دولار";
-            }
-
-            string words = "";
-
-           
-            int dollars = (int)amount;
-            int cents = (int)((amount - dollars) * 100);
-
-            if (dollars > 0)
-            {
-                words += NumberToWords(dollars) + " دولار";
-            }
-
-            if (cents > 0)
-            {
-                if (!string.IsNullOrEmpty(words))
-                {
-                    words += " و ";
-                }
-                words += NumberToWords(cents) + " سنت";
-            }
-
-            return words;
-        }
-
-        private static string NumberToWords(int number)
-        {
-            if (number == 0)
-            {
-                return "صفر";
-            }
-
-            string[] units = { "صفر", "واحد", "اثنان", "ثلاثة", "أربعة", "خمسة", "ستة", "سبعة", "ثمانية", "تسعة" };
-            string[] teens = { "عشرة", "أحد عشر", "اثنا عشر", "ثلاثة عشر", "أربعة عشر", "خمسة عشر", "ستة عشر", "سبعة عشر", "ثمانية عشر", "تسعة عشر" };
-            string[] tens = { "", "", "عشرون", "ثلاثون", "أربعون", "خمسون", "ستون", "سبعون", "ثمانون", "تسعون" };
-            string[] thousands = { "", "ألف", "مليون", "مليار" };
-
-            if (number < 10)
-            {
-                return units[number];
-            }
-
-            if (number < 20)
-            {
-                return teens[number - 10];
-            }
-
-            if (number < 100)
-            {
-                return tens[number / 10] + (number % 10 != 0 ? " و " + units[number % 10] : "");
-            }
-
-            if (number < 1000)
-            {
-                return units[number / 100] + " مئة" + (number % 100 != 0 ? " و " + NumberToWords(number % 100) : "");
-            }
-
-            for (int i = 0; i < thousands.Length; i++)
-            {
-                int divisor = (int)Math.Pow(1000, i);
-                if (number < divisor * 1000)
-                {
-                    return NumberToWords(number / divisor) + " " + thousands[i] + (number % divisor != 0 ? " و " + NumberToWords(number % divisor) : "");
-                }
-            }
-
-            return null;
-        }
-
+       
        
     }
 }

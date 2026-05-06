@@ -359,6 +359,15 @@
           <Property Name="order_ncode" Type="nvarchar" MaxLength="50" />
           <Property Name="order_ndate" Type="date" />
         </EntityType>
+        <EntityType Name="TB_permissions">
+          <Key>
+            <PropertyRef Name="perm_id" />
+          </Key>
+          <Property Name="perm_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="perm_role" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="perm_key" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="perm_allowed" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="TB_stock">
           <Key>
             <PropertyRef Name="sto_id" />
@@ -980,6 +989,7 @@
           <EntitySet Name="TB_Note" EntityType="Self.TB_Note" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_order" EntityType="Self.TB_order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_order1" EntityType="Self.TB_order1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_permissions" EntityType="Self.TB_permissions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_stock" EntityType="Self.TB_stock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_str" EntityType="Self.TB_str" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_str1" EntityType="Self.TB_str1" Schema="dbo" store:Type="Tables" />
@@ -1342,6 +1352,7 @@
             <Parameter Name="user_id" Mode="In" Type="Int32" />
             <Parameter Name="str_date" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="TB_permissions" EntityType="AlibaRamyModel.TB_permissions" />
           </EntityContainer>
         <ComplexType Name="SearchInventory_Result">
           <Property Type="Int32" Name="itemsId" Nullable="false" />
@@ -2342,6 +2353,15 @@
           <Property Type="String" Name="message" Nullable="false" MaxLength="36" />
           <Property Type="Int32" Name="imported_count" Nullable="false" />
         </ComplexType>
+        <EntityType Name="TB_permissions">
+          <Key>
+            <PropertyRef Name="perm_id" />
+          </Key>
+          <Property Name="perm_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="perm_role" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="perm_key" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="perm_allowed" Type="Boolean" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3002,6 +3022,16 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="TB_permissions">
+            <EntityTypeMapping TypeName="AlibaRamyModel.TB_permissions">
+              <MappingFragment StoreEntitySet="TB_permissions">
+                <ScalarProperty Name="perm_allowed" ColumnName="perm_allowed" />
+                <ScalarProperty Name="perm_key" ColumnName="perm_key" />
+                <ScalarProperty Name="perm_role" ColumnName="perm_role" />
+                <ScalarProperty Name="perm_id" ColumnName="perm_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
