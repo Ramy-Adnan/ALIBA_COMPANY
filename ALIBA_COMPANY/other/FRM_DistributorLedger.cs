@@ -247,7 +247,7 @@ namespace ALIBA_COMPANY.other
                 //    سعر الصرف = list_exch
                 // ══════════════════════════════════════
                 var salesQ = db.TB_list
-                    .Where(l => l.cust_id != null && l.cust_id != 0)
+                    .Where(l => l.cust_id != null && l.cust_id != 0&&l.sending==true)
                     .Where(l => l.list_date >= from && l.list_date <= to)
                     .Where(l => l.list_cridetUsd > 0);
 
@@ -281,7 +281,7 @@ namespace ALIBA_COMPANY.other
                     .Where(c => c.action_id == 6 || c.action_id == 7
                              || c.action_id == 8 || c.action_id == 9)
                     .Where(c => c.cridet_date >= from && c.cridet_date <= to)
-                    .Where(c => c.cridet_s > 0);
+                    .Where(c => c.cridet_s > 0&&c.sending==true);
 
                 if (distributor != "كل الموزعيين")
                     cridetQ = cridetQ.Where(c => c.TB_emplo.emplo_name == distributor);

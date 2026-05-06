@@ -362,6 +362,7 @@ namespace ALIBA_COMPANY.other
             this.Btn_delete.TabIndex = 129;
             this.Btn_delete.Text = "حذف";
             this.Btn_delete.UseVisualStyleBackColor = false;
+            this.Btn_delete.Click += new System.EventHandler(this.Btn_delete_Click);
             // 
             // label13
             // 
@@ -390,6 +391,7 @@ namespace ALIBA_COMPANY.other
             this.Btn_print.Text = "طباعة";
             this.Btn_print.UseVisualStyleBackColor = false;
             this.Btn_print.Visible = false;
+            this.Btn_print.Click += new System.EventHandler(this.Btn_print_Click);
             // 
             // groupBox1
             // 

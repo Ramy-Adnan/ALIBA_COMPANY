@@ -436,11 +436,13 @@ namespace ALIBA_COMPANY.other
 
                         try
                         {
+                            
                             string Cust = GetFocusedRowCellValue("list_name");
-                            string Driver = GetFocusedRowCellValue("TB_emplo.emplo_name");
+                            string distrputer = GetFocusedRowCellValue("TB_emplo.emplo_name"); 
+                            string driver = Combo_driver.SelectedItem?.ToString();
 
 
-                            decimal cridet_s = decimal.Parse(GetFocusedRowCellValue("cridet_s"));
+                            decimal cridet_s = decimal.Parse(GetFocusedRowCellValue("cridet_d"));
 
                             DateTime Date = Convert.ToDateTime(GetFocusedRowCellValue("cridet_date")).Date;
                             string User = AddPage.Users.FullName;
@@ -451,7 +453,8 @@ namespace ALIBA_COMPANY.other
 
                             report.Parameters["Cust"].Value = Cust;
                             report.Parameters["Date"].Value = Date;
-                            report.Parameters["driver"].Value = Driver;
+                            report.Parameters["distr"].Value = distrputer;
+                            report.Parameters["driver"].Value = driver;
                             report.Parameters["Num"].Value = Num;
                             report.Parameters["cridit_s"].Value = cridet_s;
                             report.Parameters["word"].Value = NumberToArabicWords.Convert(cridet_s);
