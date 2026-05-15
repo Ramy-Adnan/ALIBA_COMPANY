@@ -1,7 +1,7 @@
 
 {
   "version": "2.0.0",
-  "downloadUrl": "https://raw.githubusercontent.com/Ramy-Adnan/ALIBA_COMPANY/refs/heads/master/updates/ALIBA_COMPANY.exe",
+  "downloadUrl": "https://raw.githubusercontent.com/Ramy-Adnan/ALIBA_COMPANY/refs/heads/master/updates/RAMYAPP.exe",
   "releaseNotes": "- إصلاح مشكلة الطباعة\n- تحسين الأداء",
   "mandatory": false
 }
