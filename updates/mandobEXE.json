@@ -1,6 +1,7 @@
 {
-  "version": "7.0.0",
-  "downloadUrl": "https://github.com/Ramy-Adnan/ALIBA_COMPANY/releases/download/MandobEXEv7/Mandob.exe",
+  "version": "8.0.0",
+  "downloadUrl": "https://github.com/Ramy-Adnan/ALIBA_COMPANY/releases/download/MandobEXEv7/Mandobv7.exe
+.exe",
   "releaseNotes": "- إصلاح مشكلة الطباعة\n- تحسين الأداء",
   "mandatory": false
 }
