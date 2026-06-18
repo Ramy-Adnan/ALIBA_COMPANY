@@ -1,5 +1,6 @@
 {
   "Version": "8.0.0",
-   "downloadUrl": "https://github.com/Ramy-Adnan/ALIBA_COMPANY/releases/download/ALIBA_COMPANYv8/Alliba.exe",
-  "Notes": "أول إصدار من AlibaSystem WPF"
+  "downloadUrl": "https://github.com/Ramy-Adnan/ALIBA_COMPANY/releases/download/ALIBA_COMPANYv8/Alliba.exe",
+  "Notes": "أول إصدار من AlibaSystem WPF",
+  "mandatory": false
 }
