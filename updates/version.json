@@ -1,6 +1,6 @@
 {
-  "version": "8.0.0",
-  "downloadUrl": "https://github.com/Ramy-Adnan/ALIBA_COMPANY/releases/download/ALIBA_COMPANYv8/ALIBA_COMPANY.exe",
+  "version": "9.0.0",
+  "downloadUrl": "https://github.com/Ramy-Adnan/ALIBA_COMPANY/releases/download/ALIBA_COMPANYv9/ALIBA_COMPANY.exe",
   "releaseNotes": "- إصلاح مشكلة الطباعة\n- تحسين الأداء",
   "mandatory": false
 }
