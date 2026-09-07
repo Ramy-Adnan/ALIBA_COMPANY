@@ -1,6 +1,6 @@
 {
-  "version": "12.0.0",
-  "downloadUrl": "https://github.com/Ramy-Adnan/ALIBA_COMPANY/releases/download/ALIBA_COMPANYv12/ALIBA_COMPANY.exe",
+  "version": "13.0.0",
+  "downloadUrl": "https://github.com/Ramy-Adnan/ALIBA_COMPANY/releases/download/ALIBA_COMPANYv13/ALIBA_COMPANY.exe",
   "releaseNotes": "- إصلاح مشكلة الطباعة\n- تحسين الأداء",
   "mandatory": false
 }
