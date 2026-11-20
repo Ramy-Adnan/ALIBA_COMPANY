@@ -1,1 +1,6 @@
-
+{
+  "version": "2.0.0",
+  "downloadUrl": "https://github.com/Ramy-Adnan/ALIBA_COMPANY/releases/download/RAMYAPPexev2/RAMYAPP.exe",
+  "releaseNotes": "- إصلاح مشكلة الطباعة\n- تحسين الأداء",
+  "mandatory": false
+}
